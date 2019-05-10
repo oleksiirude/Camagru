@@ -1,13 +1,14 @@
 <?php
 	return [
-		'user/index' => [
-			'controller' => 'user',
-			'action' => 'index'
-		],
 
 		'user/register' => [
 			'controller' => 'user',
 			'action' => 'register'
+		],
+
+		'user/register/validate' => [
+			'controller' => 'user',
+			'action' => 'registerValidate'
 		],
 
 		'user/login' => [
@@ -20,23 +21,3 @@
 			'action' => 'recover'
 		]
 	];
-
-
-//	return array(
-//		'index' => 'user/index',
-//		'register' => 'user/register',
-//		'login' => 'user/login',
-//		'recover' => 'user/recover'
-
-//		'index' => 'enter/index',
-//		'register' => 'enter/register',
-//		'login' => 'enter/login',
-//		'recover' => 'enter/recover',
-//
-//		'main' => 'user/index',
-//		'dashboard' => 'user/dashboard',
-//		'profile' => 'user/profile',
-//
-//		'admin' => 'admin/index',
-//		'enter' => 'admin/login'
-//	);

@@ -8,21 +8,23 @@
 		}
 
 		public function render($title, $params = []) {
-			require_once (ROOT.'views/default/metadata.php');
-			require_once (ROOT.'views/default/header.php');
+			ob_start();
 			require_once ($this->path);
-			require_once (ROOT.'views/default/footer.php');
+			$content = ob_get_clean();
+			require_once (ROOT.'views/default/index.php');
+		}
+
+		public static function toMainIndex($title) {
+			ob_start();
+			require_once (ROOT.'views/user/content.php');
+			$content = ob_get_clean();
+			require_once (ROOT."views/default/index.php");
+			exit;
 		}
 
 		public static function errorHandle($code) {
 			http_response_code($code);
 			require_once (ROOT.'views/error/'.$code.'.php');
-			exit;
-		}
-
-		public static function toMainIndex() {
-			echo "empty URI. Now you are at the main index page";
-			require_once (ROOT."index.php");
 			exit;
 		}
 	}

@@ -19,8 +19,9 @@
 		//find needed controller, create an object and launch method
 		public function run() {
 
-			if (!$uri = $this->getURI())
-				componentView::toMainIndex();
+			if (!$uri = $this->getURI()) {
+				componentView::toMainIndex('Camagru: main');
+			}
 			else {
 				$success = null;
 				foreach ($this->routes as $uriPatter => $route) {
@@ -39,7 +40,7 @@
 								break;
 						}
 						else
-							echo "Class or method not found\n";
+							componentView::errorHandle(404);
 					}
 				}
 				if (!$success)
