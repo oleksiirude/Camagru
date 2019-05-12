@@ -22,6 +22,11 @@
 			exit;
 		}
 
+		public static function redirect($path) {
+			header('Location: /' . $path);
+			exit;
+		}
+
 		public static function errorHandle($code) {
 			http_response_code($code);
 			require_once (ROOT.'views/error/'.$code.'.php');

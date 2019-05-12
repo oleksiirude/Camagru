@@ -3,36 +3,47 @@
 	class modelUser extends componentModel {
 		public $result = true;
 
-		public function validateData() {
+		//checks all input registration data from user
+		public function validateRegistrationData() {
 
-			if (($result = $this->validateIsFull()) !== true)
+			if (($result = self::validateIsFullLoginPassword()) !== true)
 				return $result;
-			elseif (($result = $this->validateInputData()) !== true)
+			elseif (($result = self::validateIsFullEmailConfirm()) !== true)
 				return $result;
-			elseif (($result = $this->validateIfExistsInDb()) !== true)
+			elseif (($result = self::validateInputRegistrationData()) !== true)
+				return $result;
+			elseif (($result = self::validateIfExistsInDb()) !== true)
 				return $result;
 			return $this->result;
 		}
 
-		private function validateIsFull() {
-
+		//checks if login and password fields is not empty
+		private function validateIsFullLoginPassword() {
 			$_POST['login'] = trim($_POST['login']);
-			$_POST['email'] = trim($_POST['email']);
 			$_POST['password'] = trim($_POST['password']);
-			$_POST['confirm'] = trim($_POST['confirm']);
 
 			if (empty($_POST['login']))
 				$this->result = 'Login field is empty!';
-			elseif (empty($_POST['email']))
-				$this->result = 'Email field is empty!';
 			elseif (empty($_POST['password']))
+				$this->result = 'Password field is empty!';
+			return $this->result;
+		}
+
+		//checks if email and confirm fields is not empty
+		private function validateIsFullEmailConfirm() {
+
+			$_POST['email'] = trim($_POST['email']);
+			$_POST['confirm'] = trim($_POST['confirm']);
+
+			if (empty($_POST['email']))
 				$this->result = 'Password field is empty!';
 			elseif (empty($_POST['confirm']))
 				$this->result = 'Confirm field is empty!';
 			return $this->result;
 		}
 
-		private function validateInputData() {
+		//checks if input data is corresponds to requirements
+		private function validateInputRegistrationData() {
 
 			$patternLogin = '/^[a-zA-Z]{3,8}\d{0,2}$/';
 			$patternEmail = '/^[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/';
@@ -49,6 +60,7 @@
 			return $this->result;
 		}
 
+		//checks for login and password existence in database
 		private function validateIfExistsInDb() {
 
 			$query = [':login' => $_POST['login'], ':email' => $_POST['email']];
@@ -58,5 +70,42 @@
 			if (!$result)
 				return true;
 			return 'Login or password are already taken!';
+		}
+
+		//checks if token is valid, if true confirms account
+		public function confirmRequest($token) {
+
+			$sth = $this->prepare("SELECT id, token FROM users WHERE token = '$token'");
+			$sth->execute();
+			$result = $sth->fetch(self::FETCH_ASSOC);
+			if (!$result)
+				return false;
+			$id = $result['id'];
+			$this->query("UPDATE users SET token = '', confirm = '1' WHERE users.id = '$id'");
+			return true;
+		}
+
+		//inserts valid registration data into database
+		public function insertValidDataToDb($token) {
+
+				$login = $_POST['login'];
+				$email = $_POST['email'];
+				$password = password_hash($_POST['password'], PASSWORD_BCRYPT);
+				$this->query("INSERT INTO users(login, email, password, token) 
+										VALUES ('$login', '$email', '$password', '$token')");
+		}
+
+		public function validateInputLoginData() {
+
+			if (self::validateIsFullLoginPassword() !== true)
+				return $this->result;
+
+			$sth = $this->prepare("SELECT login, password, confirm FROM users WHERE login = :login");
+			$sth->execute([':login' => $_POST['login']]);
+			$result = $sth->fetch(self::FETCH_ASSOC);
+			if (!$result || !password_verify($_POST['password'], $result['password'])
+				|| $result['confirm'] !== '1')
+				return 'Incorrect login or password!';
+			return true;
 		}
 	}

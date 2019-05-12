@@ -2,7 +2,7 @@
 	<span style="font-size: xx-large; margin-left: 32%">Sign in</span>
 	<div class="fill_box">
 		<div class="login">
-			<form action="login" method="post">
+			<form action="login/validate" method="post">
 				<label for="login">Your login:</label>
 				<input class="input_zone" type="text" name="login" id="login" required>
 				<label for="password">Your password:</label>

@@ -36,7 +36,7 @@
 
 							require_once ($class);
 							$controller = new $controllerName($route);
-							if ($success = $controller->$actionName())
+							if ($success = $controller->$actionName($uri))
 								break;
 						}
 						else
