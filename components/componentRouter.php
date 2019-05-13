@@ -25,6 +25,9 @@
 			else {
 				$success = null;
 				foreach ($this->routes as $uriPatter => $route) {
+					echo "<pre>";
+					var_dump($uriPatter);
+					var_dump($uri);
 					if (preg_match("~^$uriPatter$~", $uri)) {
 						$controllerName = 'controller'.ucfirst($route['controller']);
 						$actionName = 'action'.ucfirst($route['action']);

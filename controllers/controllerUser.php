@@ -29,7 +29,7 @@
 			}
 			$token = md5($_POST['login'].time().$_POST['email']);
 			$this->model->insertValidDataToDb($token);
-			$this->sendActivationLink($token);
+			componentMail::sendActivationLink($token);
 			$this->view->redirect('user/login');
 			exit;
 		}
@@ -43,30 +43,24 @@
 			exit;
 		}
 
-		private function sendActivationLink($token) {
-
-			$login = $_POST['login'];
-			$path = 'http://localhost/user/confirm/'.$token;
-			$to = $_POST['email'];
-			$headers =	"From: camagrubot@gmail.com\r\n".
-				"Reply-To: no-reply\r\n".
-				"MIME=Version: 1.0\r\n".
-				"Content-Type: text/html; charset=utf-8\r\n";
-			$subject = 'Account activation';
-			$message = "<p>Hi, dear $login!</p>
-						<p>Please, follow this link to activate your account: $path</p>
-						<p>See ya!</p>";
-			mail($to, $subject, $message, $headers);
-			componentView::redirect('user/login');
-		}
-
 		public function actionLoginValidate() {
 			if (($result = $this->model->validateInputLoginData()) !== true) {
 				var_dump($result);
 				exit;
 			}
 			$_SESSION['logged_user'] = true;
-			var_dump($_SESSION['logged_user']);
 			$this->view->redirect('');
+		}
+
+		public function actionRecoverValidate() {
+			if (ctype_digit($result = $this->model->validateRecoverData()) === false) {
+				var_dump($result);
+				exit;
+			}
+			$token = $result.'/'.md5($_POST['login'].time().$_POST['email']);
+			componentMail::sendRecoveryLink($token);
+			echo 'ok';
+			exit;
+			$this->view->redirect('user/login');
 		}
 	}

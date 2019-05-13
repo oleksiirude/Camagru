@@ -6,15 +6,42 @@
 		//checks all input registration data from user
 		public function validateRegistrationData() {
 
-			if (($result = self::validateIsFullLoginPassword()) !== true)
-				return $result;
-			elseif (($result = self::validateIsFullEmailConfirm()) !== true)
+			$request = [
+				['login' => true],
+				['email' => true],
+				['password' => true],
+				['confirm' => true]
+			];
+
+			if (($result = self::validateIsFullFields($request)) !== true)
 				return $result;
 			elseif (($result = self::validateInputRegistrationData()) !== true)
 				return $result;
 			elseif (($result = self::validateIfExistsInDb()) !== true)
 				return $result;
-			return $this->result;
+			return true;
+		}
+
+		//checks fields filling (depends on $request array)
+		private function validateIsFullFields($request) {
+			if (isset($request['login'])) {
+				$_POST['login'] = trim($_POST['login']);
+				if (empty($_POST['login']))
+					return 'Login field is empty!';
+			}
+			if (isset($request['email'])) {
+				if (empty($_POST['email']))
+					return 'Password field is empty!';
+			}
+			if (isset($request['password'])) {
+				if (empty($_POST['password']))
+				return 'Password field is empty!';
+			}
+			if (isset($request['confirm'])) {
+				if (empty($_POST['confirm']))
+					return 'Confirm field is empty!';
+			}
+			return true;
 		}
 
 		//checks if login and password fields is not empty
@@ -26,19 +53,6 @@
 				$this->result = 'Login field is empty!';
 			elseif (empty($_POST['password']))
 				$this->result = 'Password field is empty!';
-			return $this->result;
-		}
-
-		//checks if email and confirm fields is not empty
-		private function validateIsFullEmailConfirm() {
-
-			$_POST['email'] = trim($_POST['email']);
-			$_POST['confirm'] = trim($_POST['confirm']);
-
-			if (empty($_POST['email']))
-				$this->result = 'Password field is empty!';
-			elseif (empty($_POST['confirm']))
-				$this->result = 'Confirm field is empty!';
 			return $this->result;
 		}
 
@@ -97,8 +111,13 @@
 
 		public function validateInputLoginData() {
 
-			if (self::validateIsFullLoginPassword() !== true)
-				return $this->result;
+			$request = [
+				['login' => true],
+				['password' => true],
+			];
+
+			if ($result = self::validateIsFullFields($request) !== true)
+				return $result;
 
 			$sth = $this->prepare("SELECT login, password, confirm FROM users WHERE login = :login");
 			$sth->execute([':login' => $_POST['login']]);
@@ -108,4 +127,23 @@
 				return 'Incorrect login or password!';
 			return true;
 		}
+
+		public function validateRecoverData() {
+
+			$request = [
+				['login' => true],
+				['email' => true],
+			];
+
+			if (($result = self::validateIsFullFields($request)) !== true)
+				return $result;
+			$query = [':login' => $_POST['login'], ':email' => $_POST['email']];
+			$sth = $this->prepare('SELECT id FROM users WHERE login = :login AND email = :email');
+			$sth->execute($query);
+			$result = $sth->fetch(self::FETCH_ASSOC);
+			if ($result)
+				return $result['id'];
+			return 'Nonexistent login or email!';
+
 	}
+}
