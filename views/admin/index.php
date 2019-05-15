@@ -1,1 +1,0 @@
-<h1>admin's page</h1>

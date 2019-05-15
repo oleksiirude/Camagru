@@ -1,1 +1,0 @@
-<h1>MAIN INDEX BLOCK</h1>
