@@ -1,7 +1,7 @@
 <div class="register_form">
 	<span style="font-size: xx-large; margin-left: 30%">Register</span>
 	<div class="fill_box">
-		<form action="register/validate" method="post">
+		<form action="user/register/validate" method="post">
 			<label for="login">Your login:</label>
 			<input class="input_zone" type="text" name="login" id="login">
 			<p class="rules">• at least 3 and up to 8 latin symbols</p>

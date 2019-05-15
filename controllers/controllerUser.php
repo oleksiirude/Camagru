@@ -8,59 +8,119 @@
 			$this->model = new modelUser();
 		}
 
+		//REGISTRATION
 		public function actionRegister() {
+			if(isset($_SESSION['user_logged']))
+				componentView::redirect('');
 			$this->view->render('Camagru: register');
-			return true; }
-
-		public function actionLogin() {
-			$this->view->render('Camagru: login');
-			return true; }
-
-		public function actionRecover() {
-			$this->view->render('Camagru: recover password');
-			return true; }
+			return true;
+		}
 
 		public function actionRegisterValidate() {
 
 			if (($result = $this->model->validateRegistrationData()) !== true) {
-				var_dump($result);
-				//$this->view->redirect('/user/register');
+				self::showStatus('Registration error', $result);
 				exit;
 			}
 			$token = md5($_POST['login'].time().$_POST['email']);
-			$this->model->insertValidDataToDb($token);
+			$this->model->insertValidRegistrationDataInDb($token);
 			componentMail::sendActivationLink($token);
-			$this->view->redirect('user/login');
+//			componentView::redirect('user/login');
+			self::showStatus('Check your email', 'We have sent the link, check your email!');
 			exit;
 		}
 
-		public function actionConfirm($token) {
-			$token = substr($token, 13, 32);
-			if ($this->model->confirmRequest($token) === true)
+		public function actionConfirmRegistration($token) {
+			$token = substr($token, 22, 32);
+			if ($this->model->confirmRegistrationRequest($token) === true)
 				componentView::redirect('user/login');
 			else
 				componentView::errorHandle(404);
 			exit;
 		}
 
+		//LOGIN
+		public function actionLogin() {
+			if(isset($_SESSION['user_logged']))
+				componentView::redirect('');
+			$this->view->render('Camagru: login');
+			return true;
+		}
+
 		public function actionLoginValidate() {
 			if (($result = $this->model->validateInputLoginData()) !== true) {
-				var_dump($result);
+				self::showStatus('Login error', $result);
 				exit;
 			}
-			$_SESSION['logged_user'] = true;
 			$this->view->redirect('');
 		}
 
-		public function actionRecoverValidate() {
-			if (ctype_digit($result = $this->model->validateRecoverData()) === false) {
-				var_dump($result);
+		//LOGOUT
+		public function actionLogout() {
+			if(isset($_SESSION['user_logged'])) {
+				unset($_SESSION['user_logged']);
+				componentView::redirect('');
+			}
+		}
+
+		//CHANGE PASSWORD
+		public function actionChangePassword() {
+			if(isset($_SESSION['user_logged']))
+				$this->view->render('Camagru: change password', 'Change password');
+			else
+				$this->view->render('Camagru: recover password', 'Recover password');
+			return true;
+		}
+
+		public function actionChangePasswordSendLink() {
+			if (($result = $this->model->validateChangePasswordIntention()) !== true) {
+				self::showStatus('Change password error', $result);
 				exit;
 			}
-			$token = $result.'/'.md5($_POST['login'].time().$_POST['email']);
-			componentMail::sendRecoveryLink($token);
-			echo 'ok';
+			$token = md5($_POST['login'].time().$_POST['email']);
+			$this->model->insertTokenInDb($token);
+			componentMail::sendChangePasswordLink($token);
+//			componentView::redirect('');
+			self::showStatus('Check your email', 'We have sent the link, check your email to change pass!');
+		}
+
+		public function actionChangePasswordConfirm($token) {
+			$token = substr($token, 29, 32);
+			if (($result = $this->model->checkTokenInDb($token)) !== true) {
+				componentView::errorHandle(404);
+			}
+			$this->view->render('Camagru: set new password');
 			exit;
-			$this->view->redirect('user/login');
+		}
+
+		public function actionSetNewPassword() {
+			if(!isset($_SESSION['id_change_password']))
+				componentView::errorHandle(404);
+
+			if (($result = $this->model->validateChangePasswordData()) !== true) {
+				self::showStatus('Change password error', $result);
+				exit;
+			}
+			componentView::redirect('user/login');
+		}
+
+		//CHANGE EMAIL
+
+		//CHANGE LOGIN
+
+
+		//PROFILE
+		public function actionProfile() {
+			if(!isset($_SESSION['user_logged']))
+				componentView::redirect('');
+			$_SESSION['profile'] = true;
+			$this->view->render('Camagru: my profile');
+			return true;
+		}
+
+		//STAUS OR ERROR (temporary)
+		public function showStatus($title, $result) {
+			$this->view->incorrectData($title, $result);
+			exit;
 		}
 	}

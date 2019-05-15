@@ -24,11 +24,8 @@
 			}
 			else {
 				$success = null;
-				foreach ($this->routes as $uriPatter => $route) {
-					echo "<pre>";
-					var_dump($uriPatter);
-					var_dump($uri);
-					if (preg_match("~^$uriPatter$~", $uri)) {
+				foreach ($this->routes as $uriPattern => $route) {
+					if (preg_match("~^$uriPattern$~", $uri)) {
 						$controllerName = 'controller'.ucfirst($route['controller']);
 						$actionName = 'action'.ucfirst($route['action']);
 
@@ -39,8 +36,9 @@
 
 							require_once ($class);
 							$controller = new $controllerName($route);
-							if ($success = $controller->$actionName($uri))
+							if ($success = $controller->$actionName($uri)) {
 								break;
+							}
 						}
 						else
 							componentView::errorHandle(404);

@@ -1,6 +1,6 @@
 <?php
 	return [
-
+		//registration
 		'user/register' => [
 			'controller' => 'user',
 			'action' => 'register'
@@ -11,11 +11,12 @@
 			'action' => 'registerValidate'
 		],
 
-		'user/confirm/[a-z0-9]{32}' => [
+		'user/register/confirm/[a-z0-9]{32}' => [
 			'controller' => 'user',
-			'action' => 'confirm'
+			'action' => 'confirmRegistration'
 		],
 
+		//login
 		'user/login' => [
 			'controller' => 'user',
 			'action' => 'login'
@@ -26,18 +27,47 @@
 			'action' => 'loginValidate'
 		],
 
-		'user/recover' => [
+		//change password
+		'user/change/password' => [
 			'controller' => 'user',
-			'action' => 'recover'
+			'action' => 'changePassword'
 		],
 
-		'user/recover/validate' => [
+		'user/change/password/request' => [
 		'controller' => 'user',
-		'action' => 'recoverValidate'
+		'action' => 'changePasswordSendLink'
 		],
 
-		'user/recover/[0-9]+/[a-z0-9]{4}' => [
+		'user/change/password/confirm/[a-z0-9]{32}' => [
 		'controller' => 'user',
-		'action' => 'recoverValidate'
-		]
+		'action' => 'changePasswordConfirm'
+		],
+
+		'user/change/password/confirm/set' => [
+			'controller' => 'user',
+			'action' => 'setNewPassword'
+		],
+
+		'user/profile' => [
+			'controller' => 'user',
+			'action' => 'profile'
+		],
+
+		//logout
+		'user/logout' => [
+			'controller' => 'user',
+			'action' => 'logout'
+		],
+
+		//change login
+		'user/change/login' => [
+			'controller' => 'user',
+			'action' => 'changeLogin'
+		],
+
+		//change email
+		'user/change/email' => [
+			'controller' => 'user',
+			'action' => 'changeEmail'
+		],
 	];

@@ -2,12 +2,21 @@
 
 	class componentView {
 		public $path;
+		public $params = [];
 
 		public function __construct($route) {
 			$this->path = ROOT.'views/'.$route['controller'].'/'.$route['action'].'.php';
 		}
 
-		public function render($title, $params = []) {
+		private function specifyPath() {
+			if (strstr($this->path, 'changePasswordConfirm')) {
+				$this->path = preg_replace('~changePasswordConfirm~', 'changePassword', $this->path);
+				$this->params['change_password'] = true;
+			}
+		}
+
+		public function render($title, $data = null) {
+			$this->specifyPath();
 			ob_start();
 			require_once ($this->path);
 			$content = ob_get_clean();
@@ -23,8 +32,12 @@
 		}
 
 		public static function redirect($path) {
-			header('Location: /' . $path);
+			header('Location: /'.$path);
 			exit;
+		}
+
+		public function incorrectData($title, $data) {
+			require_once (ROOT."views/default/temporary.php");
 		}
 
 		public static function errorHandle($code) {
