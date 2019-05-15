@@ -48,19 +48,15 @@
 			'action' => 'setNewPassword'
 		],
 
-<<<<<<< HEAD
 		'user/profile' => [
 			'controller' => 'user',
 			'action' => 'profile'
 		],
 
-=======
->>>>>>> 0962d104259e37d96cdf89627c5d629e6fbc8ef8
 		//logout
 		'user/logout' => [
 			'controller' => 'user',
 			'action' => 'logout'
-<<<<<<< HEAD
 		],
 
 		//change login
@@ -74,10 +70,4 @@
 			'controller' => 'user',
 			'action' => 'changeEmail'
 		],
-=======
-		]
-		//change login
-
-		//change email
->>>>>>> 0962d104259e37d96cdf89627c5d629e6fbc8ef8
 	];

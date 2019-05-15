@@ -5,11 +5,7 @@
 		public static function sendActivationLink($token) {
 
 			$login = $_POST['login'];
-<<<<<<< HEAD
 			$path = 'http://localhost:8080/user/register/confirm/'.$token;
-=======
-			$path = 'http://localhost/user/register/confirm/'.$token;
->>>>>>> 0962d104259e37d96cdf89627c5d629e6fbc8ef8
 			$to = $_POST['email'];
 			$headers =	"From: camagrubot@gmail.com\r\n".
 				"Reply-To: no-reply\r\n".
@@ -24,11 +20,7 @@
 
 		public static function sendChangePasswordLink($token) {
 			$login = $_POST['login'];
-<<<<<<< HEAD
 			$path = 'http://localhost:8080/user/change/password/confirm/'.$token;
-=======
-			$path = 'http://localhost/user/change/password/confirm/'.$token;
->>>>>>> 0962d104259e37d96cdf89627c5d629e6fbc8ef8
 			$to = $_POST['email'];
 			$headers =	"From: camagrubot@gmail.com\r\n".
 				"Reply-To: no-reply\r\n".
@@ -41,11 +33,6 @@
 						<p>Notice: you have only one attempt to change your pass with this link!</p>
 						<p>See ya!</p>";
 			mail($to, $subject, $message, $headers);
-<<<<<<< HEAD
-=======
-			componentView::redirect('');
-
->>>>>>> 0962d104259e37d96cdf89627c5d629e6fbc8ef8
 		}
 
 	}

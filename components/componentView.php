@@ -15,11 +15,7 @@
 			}
 		}
 
-<<<<<<< HEAD
 		public function render($title, $data = null) {
-=======
-		public function render($title) {
->>>>>>> 0962d104259e37d96cdf89627c5d629e6fbc8ef8
 			$this->specifyPath();
 			ob_start();
 			require_once ($this->path);

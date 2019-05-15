@@ -98,36 +98,6 @@
 										VALUES ('$login', '$email', '$password', '$token')");
 		}
 
-		//REGISTRATION
-		//checks input registration data from user
-		public function validateRegistrationData() {
-
-			$request = [
-				'login' => true,
-				'email' => true,
-				'password' => true,
-				'confirm' => true
-			];
-
-			if (($result = self::validateIsFullFields($request)) !== true)
-				return $result;
-			elseif (($result = self::validateInputData($request)) !== true)
-				return $result;
-			elseif (($result = self::validateIfExistsInDb()) !== true)
-				return $result;
-			return true;
-		}
-
-		//inserts valid registration data into database
-		public function insertValidRegistrationDataInDb($token) {
-
-			$login = $_POST['login'];
-			$email = $_POST['email'];
-			$password = password_hash($_POST['password'], PASSWORD_BCRYPT);
-			$this->query("INSERT INTO users(login, email, password, token) 
-										VALUES ('$login', '$email', '$password', '$token')");
-		}
-
 		//checks if token is valid, if true confirms account
 		public function confirmRegistrationRequest($token) {
 
