@@ -1,5 +1,4 @@
 <?php
-	//echo '<pre>';
 
 	//show errors in browser
 	ini_set('display_errors', 1);

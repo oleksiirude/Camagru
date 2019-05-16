@@ -1,7 +1,6 @@
 <?php
 
 	class modelUser extends componentModel {
-		public $result = true;
 
 		//REGULAR INPUT DATA CHECKS
 		//checks fields filling (depends on $request array)
