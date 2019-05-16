@@ -3,10 +3,14 @@
 	abstract class componentDatabase extends PDO {
 
 		//get connection to mySQL via PDO
-		//constants in parent construct are located in ~/config/config.php
+		//constants in parent construct located in ~/config/config.php
 		function __construct() {
-			parent::__construct(DSN, USERNAME, PASSWORD,
-				[PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
+			try {
+				parent::__construct(DSN, USERNAME, PASSWORD,
+					[PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
+			} catch (PDOException $exception) {
+				componentView::errorHandle(503);
+			}
 			if ($this->useDatabase() === false) {
 				$this->createDatabase();
 			}
@@ -18,7 +22,8 @@
 				$this->query("USE ".DBNAME);
 				return true;
 			} catch (PDOException $ex) {
-				return false; }
+				return false;
+			}
 		}
 
 		//create and fill db with using TABLES, USERS constants (~/config/data.php)

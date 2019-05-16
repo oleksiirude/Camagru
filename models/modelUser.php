@@ -37,35 +37,45 @@
 			$patternEmail = '/^[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/';
 			$patternPassword = '/^(?=.*[A-Z]{1,})(?=.*[!@#$&*-]{1,})(?=.*[0-9]{1,})(?=.*[a-z]{1,}).{8,}$/';
 
-			if (isset($request['login'])) {
+			if (isset($request['login']))
 				if (!preg_match($patternLogin, $_POST['login']))
 					return 'Login field is not valid!';
-			}
-			elseif (isset($request['email'])) {
+			if (isset($request['email']))
 				if (!preg_match($patternEmail, $_POST['email']))
 					return 'Email field is not valid!';
-			}
-			elseif (isset($request['password'])) {
+			if (isset($request['password']))
 				if (!preg_match($patternPassword, $_POST['password']))
 					return 'Password field is not valid!';
-			}
-			elseif (isset($request['confirm'])) {
+			if (isset($request['confirm']))
 				if ($_POST['password'] !== $_POST['confirm'])
 					return 'Confirm field is not valid!';
-			}
 			return true;
 		}
 
-		//checks for login and/or password exist in database
-		private function validateIfExistsInDb() {
+		//checks for login and/or email exist in database
+		private function validateIfExistsInDb($request) {
 
-			$query = [':login' => $_POST['login'], ':email' => $_POST['email']];
-			$sth = $this->prepare('SELECT login FROM users WHERE login = :login OR email = :email');
-			$sth->execute($query);
+			if ($request === 'check_login') {
+				$pseudo = [':login' => $_POST['login']];
+				$query = 'SELECT login FROM users WHERE login = :login';
+				$error = 'This login is already taken!';
+			}
+			elseif ($request === 'check_email') {
+				$pseudo = [':email' => $_POST['email']];
+				$query = 'SELECT email FROM users WHERE email = :email';
+				$error = 'This email is already taken!';
+			}
+			elseif ($request === 'check_both') {
+				$pseudo = [':login' => $_POST['login'], ':email' => $_POST['email']];
+				$query = 'SELECT login FROM users WHERE login = :login OR email = :email';
+				$error = 'Login or email is already taken!';
+			}
+			$sth = $this->prepare($query);
+			$sth->execute($pseudo);
 			$result = $sth->fetchAll(self::FETCH_ASSOC);
 			if (!$result)
 				return true;
-			return 'Login or email is already taken!';
+			return $error;
 		}
 
 		//REGISTRATION
@@ -83,7 +93,7 @@
 				return $result;
 			elseif (($result = self::validateInputData($request)) !== true)
 				return $result;
-			elseif (($result = self::validateIfExistsInDb()) !== true)
+			elseif (($result = self::validateIfExistsInDb('check_both')) !== true)
 				return $result;
 			return true;
 		}
@@ -131,9 +141,9 @@
 			return true;
 		}
 
-		//PASSWORD CHANGE
-		//do all necessary checks before changing password
-		public function validateChangePasswordIntention() {
+		//PASSWORD RECOVER
+		//do all necessary checks before recovering password
+		public function validateRecoverPasswordIntention() {
 
 			$request = [
 				['login' => true],
@@ -152,14 +162,14 @@
 			return 'Nonexistent login or email!';
 		}
 
-		//checks input changing password data and if ok changes password
-		public function validateChangePasswordData() {
+		//checks input recovering password data and if ok recovers password
+		public function validateRecoverPasswordData() {
 			$request = [
 				'password' => true,
 				'confirm' => true
 			];
 
-			$id = $_SESSION['id_change_password'];
+			$id = $_SESSION['id_recover_password'];
 			if (($result = self::validateIsFullFields($request)) !== true)
 				return $result;
 			elseif (($result = self::validateInputData($request)) !== true)
@@ -168,7 +178,7 @@
 			$password = password_hash($_POST['password'], PASSWORD_BCRYPT);
 			$this->query("UPDATE users SET token = '', password = '$password' 
 										WHERE users.id = '$id'");
-			unset($_SESSION['id_change_password']);
+			unset($_SESSION['id_recover_password']);
 			return true;
 		}
 
@@ -185,13 +195,88 @@
 			$sth->execute();
 			$result = $sth->fetch(self::FETCH_ASSOC);
 			if ($result['token'] === $token) {
-				$_SESSION['id_change_password'] = $result['id'];
+				$_SESSION['id_recover_password'] = $result['id'];
 				return true;
 			}
 			return false;
 		}
 
 		//LOGIN CHANGE
+
+		private function validateChangeLoginIntension() {
+
+			$request = ['login' => true];
+
+			if (($result = self::validateIsFullFields($request)) !== true)
+				return $result;
+			elseif (($result = self::validateInputData($request)) !== true)
+				return $result;
+			elseif (($result = self::validateIfExistsInDb('check_login')) !== true)
+				return $result;
+			return true;
+		}
+
+		public function changeLogin() {
+
+			if (($result = $this->validateChangeLoginIntension()) !== true)
+				return $result;
+			$old_login = $_SESSION['user_logged'];
+			$new_login = $_POST['login'];
+			$this->query("UPDATE users SET login = '$new_login' 
+										WHERE users.login = '$old_login'");
+			$_SESSION['user_logged'] = $new_login;
+			return true;
+		}
+
 		//EMAIL CHANGE
+		private function validateChangeEmailIntension() {
+
+			$request = ['email' => true];
+
+			if (($result = self::validateIsFullFields($request)) !== true)
+				return $result;
+			elseif (($result = self::validateInputData($request)) !== true)
+				return $result;
+			elseif (($result = self::validateIfExistsInDb('check_email')) !== true)
+				return $result;
+			return true;
+		}
+
+		public function changeEmail() {
+
+			if (($result = $this->validateChangeEmailIntension()) !== true)
+				return $result;
+			$login = $_SESSION['user_logged'];
+			$new_email = $_POST['email'];
+			$this->query("UPDATE users SET email = '$new_email' 
+										WHERE users.login = '$login'");
+			return true;
+		}
+
+		//PASSWORD CHANGE
+
+		private function validateSetNewPasswordIntension() {
+
+			$request = [
+				'password' => true,
+				'confirm' => true
+			];
+
+			if (($result = self::validateIsFullFields($request)) !== true)
+				return $result;
+			elseif (($result = self::validateInputData($request)) !== true)
+				return $result;
+			return true;
+		}
+
+		public function setNewPassword() {
+			if (($result = $this->validateSetNewPasswordIntension()) !== true)
+				return $result;
+			$login = $_SESSION['user_logged'];
+			$password = password_hash($_POST['password'], PASSWORD_BCRYPT);
+			$this->query("UPDATE users SET password = '$password' 
+										WHERE users.login = '$login'");
+			return true;
+		}
 
 }

@@ -9,7 +9,7 @@
 				<input class="input_zone" type="password" name="password" id="password" required><br>
 				<button type="submit" class="submit_button">Login</button>
 			</form>
-			<form action="user/change/password" method="post">
+			<form action="user/recover/password" method="post">
 				<button type="submit" class="help_button">Forgot your password?</button>
 			</form>
 		</div>

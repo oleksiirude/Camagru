@@ -9,9 +9,9 @@
 		}
 
 		private function specifyPath() {
-			if (strstr($this->path, 'changePasswordConfirm')) {
-				$this->path = preg_replace('~changePasswordConfirm~', 'changePassword', $this->path);
-				$this->params['change_password'] = true;
+			if (strstr($this->path, 'recoverPasswordConfirm')) {
+				$this->path = preg_replace('~recoverPasswordConfirm~', 'recoverPassword', $this->path);
+				$this->params['recover_password'] = true;
 			}
 		}
 
@@ -36,13 +36,14 @@
 			exit;
 		}
 
-		public function incorrectData($title, $data) {
-			require_once (ROOT."views/default/temporary.php");
+		public function showMessage($title, $message) {
+			require_once (ROOT."views/default/message.php");
+			exit;
 		}
 
 		public static function errorHandle($code) {
 			http_response_code($code);
-			require_once (ROOT.'views/error/'.$code.'.php');
+			require_once (ROOT.'views/error/error.php');
 			exit;
 		}
 	}

@@ -26,7 +26,7 @@
 			$this->model->insertValidRegistrationDataInDb($token);
 			componentMail::sendActivationLink($token);
 //			componentView::redirect('user/login');
-			self::showStatus('Check your email', 'We have sent the link, check your email!');
+			self::showStatus('Check your email', 'The link has been sent, check your email to activate account!');
 			exit;
 		}
 
@@ -63,29 +63,29 @@
 			}
 		}
 
-		//CHANGE PASSWORD
-		public function actionChangePassword() {
+		//PASSWORD RECOVER
+		public function actionRecoverPassword() {
 			if(isset($_SESSION['user_logged']))
-				$this->view->render('Camagru: change password', 'Change password');
+				componentView::redirect('');
 			else
-				$this->view->render('Camagru: recover password', 'Recover password');
+				$this->view->render('Camagru: recover password');
 			return true;
 		}
 
-		public function actionChangePasswordSendLink() {
-			if (($result = $this->model->validateChangePasswordIntention()) !== true) {
-				self::showStatus('Change password error', $result);
+		public function actionRecoverPasswordSendLink() {
+			if (($result = $this->model->validateRecoverPasswordIntention()) !== true) {
+				self::showStatus('Recover password error', $result);
 				exit;
 			}
 			$token = md5($_POST['login'].time().$_POST['email']);
 			$this->model->insertTokenInDb($token);
-			componentMail::sendChangePasswordLink($token);
+			componentMail::sendRecoverPasswordLink($token);
 //			componentView::redirect('');
-			self::showStatus('Check your email', 'We have sent the link, check your email to change pass!');
+			self::showStatus('Camagru: check your email', 'The link has been sent, check your email to recover password!');
 		}
 
-		public function actionChangePasswordConfirm($token) {
-			$token = substr($token, 29, 32);
+		public function actionRecoverPasswordConfirm($token) {
+			$token = substr($token, 30, 32);
 			if (($result = $this->model->checkTokenInDb($token)) !== true) {
 				componentView::errorHandle(404);
 			}
@@ -93,21 +93,77 @@
 			exit;
 		}
 
-		public function actionSetNewPassword() {
-			if(!isset($_SESSION['id_change_password']))
+		public function actionRecoverSetNewPassword() {
+			if(!isset($_SESSION['id_recover_password']))
 				componentView::errorHandle(404);
 
-			if (($result = $this->model->validateChangePasswordData()) !== true) {
+			if (($result = $this->model->validateRecoverPasswordData()) !== true) {
 				self::showStatus('Change password error', $result);
 				exit;
 			}
 			componentView::redirect('user/login');
 		}
 
+		//CHANGE PASSWORD
+
+		public function actionChangePassword() {
+			if(!isset($_SESSION['user_logged']))
+				componentView::redirect('');
+			else
+				$this->view->render('Camagru: change password');
+			return true;
+		}
+
+		public function actionSetNewPassword() {
+			if(!isset($_SESSION['user_logged'])) {
+				componentView::errorHandle(404);
+			}
+			elseif (($result = $this->model->setNewPassword()) !== true) {
+				$this->view->showMessage('Something went wrong', $result);
+				exit;
+			}
+			$this->view->showMessage('Password changing', 'Your password has been changed!');
+
+		}
 		//CHANGE EMAIL
 
+		public function actionChangeEmail() {
+			if(!isset($_SESSION['user_logged']))
+				componentView::redirect('');
+			$this->view->render('Camagru: change email', 'Change email');
+			return true;
+		}
+
+		public function actionSetNewEmail() {
+			if(!isset($_SESSION['user_logged'])) {
+				componentView::errorHandle(404);
+			}
+			elseif (($result = $this->model->changeEmail()) !== true) {
+				$this->view->showMessage('Something went wrong', $result);
+				exit;
+			}
+			componentMail::sendToNewEmail();
+			$this->view->showMessage('Email changing', 'Your email has been changed!');
+		}
 		//CHANGE LOGIN
 
+		public function actionChangeLogin() {
+			if(!isset($_SESSION['user_logged']))
+				componentView::redirect('');
+			$this->view->render('Camagru: change login', 'Change login');
+			return true;
+		}
+
+		public function actionSetNewLogin() {
+			if(!isset($_SESSION['user_logged'])) {
+				componentView::errorHandle(404);
+			}
+			elseif (($result = $this->model->changeLogin()) !== true) {
+				$this->view->showMessage('Something went wrong', $result);
+				exit;
+			}
+			$this->view->showMessage('Login changing', 'Your login has been changed!');
+		}
 
 		//PROFILE
 		public function actionProfile() {
@@ -118,9 +174,9 @@
 			return true;
 		}
 
-		//STAUS OR ERROR (temporary)
+		//STATUS OR ERROR MESSAGE (temporary, I hope)
 		public function showStatus($title, $result) {
-			$this->view->incorrectData($title, $result);
+			$this->view->showMessage($title, $result);
 			exit;
 		}
 	}

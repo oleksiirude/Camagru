@@ -8,9 +8,13 @@
 	//define path to project directory
 	define('ROOT', dirname(__FILE__)."/");
 
+	//for debug
+	require_once (ROOT.'debug.php');
+
 	//inclusion necessary files
 	require_once (ROOT.'config/config.php');
 	require_once (ROOT.'config/data.php');
+
 
 	//inclusion necessary classes
 	require_once (ROOT.'autoloader.php');

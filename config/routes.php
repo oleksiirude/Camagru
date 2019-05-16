@@ -27,25 +27,25 @@
 			'action' => 'loginValidate'
 		],
 
-		//change password
-		'user/change/password' => [
+		//recover password
+		'user/recover/password' => [
 			'controller' => 'user',
-			'action' => 'changePassword'
+			'action' => 'recoverPassword'
 		],
 
-		'user/change/password/request' => [
+		'user/recover/password/request' => [
 		'controller' => 'user',
-		'action' => 'changePasswordSendLink'
+		'action' => 'recoverPasswordSendLink'
 		],
 
-		'user/change/password/confirm/[a-z0-9]{32}' => [
+		'user/recover/password/confirm/[a-z0-9]{32}' => [
 		'controller' => 'user',
-		'action' => 'changePasswordConfirm'
+		'action' => 'recoverPasswordConfirm'
 		],
 
-		'user/change/password/confirm/set' => [
+		'user/recover/password/confirm/set' => [
 			'controller' => 'user',
-			'action' => 'setNewPassword'
+			'action' => 'recoverSetNewPassword'
 		],
 
 		'user/profile' => [
@@ -65,9 +65,31 @@
 			'action' => 'changeLogin'
 		],
 
+		'user/change/login/set' => [
+			'controller' => 'user',
+			'action' => 'setNewLogin'
+		],
+
 		//change email
 		'user/change/email' => [
 			'controller' => 'user',
 			'action' => 'changeEmail'
+		],
+
+		'user/change/email/set' => [
+			'controller' => 'user',
+			'action' => 'setNewEmail'
+		],
+
+		//change password
+
+		'user/change/password' => [
+			'controller' => 'user',
+			'action' => 'changePassword'
+		],
+
+		'user/change/password/set' => [
+			'controller' => 'user',
+			'action' => 'setNewPassword'
 		],
 	];
