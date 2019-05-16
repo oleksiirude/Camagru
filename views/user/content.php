@@ -1,7 +1,10 @@
 <?php
 
 	if (isset($_SESSION['user_logged'])) { ?>
-		<h1>Main feed</h1>
+		<div class="recover_form">
+			<div class="fill_box">
+				<h2>Main feed</h2>
+		</div>
 	<?php }
 	else { ?>
 		<div class="login_form">

@@ -5,7 +5,6 @@
 
 		//REGULAR INPUT DATA CHECKS
 		//checks fields filling (depends on $request array)
-
 		private function validateIsFullFields($request) {
 			if (isset($request['login'])) {
 				$_POST['login'] = trim($_POST['login']);
@@ -78,6 +77,7 @@
 			return $error;
 		}
 
+
 		//REGISTRATION
 		//checks input registration data from user
 		public function validateRegistrationData() {
@@ -121,6 +121,7 @@
 			return true;
 		}
 
+
 		//LOGIN
 		public function validateInputLoginData() {
 
@@ -131,17 +132,18 @@
 
 			if ($result = self::validateIsFullFields($request) !== true)
 				return $result;
-			$sth = $this->prepare("SELECT login, password, confirm FROM users WHERE login = :login");
+			$sth = $this->prepare("SELECT login, email, password, confirm FROM users WHERE login = :login");
 			$sth->execute([':login' => $_POST['login']]);
 			$result = $sth->fetch(self::FETCH_ASSOC);
 			if (!$result || !password_verify($_POST['password'], $result['password'])
 				|| $result['confirm'] !== '1')
 				return 'Incorrect login or password!';
 			$_SESSION['user_logged'] = $_POST['login'];
+			$_SESSION['email'] = $result['email'];
 			return true;
 		}
 
-		//PASSWORD RECOVER
+		//PASSWORD RECOVERY
 		//do all necessary checks before recovering password
 		public function validateRecoverPasswordIntention() {
 
@@ -152,34 +154,14 @@
 
 			if (($result = self::validateIsFullFields($request)) !== true)
 				return $result;
-			$query = [':login' => $_POST['login'], ':email' => $_POST['email']];
+			$pseudo = [':login' => $_POST['login'], ':email' => $_POST['email']];
 			$sth = $this->prepare('SELECT confirm FROM users 
 												WHERE login = :login AND email = :email');
-			$sth->execute($query);
+			$sth->execute($pseudo);
 			$result = $sth->fetch(self::FETCH_ASSOC);
 			if ($result['confirm'] === '1')
 				return true;
 			return 'Nonexistent login or email!';
-		}
-
-		//checks input recovering password data and if ok recovers password
-		public function validateRecoverPasswordData() {
-			$request = [
-				'password' => true,
-				'confirm' => true
-			];
-
-			$id = $_SESSION['id_recover_password'];
-			if (($result = self::validateIsFullFields($request)) !== true)
-				return $result;
-			elseif (($result = self::validateInputData($request)) !== true)
-				return $result;
-
-			$password = password_hash($_POST['password'], PASSWORD_BCRYPT);
-			$this->query("UPDATE users SET token = '', password = '$password' 
-										WHERE users.id = '$id'");
-			unset($_SESSION['id_recover_password']);
-			return true;
 		}
 
 		public function insertTokenInDb($token) {
@@ -201,30 +183,48 @@
 			return false;
 		}
 
-		//LOGIN CHANGE
+		//checks recovering password input data, if ok recovers password
+		public function validateRecoverPasswordData() {
+			$request = [
+				'password' => true,
+				'confirm' => true
+			];
 
-		private function validateChangeLoginIntension() {
+			$id = $_SESSION['id_recover_password'];
+			if (($result = self::validateIsFullFields($request)) !== true)
+				return $result;
+			elseif (($result = self::validateInputData($request)) !== true)
+				return $result;
 
-			$request = ['login' => true];
+			$password = password_hash($_POST['password'], PASSWORD_BCRYPT);
+			$this->query("UPDATE users SET token = '', password = '$password' 
+										WHERE users.id = '$id'");
+			unset($_SESSION['id_recover_password']);
+			return true;
+		}
+
+		//PASSWORD CHANGE
+		private function validateSetNewPasswordIntension() {
+
+			$request = [
+				'password' => true,
+				'confirm' => true
+			];
 
 			if (($result = self::validateIsFullFields($request)) !== true)
 				return $result;
 			elseif (($result = self::validateInputData($request)) !== true)
 				return $result;
-			elseif (($result = self::validateIfExistsInDb('check_login')) !== true)
-				return $result;
 			return true;
 		}
 
-		public function changeLogin() {
-
-			if (($result = $this->validateChangeLoginIntension()) !== true)
+		public function setNewPassword() {
+			if (($result = $this->validateSetNewPasswordIntension()) !== true)
 				return $result;
-			$old_login = $_SESSION['user_logged'];
-			$new_login = $_POST['login'];
-			$this->query("UPDATE users SET login = '$new_login' 
-										WHERE users.login = '$old_login'");
-			$_SESSION['user_logged'] = $new_login;
+			$login = $_SESSION['user_logged'];
+			$password = password_hash($_POST['password'], PASSWORD_BCRYPT);
+			$this->query("UPDATE users SET password = '$password' 
+										WHERE users.login = '$login'");
 			return true;
 		}
 
@@ -250,33 +250,33 @@
 			$new_email = $_POST['email'];
 			$this->query("UPDATE users SET email = '$new_email' 
 										WHERE users.login = '$login'");
+			$_SESSION['email'] = $new_email;
 			return true;
 		}
 
-		//PASSWORD CHANGE
+		//LOGIN CHANGE
+		private function validateChangeLoginIntension() {
 
-		private function validateSetNewPasswordIntension() {
-
-			$request = [
-				'password' => true,
-				'confirm' => true
-			];
+			$request = ['login' => true];
 
 			if (($result = self::validateIsFullFields($request)) !== true)
 				return $result;
 			elseif (($result = self::validateInputData($request)) !== true)
 				return $result;
-			return true;
-		}
-
-		public function setNewPassword() {
-			if (($result = $this->validateSetNewPasswordIntension()) !== true)
+			elseif (($result = self::validateIfExistsInDb('check_login')) !== true)
 				return $result;
-			$login = $_SESSION['user_logged'];
-			$password = password_hash($_POST['password'], PASSWORD_BCRYPT);
-			$this->query("UPDATE users SET password = '$password' 
-										WHERE users.login = '$login'");
 			return true;
 		}
 
+		public function changeLogin() {
+
+			if (($result = $this->validateChangeLoginIntension()) !== true)
+				return $result;
+			$old_login = $_SESSION['user_logged'];
+			$new_login = $_POST['login'];
+			$this->query("UPDATE users SET login = '$new_login' 
+										WHERE users.login = '$old_login'");
+			$_SESSION['user_logged'] = $new_login;
+			return true;
+		}
 }

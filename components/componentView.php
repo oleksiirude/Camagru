@@ -15,15 +15,16 @@
 			}
 		}
 
-		public function render($title, $data = null) {
+		public function render($title) {
 			$this->specifyPath();
 			ob_start();
 			require_once ($this->path);
 			$content = ob_get_clean();
 			require_once (ROOT.'views/default/index.php');
+			exit;
 		}
 
-		public static function toMainIndex($title) {
+		public static function toMainPage($title) {
 			ob_start();
 			require_once (ROOT.'views/user/content.php');
 			$content = ob_get_clean();

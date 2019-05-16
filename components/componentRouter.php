@@ -20,7 +20,7 @@
 		public function run() {
 
 			if (!$uri = $this->getURI()) {
-				componentView::toMainIndex('Camagru: main');
+				componentView::toMainPage('Camagru: main');
 			}
 			else {
 				$success = null;

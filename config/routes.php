@@ -1,6 +1,7 @@
 <?php
 	return [
-		//registration
+		//CONTROLLER - USER
+		//REGISTRATION
 		'user/register' => [
 			'controller' => 'user',
 			'action' => 'register'
@@ -16,7 +17,7 @@
 			'action' => 'confirmRegistration'
 		],
 
-		//login
+		//LOGIN
 		'user/login' => [
 			'controller' => 'user',
 			'action' => 'login'
@@ -27,7 +28,13 @@
 			'action' => 'loginValidate'
 		],
 
-		//recover password
+		//LOGOUT
+		'user/logout' => [
+			'controller' => 'user',
+			'action' => 'logout'
+		],
+
+		//PASSWORD RECOVERY
 		'user/recover/password' => [
 			'controller' => 'user',
 			'action' => 'recoverPassword'
@@ -48,18 +55,7 @@
 			'action' => 'recoverSetNewPassword'
 		],
 
-		'user/profile' => [
-			'controller' => 'user',
-			'action' => 'profile'
-		],
-
-		//logout
-		'user/logout' => [
-			'controller' => 'user',
-			'action' => 'logout'
-		],
-
-		//change login
+		//LOGIN CHANGE
 		'user/change/login' => [
 			'controller' => 'user',
 			'action' => 'changeLogin'
@@ -70,7 +66,7 @@
 			'action' => 'setNewLogin'
 		],
 
-		//change email
+		//EMAIL CHANGE
 		'user/change/email' => [
 			'controller' => 'user',
 			'action' => 'changeEmail'
@@ -81,8 +77,7 @@
 			'action' => 'setNewEmail'
 		],
 
-		//change password
-
+		//PASSWORD CHANGE
 		'user/change/password' => [
 			'controller' => 'user',
 			'action' => 'changePassword'
@@ -92,4 +87,24 @@
 			'controller' => 'user',
 			'action' => 'setNewPassword'
 		],
+
+		//PROFILE
+		'user/profile' => [
+			'controller' => 'user',
+			'action' => 'profile'
+		],
+
+		//PROFILE
+		'user/settings' => [
+			'controller' => 'user',
+			'action' => 'settings'
+		],
+
+		//CONTROLLER - WORKSHOP
+		//WORKSHOP
+		'workshop' => [
+			'controller' => 'workshop',
+			'action' => 'workshop'
+		],
+
 	];
