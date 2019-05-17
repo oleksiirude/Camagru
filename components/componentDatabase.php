@@ -8,7 +8,7 @@
 			try {
 				parent::__construct(DSN, USERNAME, PASSWORD,
 					[PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
-			} catch (PDOException $exception) {
+			} catch (PDOException $ex) {
 				componentView::errorHandle(503);
 			}
 			if ($this->useDatabase() === false) {
