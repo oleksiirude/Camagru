@@ -5,8 +5,8 @@
 		public static function sendActivationLink($token) {
 
 			$login = $_POST['login'];
-//			$path = 'http://localhost:8080/user/register/confirm/'.$token;
-			$path = 'http://localhost/user/register/confirm/'.$token;
+			$path = 'http://localhost:8080/user/register/confirm/'.$token;
+			//$path = 'http://localhost/user/register/confirm/'.$token;
 			$to = $_POST['email'];
 			$headers =	"From: camagrubot@gmail.com\r\n".
 				"Reply-To: no-reply\r\n".
@@ -21,8 +21,8 @@
 
 		public static function sendRecoverPasswordLink($token) {
 			$login = $_POST['login'];
-//			$path = 'http://localhost:8080/user/change/password/confirm/'.$token;
-			$path = 'http://localhost/user/recover/password/confirm/'.$token;
+			$path = 'http://localhost:8080/user/change/password/confirm/'.$token;
+			//$path = 'http://localhost/user/recover/password/confirm/'.$token;
 			$to = $_POST['email'];
 			$headers =	"From: camagrubot@gmail.com\r\n".
 				"Reply-To: no-reply\r\n".

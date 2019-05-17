@@ -1,50 +1,118 @@
 body {
-    font-family: 'Varela Round', sans-serif;
-    background: -webkit-gradient(linear, left top, left bottom, from(darkgrey), to(dimgrey)) fixed;
+    font-family: 'Amatic SC', cursive;
+    background: silver;
+    display: flex;
+    flex-direction: column;
 }
 
-header {
-    width: 60%;
-    min-width: 300px;
-    height: 80px;
-    margin-left: auto;
-    margin-right: auto;
-    background: -webkit-gradient(linear, left top, left bottom, from(dimgrey), to(darkgrey)) fixed;
-    border-radius: 5px;
-    border: solid 1px;
-    box-shadow: 1px 1px 2px 2px gray;
-    text-align: center;
+html, body {
+    height: 100%;
 }
 
-footer {
-    width: 50%;
-    min-width: 300px;
-    height: 80px;
-    margin-top: 10%;
-    margin-left: auto;
-    margin-right: auto;
-    background: -webkit-gradient(linear, left top, left bottom, from(dimgrey), to(dimgrey)) fixed;
-    border-radius: 5px;
-    border: solid 1px;
-    box-shadow: 1px 1px 2px 2px gray;
-    text-align: center;
+* {
+    margin: 0;
+    padding: 0;
 }
 
 a {
+    color: black;
     text-decoration: none;
 }
 
+a:hover {
+    color: lightgray;
+}
+
+/*HEADER STYLES*/
+
+header {
+    width: 100%;
+    min-width: 300px;
+    height: 80px;
+    background: goldenrod;
+    box-shadow: 1px 0 1px 1px grey;
+    text-align: center;
+    flex-shrink: 0;
+    z-index: 2;
+}
+
+.welcome {
+    margin-top: 20px;
+    font-size: 30px;
+}
+
+.logo {
+    width: 12%;
+    display: inline-block;
+    float: left;
+}
+
+.camagru {
+    display: inline-block;
+    float: right;
+    margin-top: 5px;
+    margin-left: 10px;
+    width: 75px;
+    height: 70px;
+}
+
+.camagru:hover {
+    width: 76px;
+    height: 71px;
+}
+
+.avatar {
+    display: inline-block;
+    float: right;
+    margin-top: 8px;
+    margin-right: 8%;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 2px solid grey;
+    box-shadow: 0 0 20px gold;
+}
+
+.navbar {
+    margin-top: 14px;
+    display: inline-block;
+    font-size: 40px;
+}
+
+/*_____________________________________________*/
+
+footer {
+    width: 68%;
+    min-width: 200px;
+    height: 50px;
+    margin: auto;
+    background: darkgrey;
+    border-radius: 1px 1px 1px 1px;
+    box-shadow: 0 0 1px 1px grey;
+    text-align: center;
+    flex-shrink: 0;
+}
+
+.wrapper {
+    flex: 1 0 auto;
+    width: 70%;
+    min-width: 300px;
+    margin: auto;
+    background: lightgrey;
+    box-shadow: 0 0 2px 1px grey;
+    z-index: 1;
+    border-radius: 0 0 10px 10px;
+}
+
 .status_form {
-    background: -webkit-gradient(linear, left top, left bottom, from(goldenrod), to(darkgoldenrod)) fixed;
+    width: 200px;
+    margin: 5% auto;
+    background: goldenrod;
     border-radius: 10px;
-    border: solid 1px;
     font-size: 16px;
     text-align: center;
-    margin-top: 4%;
-    margin-left: 35%;
     padding: 10px 10px;
-    box-shadow: 1px 1px 2px 2px gray;
-    display: inline-block;
+    box-shadow: 0 0 2px 1px grey;
 }
 
 .login_form {

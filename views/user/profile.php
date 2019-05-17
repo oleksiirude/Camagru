@@ -1,5 +1,3 @@
-<div class="recover_form">
-	<div class="fill_box">
-		<h2>My profile</h2>
-	</div>
+<div class="wrapper">
+    <h1>My profile</h1>
 </div>
