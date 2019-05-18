@@ -144,10 +144,6 @@ header {
     box-shadow: 0 0 5px 2px gold;
 }
 
-.submit_button:hover, .help_button:hover {
-    background-color: gainsboro;
-}
-
 .help_button {
     font-family: 'Amatic SC', cursive;
     font-size: 16px;
@@ -158,6 +154,17 @@ header {
     font-weight: bold;
     border-radius: 5px;
     box-shadow: 0 0 5px 2px gold;
+}
+
+.cancel {
+    font-size: 30px;
+    color: darkred;
+}
+
+.cancel:hover { color: red}
+
+.submit_button:hover, .help_button:hover {
+    background-color: gainsboro;
 }
 
 /*SETTINGS*/
@@ -178,7 +185,19 @@ header {
     font-weight: bold;
     font-size: 20px;
     width: 280px;
-    height: 250px;
+    height: 270px;
+    background: goldenrod;
+    border-radius: 5px;
+    margin: 10% auto;
+    text-align: center;
+    box-shadow: 0 0 2px 1px gray;
+}
+
+.change_avatar {
+    font-weight: bold;
+    font-size: 20px;
+    width: 280px;
+    height: 270px;
     background: goldenrod;
     border-radius: 5px;
     margin: 10% auto;
@@ -187,12 +206,13 @@ header {
 }
 
 
-.status_form {
-    width: 200px;
+.message {
+    width: 220px;
     margin: 5% auto;
     background: goldenrod;
     border-radius: 10px;
-    font-size: 16px;
+    font-size: 26px;
+    font-weight: bold;
     text-align: center;
     padding: 10px 10px;
     box-shadow: 0 0 2px 1px grey;

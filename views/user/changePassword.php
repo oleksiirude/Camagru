@@ -11,5 +11,6 @@
                 <input class="input_zone" type="password" name="confirm" id="confirm"><br>
                 <button class="submit_button">set</button>
             </form>
-        </div>
+		<a href="user/settings">back</a>
+	</div>
 </div>

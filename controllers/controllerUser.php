@@ -157,6 +157,36 @@
 			return true;
 		}
 
+		//DELETE ACCOUNT
+		public function actionDeleteAccount() {
+			$this->onlyForLogged();
+			$this->view->render('Camagru: delete account');
+		}
+
+		public function actionDeleteAccountConfirm() {
+			$this->onlyForLogged();
+			//add complex deleting!
+			$this->model->deleteAccount();
+			session_destroy();
+			componentView::redirect('');
+		}
+
+		//CHANGE AVATAR
+		public function actionChangeAvatar() {
+			$this->onlyForLogged();
+			$this->view->render('Camagru: change avatar');
+		}
+
+		public function actionChangeAvatarSet() {
+
+			$this->onlyForLogged();
+			if (($result = $this->model->validateNewAvatar()) !== true) {
+				$this->view->showMessage('Something went wrong', $result);
+				exit;
+			}
+			componentView::redirect('user/profile');
+		}
+
 		//STATUS OR ERROR MESSAGE (temporary, I hope)
 		public function showStatus($title, $result) {
 			$this->view->showMessage($title, $result);

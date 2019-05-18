@@ -14,10 +14,10 @@ document.onmouseover = function(e) {
 
 	let coords = target.getBoundingClientRect();
 	let left = coords.left + (target.offsetWidth - tooltipElem.offsetWidth) / 2;
-	if (left < 0) left = 0; // не вылезать за левую границу окна
+	if (left < 0) left = 0; // do not go beyond the left window border
 
 	let top = coords.top - tooltipElem.offsetHeight - 5;
-	if (top < 0) { // не вылезать за верхнюю границу окна
+	if (top < 0) { // do not climb over the top of the window
 		top = coords.top + target.offsetHeight + 5;
 	}
 

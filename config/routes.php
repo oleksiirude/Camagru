@@ -94,7 +94,30 @@
 			'action' => 'profile'
 		],
 
-		//PROFILE
+
+		//DELETE ACCOUNT
+		'user/delete/account' => [
+			'controller' => 'user',
+			'action' => 'deleteAccount'
+		],
+
+		'user/delete/account/confirm' => [
+			'controller' => 'user',
+			'action' => 'deleteAccountConfirm'
+		],
+
+		//CHANGE AVATAR
+		'user/change/avatar' => [
+			'controller' => 'user',
+			'action' => 'changeAvatar'
+		],
+
+		'user/change/avatar/set' => [
+			'controller' => 'user',
+			'action' => 'changeAvatarSet'
+		],
+
+		//SETTINGS
 		'user/settings' => [
 			'controller' => 'user',
 			'action' => 'settings'

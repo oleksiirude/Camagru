@@ -11,8 +11,9 @@
 <body>
 <?php require_once (ROOT.'views/default/header.php'); ?>
 <div class="wrapper">
-    <div class="status_form">
+    <div class="message">
 	    <p><?= $message; ?></p>
+		<a href="user/settings">back</a>
     </div>
 </div>
 <?php require_once (ROOT.'views/default/footer.php'); ?>

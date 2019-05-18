@@ -7,5 +7,6 @@
 					   data-tooltip="• example@example.com"><br>
 			    <button type="submit" class="submit_button">change</button>
 		    </form>
+		<a href="user/settings">back</a>
     </div>
 </div>

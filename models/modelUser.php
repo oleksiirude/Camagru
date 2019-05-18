@@ -5,25 +5,26 @@
 		//REGULAR INPUT DATA CHECKS
 		//checks fields filling (depends on $request array)
 		private function validateIsFullFields($request) {
+
 			if (isset($request['login'])) {
 				$_POST['login'] = trim($_POST['login']);
 				if (empty($_POST['login']))
-					return 'Login field is empty!';
+					return 'login field is empty!';
 			}
 			if (isset($request['email'])) {
 				$_POST['email'] = trim($_POST['email']);
 				if (empty($_POST['email']))
-					return 'Email field is empty!';
+					return 'email field is empty!';
 			}
 			if (isset($request['password'])) {
 				$_POST['password'] = trim($_POST['password']);
 				if (empty($_POST['password']))
-					return 'Password field is empty!';
+					return 'password field is empty!';
 			}
 			if (isset($request['confirm'])) {
 				$_POST['confirm'] = trim($_POST['confirm']);
 				if (empty($_POST['confirm']))
-					return 'Confirm field is empty!';
+					return 'confirm field is empty!';
 			}
 			return true;
 		}
@@ -37,16 +38,16 @@
 
 			if (isset($request['login']))
 				if (!preg_match($patternLogin, $_POST['login']))
-					return 'Login field is not valid!';
+					return 'login field is not valid!';
 			if (isset($request['email']))
 				if (!preg_match($patternEmail, $_POST['email']))
-					return 'Email field is not valid!';
+					return 'email field is not valid!';
 			if (isset($request['password']))
 				if (!preg_match($patternPassword, $_POST['password']))
-					return 'Password field is not valid!';
+					return 'password field is not valid!';
 			if (isset($request['confirm']))
 				if ($_POST['password'] !== $_POST['confirm'])
-					return 'Confirm field is not valid!';
+					return 'confirm field is not valid!';
 			return true;
 		}
 
@@ -124,12 +125,9 @@
 		//LOGIN
 		public function validateInputLoginData() {
 
-			$request = [
-				['login' => true],
-				['password' => true],
-			];
+			$request = ['login' => true, 'password' => true,];
 
-			if ($result = self::validateIsFullFields($request) !== true)
+			if (($result = self::validateIsFullFields($request)) !== true)
 				return $result;
 			$sth = $this->prepare("SELECT id, login, email, password, confirm, avatar FROM users WHERE login = :login");
 			$sth->execute([':login' => $_POST['login']]);
@@ -148,10 +146,7 @@
 		//do all necessary checks before recovering password
 		public function validateRecoverPasswordIntention() {
 
-			$request = [
-				['login' => true],
-				['email' => true],
-			];
+			$request = ['login' => true, 'email' => true,];
 
 			if (($result = self::validateIsFullFields($request)) !== true)
 				return $result;
@@ -186,10 +181,7 @@
 
 		//checks recovering password input data, if ok recovers password
 		public function validateRecoverPasswordData() {
-			$request = [
-				'password' => true,
-				'confirm' => true
-			];
+			$request = ['password' => true, 'confirm' => true];
 
 			$id = $_SESSION['id_recover_password'];
 			if (($result = self::validateIsFullFields($request)) !== true)
@@ -207,10 +199,7 @@
 		//PASSWORD CHANGE
 		private function validateSetNewPasswordIntension() {
 
-			$request = [
-				'password' => true,
-				'confirm' => true
-			];
+			$request = ['password' => true, 'confirm' => true];
 
 			if (($result = self::validateIsFullFields($request)) !== true)
 				return $result;
@@ -280,4 +269,32 @@
 			$_SESSION['user_logged'] = $new_login;
 			return true;
 		}
+
+		//DELETE ACCOUNT
+		public function deleteAccount() {
+
+			$id = $_SESSION['user_id'];
+			$this->query("DELETE FROM users WHERE id = '$id'");
+		}
+
+		//CHANGE AVATAR
+		private function validateFilesArray() {
+
+			if (empty($_FILES['avatar']['name']))
+				return 'there is nothing to turn in!';
+			if ($_FILES['avatar']['size'] > 1000000)
+				return "too big image!";
+			if ($_FILES['avatar']['error'] !== 0)
+				return 'upload error, try later!';
+			if (!preg_match('~^.*[.png.|jpg.|jpeg]$~i', $_FILES['avatar']['name']))
+				return 'invalid image file format!';
+			//STOPPED HERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+			return true;
+		}
+
+		public function validateNewAvatar() {
+			if (($result = $this->validateFilesArray()) !== true)
+				return $result;
+			return true;
+	}
 }
