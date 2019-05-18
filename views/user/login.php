@@ -1,19 +1,15 @@
 <div class="wrapper">
-    <div class="login_form">
-	    <span style="font-size: xx-large; margin-left: 32%">Sign in</span>
-	    <div class="fill_box">
-	    	<div class="login">
+	    <div class="login_menu">
+			<span class="title">sign in</span>
 	    		<form action="user/login/validate" method="post">
-	    			<label for="login">Your login:</label>
-	    			<input class="input_zone" type="text" name="login" id="login" required>
-	    			<label for="password">Your password:</label>
-	    			<input class="input_zone" type="password" name="password" id="password" required><br>
-	    			<button type="submit" class="submit_button">Login</button>
+	    			<label for="login"><b>login<b></label><br>
+	    			<input class="input_zone" type="text" name="login" id="login"><br>
+	    			<label for="password">password</label><br>
+	    			<input class="input_zone" type="password" name="password" id="password"><br>
+	    			<button type="submit" class="submit_button">login</button>
 	    		</form>
 	    		<form action="user/recover/password" method="post">
-	    			<button type="submit" class="help_button">Forgot your password?</button>
+	    			<button type="submit" class="help_button">forgot password?</button>
 	    		</form>
-	    	</div>
 	    </div>
-    </div>
 </div>

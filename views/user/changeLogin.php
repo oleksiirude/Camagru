@@ -1,14 +1,11 @@
 <div class="wrapper">
-    <div class="recover_form">
-	    <span style="font-size: 28px; margin-left: 10%">Change login</span>
-	    <div class="fill_box">
+    <div class="change_menu">
+	    <span class="title">change login</span>
 		    <form action="user/change/login/set" method="post">
-			    <label for="login">New login:</label>
-			    <input class="input_zone" type="text" name="login" id="login" required><br>
-			    <p class="rules">• at least 3 and up to 8 latin symbols</p>
-			    <p class="rules">• 1-2 digits after symbols (optional)</p>
-			    <button class="recover_button">Set</button>
+			    <label for="login">new login</label>
+				<input class="input_zone" type="text" name="login" id="login"
+					   data-tooltip="• at least 3 and up to 8 latin symbols<br>• 1-2 digits after symbols (optional)"><br>
+			    <button type="submit" class="submit_button">change</button>
 		    </form>
-	    </div>
-    </div>
+	</div>
 </div>

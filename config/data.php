@@ -1,15 +1,16 @@
 <?php
 
 	$tables = array(
-		'users' => 'CREATE TABLE users (
+		'users' => "CREATE TABLE users (
 						id INT NOT NULL AUTO_INCREMENT,
 						login VARCHAR(10) NOT NULL,
 						email VARCHAR(255) NOT NULL,
 						password VARCHAR(255) NOT NULL,
 						confirm TINYINT(1) DEFAULT 0 NOT NULL,
-						token VARCHAR(32) DEFAULT "",
+						token VARCHAR(32) DEFAULT '',
+						avatar VARCHAR(255) DEFAULT 'views/pictures/avatars/default.png', 
 						PRIMARY KEY (id)) ENGINE=InnoDB
-						CHARACTER SET utf8mb4',
+						CHARACTER SET utf8mb4",
 
 		'photos' => 'CREATE TABLE photos (
 						id_photo INT NOT NULL AUTO_INCREMENT,
@@ -38,9 +39,9 @@
 
 	$users = array(
 
-		'users' => "INSERT INTO users(login, email, password, confirm) VALUES ('olrudenk', 'olrudenk@gmail.com', '$olrudenk_password', '1');
-					INSERT INTO users(login, email, password, confirm) VALUES ('dpiven', 'dpiven@gmail.com', '$dpiven_password', '1');
-					INSERT INTO users(login, email, password, confirm) VALUES ('dminakov', 'dminakov@gmail.com', '$dminakov_password', '1');"
+		'users' => "INSERT INTO users(login, email, password, confirm, avatar) VALUES ('olrudenk', 'olrudenk@gmail.com', '$olrudenk_password', '1', 'views/pictures/avatars/olrudenk.jpg');
+					INSERT INTO users(login, email, password, confirm, avatar) VALUES ('dpiven', 'dpiven@gmail.com', '$dpiven_password', '1', 'views/pictures/avatars/dpiven.jpg');
+					INSERT INTO users(login, email, password, confirm, avatar) VALUES ('dminakov', 'dminakov@gmail.com', '$dminakov_password', '1', 'views/pictures/avatars/dminakov.jpg');"
 
 	);
 

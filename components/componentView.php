@@ -38,7 +38,6 @@
 		}
 
 		public function showMessage($title, $message) {
-			$_SESSION['finish'] = time();
 			require_once (ROOT."views/default/message.php");
 			exit;
 		}

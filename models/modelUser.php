@@ -131,14 +131,16 @@
 
 			if ($result = self::validateIsFullFields($request) !== true)
 				return $result;
-			$sth = $this->prepare("SELECT login, email, password, confirm FROM users WHERE login = :login");
+			$sth = $this->prepare("SELECT id, login, email, password, confirm, avatar FROM users WHERE login = :login");
 			$sth->execute([':login' => $_POST['login']]);
 			$result = $sth->fetch(self::FETCH_ASSOC);
 			if (!$result || !password_verify($_POST['password'], $result['password'])
 				|| $result['confirm'] !== '1')
 				return 'Incorrect login or password!';
+			$_SESSION['user_id'] = $result['id'];
 			$_SESSION['user_logged'] = $_POST['login'];
 			$_SESSION['email'] = $result['email'];
+			$_SESSION['avatar'] = $result['avatar'];
 			return true;
 		}
 

@@ -9,9 +9,10 @@
             <a href="user/settings">settings</a> |
             <a href="user/logout">logout</a>
         </nav>
-            <img class="avatar" src="views/pictures/default_avatar.png" alt="avatar" title="<?= $_SESSION['user_logged']; ?>">
+            <a href="user/profile"><img class="avatar" src="<?= $_SESSION['avatar']; ?>"
+				 alt="avatar" data-tooltip="<?= $_SESSION['user_logged']; ?>"></a>
 	<?php }
 	else { ?>
-			<div class="welcome">Welcome!</div>
+			<h1 class="title">WELCOME!</h1>
 	<?php } ?>
 </header>

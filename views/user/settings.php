@@ -1,10 +1,10 @@
 <div class="wrapper">
-<div class="recover_form">
-	<div class="fill_box">
-		<h2>My settings</h2>
-		<a href="user/change/login">Change login</a><br>
-		<a href="user/change/email">Change email</a><br>
-		<a href="user/change/password">Change password</a>
+	<div class="settings_menu">
+		<span class="title">my settings</span><br>
+		<a href="user/change/avatar">change avatar</a><br>
+		<a href="user/change/login">change login</a><br>
+		<a href="user/change/email">change email</a><br>
+		<a href="user/change/password">change password</a><br>
+		<a href="user/delete/account">delete account</a>
 	</div>
-</div>
 </div>
