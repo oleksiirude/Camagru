@@ -1,12 +1,17 @@
 <div class="wrapper">
-	<div class="change_avatar">
+	<div class="change_avatar_menu">
 		<span class="title">change avatar</span><br>
-		<b>png or jpg images up to 1mb size</b>
-		<form enctype="multipart/form-data" action="user/change/avatar/set" method="post">
-			<label for="change"></label>
-			<input class="input_zone" type="file" accept="image/jpeg,image/png" name="avatar" id="change"><br>
-			<button type="submit" class="submit_button">change</button>
+		<b>png or jpg image up to 1mb size</b>
+		<form class="upload_avatar" enctype="multipart/form-data" action="user/change/avatar/set" method="post">
+			<label for="change_avatar">choose pic</label>
+			<input class="input_zone" type="file" accept="image/jpeg,image/png" name="avatar" id="change_avatar" onchange="getAvatarPreview()"><br>
+			<div id="avatar_preview" class="avatar_preview"></div>
+			<button id="change_avatar_button" type="submit" class="submit_button" style="display: none">change</button>
 		</form>
-		<a href="user/settings">back</a>
+		<?php
+			if ($_SESSION['avatar'])
+				echo "<a href='user/change/avatar/delete'>delete avatar</a><br>";
+		?>
+			<a href="user/settings">back</a>
 	</div>
 </div>

@@ -93,6 +93,7 @@ header {
     border-radius: 5px;
     margin: 10% auto;
     text-align: center;
+    font-weight: bold;
     box-shadow: 0 0 2px 1px gray;
 }
 
@@ -115,6 +116,7 @@ header {
     border-radius: 5px;
     margin: 10% auto;
     text-align: center;
+    font-weight: bold;
     box-shadow: 0 0 2px 1px gray;
 }
 
@@ -127,6 +129,7 @@ header {
     border-radius: 5px;
     margin: 10% auto;
     text-align: center;
+    font-weight: bold;
     box-shadow: 0 0 2px 1px gray;
 }
 
@@ -185,26 +188,12 @@ header {
     font-weight: bold;
     font-size: 20px;
     width: 280px;
-    height: 270px;
     background: goldenrod;
     border-radius: 5px;
     margin: 10% auto;
     text-align: center;
     box-shadow: 0 0 2px 1px gray;
 }
-
-.change_avatar {
-    font-weight: bold;
-    font-size: 20px;
-    width: 280px;
-    height: 270px;
-    background: goldenrod;
-    border-radius: 5px;
-    margin: 10% auto;
-    text-align: center;
-    box-shadow: 0 0 2px 1px gray;
-}
-
 
 .message {
     width: 220px;
@@ -238,9 +227,41 @@ header {
     background-color: beige;
 }
 
-.rules {
-    font-size: 10px;
+/*CHANGE AVATAR*/
+.change_avatar_menu {
+    font-weight: bold;
+    font-size: 20px;
+    width: 280px;
+    background: goldenrod;
+    border-radius: 5px;
+    margin: 10% auto;
+    text-align: center;
+    box-shadow: 0 0 2px 1px gray;
 }
+
+.upload_avatar input[type="file"] {display: none}
+
+.upload_avatar label {
+    display: inline-block;
+    width: 80px;
+    height: 26px;
+    margin-top: 5px;
+    background: gray;
+    cursor: pointer;
+    border: solid 1px black;
+    border-radius: 5px;
+    box-shadow: 0 0 5px 2px gold;
+}
+
+.upload_avatar label:hover { background: silver }
+
+.avatar_preview {
+    margin: 5px auto;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+}
+/*CHANGE END*/
 
 footer {
     width: 68%;

@@ -180,10 +180,15 @@
 		public function actionChangeAvatarSet() {
 
 			$this->onlyForLogged();
-			if (($result = $this->model->validateNewAvatar()) !== true) {
+			if (($result = $this->model->setNewAvatar()) !== true)
 				$this->view->showMessage('Something went wrong', $result);
-				exit;
-			}
+			componentView::redirect('user/profile');
+		}
+
+		public function actionChangeAvatarDelete() {
+
+			$this->onlyForLogged();
+			$this->model->setAvatarDelete();
 			componentView::redirect('user/profile');
 		}
 

@@ -117,6 +117,11 @@
 			'action' => 'changeAvatarSet'
 		],
 
+		'user/change/avatar/delete' => [
+			'controller' => 'user',
+			'action' => 'changeAvatarDelete'
+		],
+
 		//SETTINGS
 		'user/settings' => [
 			'controller' => 'user',

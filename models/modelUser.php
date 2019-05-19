@@ -278,23 +278,38 @@
 		}
 
 		//CHANGE AVATAR
-		private function validateFilesArray() {
 
-			if (empty($_FILES['avatar']['name']))
-				return 'there is nothing to turn in!';
-			if ($_FILES['avatar']['size'] > 1000000)
-				return "too big image!";
-			if ($_FILES['avatar']['error'] !== 0)
-				return 'upload error, try later!';
-			if (!preg_match('~^.*[.png.|jpg.|jpeg]$~i', $_FILES['avatar']['name']))
-				return 'invalid image file format!';
-			//STOPPED HERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-			return true;
+		private function deleteAvatar($avatar) {
+			$file = ROOT.'views/pictures/avatars/'.$avatar;
+
+			chmod($file, 0755);
+			unlink($file);
 		}
 
-		public function validateNewAvatar() {
-			if (($result = $this->validateFilesArray()) !== true)
-				return $result;
-			return true;
-	}
+		public function setNewAvatar() {
+		if ($_FILES['avatar']['error'] !== 0)
+			return 'upload error, try later!';
+		$id = $_SESSION['user_id'];
+		$avatars = scandir(ROOT.'views/pictures/avatars');
+			foreach ($avatars as $avatar)
+				if (preg_match("/^$id/", $avatar))
+					self::deleteAvatar($avatar);
+		preg_match("/.*(jpeg|jpg|png)$/i", $_FILES['avatar']['type'], $matches);
+		$avatar = $id.'.'.$matches[1];
+		$destination = 'views/pictures/avatars/'.$avatar;
+		move_uploaded_file($_FILES['avatar']['tmp_name'], $destination);
+		$this->query("UPDATE users SET avatar = '$destination' WHERE users.id = '$id'");
+		$_SESSION['avatar'] = $destination;
+		return true;
+		}
+
+		public function setAvatarDelete() {
+			$_SESSION['avatar'] = false;
+
+			$id = $_SESSION['user_id'];
+			$avatars = scandir(ROOT.'views/pictures/avatars');
+			foreach ($avatars as $avatar)
+				if (preg_match("/^$id/", $avatar))
+						self::deleteAvatar($avatar);
+		}
 }

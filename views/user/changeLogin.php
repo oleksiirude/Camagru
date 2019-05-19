@@ -7,6 +7,6 @@
 					   data-tooltip="• at least 3 and up to 8 latin symbols<br>• 1-2 digits after symbols (optional)"><br>
 			    <button type="submit" class="submit_button">change</button>
 		    </form>
-		<a href="user/settings">back</a>
+		<br><a href="user/settings">back</a>
 	</div>
 </div>

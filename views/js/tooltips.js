@@ -1,6 +1,6 @@
 let showingTooltip;
 
-document.onmouseover = function(e) {
+document.onclick = function(e) {
 	let target = e.target;
 
 	let tooltip = target.getAttribute('data-tooltip');
