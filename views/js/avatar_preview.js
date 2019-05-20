@@ -6,10 +6,9 @@ function getAvatarPreview() {
 		preview.remove();
 
 	avatar = document.getElementById('change_avatar').files[0];
-
 	if (/.*(.jpe?g|.png)$/i.test(avatar.name)) {
 		preview = document.getElementById('avatar_preview');
-		if (avatar.size > 1000000) {
+		if (avatar.size > 5000000) {
 			new_elem = document.createElement('p');
 			new_elem.id = 'temp_preview';
 			new_elem.innerHTML = 'too big file!';

@@ -1,4 +1,8 @@
-<?php var_dump($_SESSION['avatar']); ?>
+<?php
+	if (isset($_SESSION['avatar']))
+		$avatar = $_SESSION['avatar'] ? $_SESSION['avatar'] : 'views/pictures/avatars/default.png';
+?>
+
 <header>
     <div class="logo">
         <a href="/"><img class="camagru" src="views/pictures/logo.png" alt="CAMAGRU" title="CAMAGRU"></a>
@@ -10,7 +14,7 @@
             <a href="user/settings">settings</a> |
             <a href="user/logout">logout</a>
         </nav>
-            <a href="user/profile"><img class="avatar" src="<?= $_SESSION['avatar'] ?  $_SESSION['avatar'] : "views/pictures/avatars/default.png"; ?>" alt="avatar" title="<?= $_SESSION['user_logged']; ?>"></a>
+            <a href="user/profile"><img class="avatar" src="<?= $avatar ?>" alt="avatar" title="<?= $_SESSION['user_logged']; ?>"></a>
 	<?php }
 	else { ?>
 			<h1 class="title">WELCOME!</h1>

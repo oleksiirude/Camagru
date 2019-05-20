@@ -133,12 +133,15 @@
 			$sth->execute([':login' => $_POST['login']]);
 			$result = $sth->fetch(self::FETCH_ASSOC);
 			if (!$result || !password_verify($_POST['password'], $result['password'])
-				|| $result['confirm'] !== '1')
+				|| $result['confirm'] !== '1' || $_POST['login'] !== $result['login'])
 				return 'Incorrect login or password!';
 			$_SESSION['user_id'] = $result['id'];
 			$_SESSION['user_logged'] = $_POST['login'];
 			$_SESSION['email'] = $result['email'];
-			$_SESSION['avatar'] = $result['avatar'];
+			if ($result['avatar'] === null)
+				$_SESSION['avatar'] = false;
+			else
+				$_SESSION['avatar'] = $result['avatar'];
 			return true;
 		}
 
@@ -197,7 +200,7 @@
 		}
 
 		//PASSWORD CHANGE
-		private function validateSetNewPasswordIntension() {
+		private function validateSetNewPasswordIntention() {
 
 			$request = ['password' => true, 'confirm' => true];
 
@@ -209,7 +212,7 @@
 		}
 
 		public function setNewPassword() {
-			if (($result = $this->validateSetNewPasswordIntension()) !== true)
+			if (($result = $this->validateSetNewPasswordIntention()) !== true)
 				return $result;
 			$login = $_SESSION['user_logged'];
 			$password = password_hash($_POST['password'], PASSWORD_BCRYPT);
@@ -219,7 +222,7 @@
 		}
 
 		//EMAIL CHANGE
-		private function validateChangeEmailIntension() {
+		private function validateChangeEmailIntention() {
 
 			$request = ['email' => true];
 
@@ -234,7 +237,7 @@
 
 		public function changeEmail() {
 
-			if (($result = $this->validateChangeEmailIntension()) !== true)
+			if (($result = $this->validateChangeEmailIntention()) !== true)
 				return $result;
 			$login = $_SESSION['user_logged'];
 			$new_email = $_POST['email'];
@@ -245,7 +248,7 @@
 		}
 
 		//LOGIN CHANGE
-		private function validateChangeLoginIntension() {
+		private function validateChangeLoginIntention() {
 
 			$request = ['login' => true];
 
@@ -260,7 +263,7 @@
 
 		public function changeLogin() {
 
-			if (($result = $this->validateChangeLoginIntension()) !== true)
+			if (($result = $this->validateChangeLoginIntention()) !== true)
 				return $result;
 			$old_login = $_SESSION['user_logged'];
 			$new_login = $_POST['login'];
@@ -279,25 +282,35 @@
 
 		//CHANGE AVATAR
 
-		private function deleteAvatar($avatar) {
+		private function deleteOldAvatar($avatar) {
 			$file = ROOT.'views/pictures/avatars/'.$avatar;
-
 			chmod($file, 0755);
 			unlink($file);
 		}
 
 		public function setNewAvatar() {
-		if ($_FILES['avatar']['error'] !== 0)
-			return 'upload error, try later!';
+		$filePath = $_FILES['avatar']['tmp_name'];
+		$errorCode = $_FILES['avatar']['error'];
+
+		if (($result = componentView::basicPictureChecks($filePath, $errorCode)) !== true)
+			return $result;
+
 		$id = $_SESSION['user_id'];
+
+		//delete present avatar
 		$avatars = scandir(ROOT.'views/pictures/avatars');
-			foreach ($avatars as $avatar)
-				if (preg_match("/^$id/", $avatar))
-					self::deleteAvatar($avatar);
+		foreach ($avatars as $avatar)
+			if (preg_match("/^$id./", $avatar))
+				self::deleteOldAvatar($avatar);
+
+		//get new avatar name like 'users_id.type of image -> 1.jpg'
 		preg_match("/.*(jpeg|jpg|png)$/i", $_FILES['avatar']['type'], $matches);
-		$avatar = $id.'.'.$matches[1];
-		$destination = 'views/pictures/avatars/'.$avatar;
-		move_uploaded_file($_FILES['avatar']['tmp_name'], $destination);
+		$type = $matches[1];
+		$name = $id.'.'.$matches[1];
+		$destination = 'views/pictures/avatars/'.$name;
+
+		//resize image for less weight
+		componentView::resizeForAvatar($filePath, $name, $type);
 		$this->query("UPDATE users SET avatar = '$destination' WHERE users.id = '$id'");
 		$_SESSION['avatar'] = $destination;
 		return true;
@@ -310,6 +323,7 @@
 			$avatars = scandir(ROOT.'views/pictures/avatars');
 			foreach ($avatars as $avatar)
 				if (preg_match("/^$id/", $avatar))
-						self::deleteAvatar($avatar);
+						self::deleteOldAvatar($avatar);
+			$this->query("UPDATE users SET avatar = null WHERE users.id = '$id'");
 		}
 }

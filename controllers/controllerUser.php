@@ -182,14 +182,14 @@
 			$this->onlyForLogged();
 			if (($result = $this->model->setNewAvatar()) !== true)
 				$this->view->showMessage('Something went wrong', $result);
-			componentView::redirect('user/profile');
+			componentView::redirect('user/settings');
 		}
 
 		public function actionChangeAvatarDelete() {
 
 			$this->onlyForLogged();
 			$this->model->setAvatarDelete();
-			componentView::redirect('user/profile');
+			componentView::redirect('user/settings');
 		}
 
 		//STATUS OR ERROR MESSAGE (temporary, I hope)
