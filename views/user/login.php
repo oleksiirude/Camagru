@@ -11,5 +11,6 @@
 	    		<form action="user/recover/password" method="post">
 	    			<button type="submit" class="help_button">forgot password?</button>
 	    		</form>
+			<a href="/">back</a>
 	    </div>
 </div>

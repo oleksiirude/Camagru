@@ -10,7 +10,9 @@
 	<link rel="stylesheet" type="text/css" href="/views/css/styles.css">
 </head>
 <body>
-<h1>ERROR <?php echo $code; ?></h1>
-<a href="/"> to main page</a>
+	<div class="wrapper" style="background-color: grey;">
+		<h1 style="font-size: 100px; text-align: center">ERROR <?php echo $code; ?></h1>
+		<a style="font-size: 40px; margin-left: 10%" href="/">to main page</a>
+	</div>
 </body>
 </html>

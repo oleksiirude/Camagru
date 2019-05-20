@@ -15,8 +15,9 @@
 										• minimum length is 8 symbols"><br>
 			    <label for="confirm"><b>confirm password<b></label>
 			    <input class="input_zone" type="password" name="confirm" id="confirm"><br>
-			    <button type="submit" class="submit_button">create</button>
+			    <button type="submit" class="submit_button">create</button><br>
 		    </form>
+		<a href="/">back</a>
 	    </div>
     </div>
 </div>

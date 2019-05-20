@@ -10,8 +10,9 @@
 										• minimum length is 8 symbols"><br>
 				    <label for="confirm"><b>confirm<b></label><br>
 				    <input class="input_zone" type="password" name="confirm" id="confirm"><br>
-				    <button class="submit_button">set</button>
+				    <button class="submit_button">set</button><br>
 			    </form>
+				<a href="/">back</a>
 		    </div>
     </div>
 <?php }
@@ -24,8 +25,9 @@ else { ?>
 				    <input class="input_zone" type="text" name="login" id="login"><br>
 				    <label for="email"><b>email<b></label><br>
 				    <input class="input_zone" type="email" name="email" id="email"><br>
-				    <button class="submit_button">Send</button>
+				    <button class="submit_button">Send</button><br>
 			    </form>
+				<a href="/">back</a>
 		    </div>
     </div>
 <?php }
