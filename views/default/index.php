@@ -13,6 +13,7 @@
 	<?php require_once (ROOT.'views/default/header.php'); ?>
 	    <?php echo $content; ?>
 	<?php require_once (ROOT.'views/default/footer.php'); ?>
-	<script src="views/js/avatar_preview.js"></script>>
+	<script src="views/js/avatar_preview.js"></script>
+	<script src="views/js/ajax.js"></script>
 </body>
 </html>

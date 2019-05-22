@@ -30,6 +30,7 @@ function getAvatarPreview() {
 		preview = document.getElementById('avatar_preview');
 
 		new_elem = document.createElement('p');
+		new_elem.id = 'temp_preview';
 		new_elem.innerHTML = 'invalid file!';
 		new_elem.setAttribute('style', 'color: red; font-size: xx-large');
 		preview.appendChild(new_elem);

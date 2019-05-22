@@ -19,13 +19,16 @@ a { color: black; text-decoration: none }
 
 a:hover { transition: 220ms; color: lightgray }
 
+*:focus {
+    outline: none;
+}
 
 /*smooth start effect ot choosen elements*/
 #temp_preview { animation: fade-in 0.7s linear }
 
 .enter_menu, .login_menu, .registration_menu,
 .settings_menu, .change_avatar_menu, .change_menu,
-.tooltip, .avatar {
+.tooltip, .avatar, .error, .message {
     -webkit-animation: fade-in 0.3s linear; /* Safari 4+ */
     -moz-animation: fade-in 0.3s linear; /* Fx 5+ */
     -o-animation: fade-in 0.3s linear; /* Opera 12+ */
@@ -213,11 +216,11 @@ header {
 }
 
 .message {
-    width: 220px;
+    width: 260px;
     margin: 5% auto;
     background: goldenrod;
     border-radius: 10px;
-    font-size: 26px;
+    font-size: 24px;
     font-weight: bold;
     text-align: center;
     padding: 10px 10px;
@@ -307,4 +310,10 @@ footer {
     margin-left: 4px;
     width: 15px;
     height: 15px;
+}
+
+/*ERROR MASSAGES*/
+.error {
+    color: darkred;
+    font-family: Candara, sans-serif;
 }

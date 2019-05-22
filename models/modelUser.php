@@ -4,50 +4,50 @@
 
 		//REGULAR INPUT DATA CHECKS
 		//checks fields filling (depends on $request array)
-		private function validateIsFullFields($request) {
+		private function validateIsFullFields($request, $post) {
 
 			if (isset($request['login'])) {
-				$_POST['login'] = trim($_POST['login']);
-				if (empty($_POST['login']))
-					return 'login field is empty!';
+				$post['login'] = trim($post['login']);
+				if (empty($post['login']))
+					return ['id' => 'login', 'warning' => 'login field is empty'];
 			}
 			if (isset($request['email'])) {
-				$_POST['email'] = trim($_POST['email']);
-				if (empty($_POST['email']))
-					return 'email field is empty!';
+				$post['email'] = trim($post['email']);
+				if (empty($post['email']))
+					return ['id' => 'email', 'warning' => 'email field is empty'];
 			}
 			if (isset($request['password'])) {
-				$_POST['password'] = trim($_POST['password']);
-				if (empty($_POST['password']))
-					return 'password field is empty!';
+				$post['password'] = trim($post['password']);
+				if (empty($post['password']))
+					return ['id' => 'password', 'warning' => 'password field is empty'];
 			}
 			if (isset($request['confirm'])) {
-				$_POST['confirm'] = trim($_POST['confirm']);
-				if (empty($_POST['confirm']))
-					return 'confirm field is empty!';
+				$post['confirm'] = trim($post['confirm']);
+				if (empty($post['confirm']))
+					return ['id' => 'confirm', 'warning' => 'confirm field is empty'];
 			}
 			return true;
 		}
 
 		//checks if input data is corresponds to requirements
-		private function validateInputData($request) {
+		private function validateInputData($request, $post) {
 
 			$patternLogin = '/^[a-zA-Z]{3,8}\d{0,2}$/';
 			$patternEmail = '/^[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/';
 			$patternPassword = '/^(?=.*[A-Z]{1,})(?=.*[!@#$&*-]{1,})(?=.*[0-9]{1,})(?=.*[a-z]{1,}).{8,}$/';
 
 			if (isset($request['login']))
-				if (!preg_match($patternLogin, $_POST['login']))
-					return 'login field is not valid!';
+				if (!preg_match($patternLogin, $post['login']))
+					return ['id' => 'login', 'warning' => 'login field is not valid'];
 			if (isset($request['email']))
-				if (!preg_match($patternEmail, $_POST['email']))
-					return 'email field is not valid!';
+				if (!preg_match($patternEmail, $post['email']))
+					return ['id' => 'email', 'warning' => 'email field is not valid'];
 			if (isset($request['password']))
-				if (!preg_match($patternPassword, $_POST['password']))
-					return 'password field is not valid!';
+				if (!preg_match($patternPassword, $post['password']))
+					return ['id' => 'password', 'warning' => 'password field is not valid'];
 			if (isset($request['confirm']))
-				if ($_POST['password'] !== $_POST['confirm'])
-					return 'confirm field is not valid!';
+				if ($post['password'] !== $post['confirm'])
+					return ['id' => 'confirm', 'warning' => 'passwords do not match'];
 			return true;
 		}
 
@@ -57,17 +57,17 @@
 			if ($request === 'check_login') {
 				$pseudo = [':login' => $_POST['login']];
 				$query = 'SELECT login FROM users WHERE login = :login';
-				$error = 'This login is already taken!';
+				$error = ['id' => 'login', 'warning' => 'this login is already taken'];
 			}
 			elseif ($request === 'check_email') {
 				$pseudo = [':email' => $_POST['email']];
 				$query = 'SELECT email FROM users WHERE email = :email';
-				$error = 'This email is already taken!';
+				$error = ['id' => 'email', 'warning' => 'this email is already taken'];
 			}
 			elseif ($request === 'check_both') {
 				$pseudo = [':login' => $_POST['login'], ':email' => $_POST['email']];
 				$query = 'SELECT login FROM users WHERE login = :login OR email = :email';
-				$error = 'Login or email is already taken!';
+				$error = ['id' => 'menu', 'warning' => 'login or/and menu are already taken'];
 			}
 			$sth = $this->prepare($query);
 			$sth->execute($pseudo);
@@ -123,20 +123,20 @@
 
 
 		//LOGIN
-		public function validateInputLoginData() {
+		public function validateInputLoginData($post) {
 
-			$request = ['login' => true, 'password' => true,];
+			$request = ['login' => true, 'password' => true];
 
-			if (($result = self::validateIsFullFields($request)) !== true)
+			if (($result = self::validateIsFullFields($request, $post)) !== true)
 				return $result;
 			$sth = $this->prepare("SELECT id, login, email, password, confirm, avatar FROM users WHERE login = :login");
-			$sth->execute([':login' => $_POST['login']]);
+			$sth->execute([':login' => $post['login']]);
 			$result = $sth->fetch(self::FETCH_ASSOC);
-			if (!$result || !password_verify($_POST['password'], $result['password'])
-				|| $result['confirm'] !== '1' || $_POST['login'] !== $result['login'])
-				return 'Incorrect login or password!';
+			if (!$result || !password_verify($post['password'], $result['password'])
+				|| $result['confirm'] !== '1' || $post['login'] !== $result['login'])
+				return ['id' => 'menu', 'warning' => 'incorrect login or/and password'];
 			$_SESSION['user_id'] = $result['id'];
-			$_SESSION['user_logged'] = $_POST['login'];
+			$_SESSION['user_logged'] = $post['login'];
 			$_SESSION['email'] = $result['email'];
 			if ($result['avatar'] === null)
 				$_SESSION['avatar'] = false;
@@ -147,25 +147,25 @@
 
 		//PASSWORD RECOVERY
 		//do all necessary checks before recovering password
-		public function validateRecoverPasswordIntention() {
+		public function validateRecoverPasswordIntention($post) {
 
 			$request = ['login' => true, 'email' => true,];
 
-			if (($result = self::validateIsFullFields($request)) !== true)
+			if (($result = self::validateIsFullFields($request, $post)) !== true)
 				return $result;
-			$pseudo = [':login' => $_POST['login'], ':email' => $_POST['email']];
+			$pseudo = [':login' => $post['login'], ':email' => $post['email']];
 			$sth = $this->prepare('SELECT confirm FROM users 
 												WHERE login = :login AND email = :email');
 			$sth->execute($pseudo);
 			$result = $sth->fetch(self::FETCH_ASSOC);
 			if ($result['confirm'] === '1')
 				return true;
-			return 'Nonexistent login or email!';
+			return ['id' => 'menu', 'warning' => 'nonexistent login or email'];
 		}
 
-		public function insertTokenInDb($token) {
-			$login = $_POST['login'];
-			$email = $_POST['email'];
+		public function insertTokenInDb($token, $post) {
+			$login = $post['login'];
+			$email = $post['email'];
 
 			$this->query("UPDATE users SET token = '$token' 
 										WHERE users.login = '$login' AND users.email = '$email'");
@@ -183,16 +183,16 @@
 		}
 
 		//checks recovering password input data, if ok recovers password
-		public function validateRecoverPasswordData() {
+		public function validateRecoverPasswordData($post) {
 			$request = ['password' => true, 'confirm' => true];
 
 			$id = $_SESSION['id_recover_password'];
-			if (($result = self::validateIsFullFields($request)) !== true)
+			if (($result = self::validateIsFullFields($request, $post)) !== true)
 				return $result;
-			elseif (($result = self::validateInputData($request)) !== true)
+			elseif (($result = self::validateInputData($request, $post)) !== true)
 				return $result;
 
-			$password = password_hash($_POST['password'], PASSWORD_BCRYPT);
+			$password = password_hash($post['password'], PASSWORD_BCRYPT);
 			$this->query("UPDATE users SET token = '', password = '$password' 
 										WHERE users.id = '$id'");
 			unset($_SESSION['id_recover_password']);

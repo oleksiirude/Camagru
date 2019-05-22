@@ -19,11 +19,11 @@
 			mail($to, $subject, $message, $headers);
 		}
 
-		public static function sendRecoverPasswordLink($token) {
-			$login = $_POST['login'];
+		public static function sendRecoverPasswordLink($token, $post) {
+			$login = $post['login'];
 			//$path = 'http://localhost:8080/user/change/password/confirm/'.$token;
 			$path = 'http://localhost/user/recover/password/confirm/'.$token;
-			$to = $_POST['email'];
+			$to = $post['email'];
 			$headers =	"From: camagrubot@gmail.com\r\n".
 				"Reply-To: no-reply\r\n".
 				"MIME=Version: 1.0\r\n".

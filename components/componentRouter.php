@@ -36,9 +36,9 @@
 
 							require_once ($class);
 							$controller = new $controllerName($route);
-							if ($success = $controller->$actionName($uri)) {
+							$success = $controller->$actionName($uri);
+							if ($success)
 								break;
-							}
 						}
 						else
 							componentView::errorHandle(404);

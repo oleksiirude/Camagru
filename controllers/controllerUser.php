@@ -1,11 +1,13 @@
 <?php
 
 	class controllerUser extends componentController {
+		private $post;
 		private $model;
 
 		public function __construct($route) {
 			parent::__construct($route);
 			$this->model = new modelUser();
+			$this->post = componentController::processAjaxRequest();
 		}
 
 		//REGISTRATION
@@ -43,9 +45,11 @@
 		}
 
 		public function actionLoginValidate() {
-			if (($result = $this->model->validateInputLoginData()) !== true)
-				self::showStatus('Camagru: something went wrong', $result);
-			$this->view->redirect('');
+			if (($result = $this->model->validateInputLoginData($this->post)) !== true)
+				echo json_encode($result);
+			else
+				echo json_encode(true);
+			return true;
 		}
 
 		//LOGOUT
@@ -64,13 +68,15 @@
 		}
 
 		public function actionRecoverPasswordSendLink() {
-			if (($result = $this->model->validateRecoverPasswordIntention()) !== true) {
-				self::showStatus('Camagru: recover password error', $result);
+			if (($result = $this->model->validateRecoverPasswordIntention($this->post)) !== true) {
+				echo json_encode($result);
+				return true;
 			}
-			$token = md5($_POST['login'].time().$_POST['email']);
-			$this->model->insertTokenInDb($token);
-			componentMail::sendRecoverPasswordLink($token);
-			self::showStatus('Camagru: check your email', 'The link has been sent, check your email to recover password!');
+			$token = md5($this->post['login'].time().$this->post['email']);
+			$this->model->insertTokenInDb($token, $this->post);
+			componentMail::sendRecoverPasswordLink($token, $this->post);
+			echo json_encode('link');
+			return true;
 		}
 
 		public function actionRecoverPasswordConfirm($uri) {
@@ -85,9 +91,12 @@
 			if(!isset($_SESSION['id_recover_password']))
 				componentView::redirect('');
 
-			if (($result = $this->model->validateRecoverPasswordData()) !== true)
-				self::showStatus('Camagru: something went wrong', $result);
-			componentView::redirect('user/login');
+			if (($result = $this->model->validateRecoverPasswordData($this->post)) !== true) {
+				echo json_encode($result);
+				return true;
+			}
+			echo json_encode('recover');
+			return true;
 		}
 
 		//CHANGE LOGIN
