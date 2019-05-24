@@ -19,13 +19,15 @@
 
 		public function actionRegisterValidate() {
 			$this->onlyForUnlogged();
-			if (($result = $this->model->validateRegistrationData()) !== true)
-				self::showStatus('Camagru: something went wrong', $result);
-			$token = md5($_POST['login'].time().$_POST['email']);
-			$this->model->insertValidRegistrationDataInDb($token);
-			componentMail::sendActivationLink($token);
-			self::showStatus('Camagru: success',
-				'The link has been sent, check your email to activate account!');
+			if (($result = $this->model->validateRegistrationData($this->post)) !== true) {
+				echo json_encode($result);
+				return true;
+			}
+			$token = md5($this->post['login'].time().$this->post['email']);
+			$this->model->insertValidRegistrationDataInDb($token, $this->post);
+			componentMail::sendActivationLink($token, $this->post);
+			echo json_encode('registered');
+			return true;
 		}
 
 		public function actionConfirmRegistration($uri) {

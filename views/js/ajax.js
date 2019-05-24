@@ -2,10 +2,12 @@ function check(event, object, action) {
 	let warning = document.getElementById('warning');
 	if (warning)
 		warning.remove();
-	let send_button = document.getElementById('send_button');
-	if (send_button)
-		send_button.disabled = true;
-	//delete back link!!!
+	let submit_button = document.getElementsByClassName('submit_button')[0];
+	if (submit_button)
+		submit_button.disabled = true;
+	let link_back = document.getElementById('link_back');
+	if (link_back)
+		link_back.setAttribute('style', 'display: none');
 	ajax(event, object, action);
 }
 
@@ -31,13 +33,18 @@ function ajax(event, object, action) {
 		if (ajax.readyState === 4) {
 			let result = JSON.parse(ajax.responseText);
 			//let result = ajax.responseText;
-			console.log(result);
+			//console.log(result);
 			if (result === true)
 				location.href = '';
 			else if (result === 'link')
-				messageRecoveryPassword();
+				messageDone("recovery link has been sent<br>check email",
+					'main page', '/');
 			else if (result === 'recover')
-				messageRecoveryPasswordDone();
+				messageDone("your password has been changed<br>now you can log in",
+					'login page', 'user/login');
+			else if (result === 'registered')
+				messageDone("activation link has been sent<br>check email",
+					'main page', '/');
 			else
 				addWarning(result);
 		}
@@ -45,9 +52,12 @@ function ajax(event, object, action) {
 }
 
 function addWarning(result) {
-	let send_button = document.getElementById('send_button');
-	if (send_button)
-		send_button.disabled = false;
+	let link_back = document.getElementById('link_back');
+	if (link_back)
+		link_back.setAttribute('style', 'display: block');
+	let submit_button = document.getElementsByClassName('submit_button')[0];
+	if (submit_button)
+		submit_button.disabled = false;
 
 	let form = document.getElementById(result['id']);
 	let warning = document.createElement('div');
@@ -57,36 +67,18 @@ function addWarning(result) {
 	form.appendChild(warning);
 }
 
-function messageRecoveryPassword() {
-	document.getElementById('login_menu').remove();
-	let wrapper = document.getElementById('wrapper');
+function messageDone(text, to, url) {
+	document.getElementsByClassName('menu')[0].remove();
+	let wrapper = document.getElementsByClassName('wrapper')[0];
 
 	let message = document.createElement('div');
-	message.innerHTML = "the link has been sent, check mail";
+	message.innerHTML = text;
 	message.setAttribute('class', 'message');
 
 	let link = document.createElement('a');
-	link.innerHTML = "to main page";
+	link.innerHTML = to;
 	link.setAttribute('style', 'color: darkred');
-	link.setAttribute('href', '/');
-
-	message.appendChild(document.createElement('br'));
-	message.appendChild(link);
-	wrapper.appendChild(message);
-}
-
-function messageRecoveryPasswordDone() {
-	document.getElementById('login_menu').remove();
-	let wrapper = document.getElementById('wrapper');
-
-	let message = document.createElement('div');
-	message.innerHTML = "your password has been changed<br>now you can log in";
-	message.setAttribute('class', 'message');
-
-	let link = document.createElement('a');
-	link.innerHTML = "to login from";
-	link.setAttribute('style', 'color: darkred');
-	link.setAttribute('href', 'user/login');
+	link.setAttribute('href', url);
 
 	message.appendChild(document.createElement('br'));
 	message.appendChild(link);

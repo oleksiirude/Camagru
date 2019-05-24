@@ -1,8 +1,8 @@
 <?php if (isset($this->params['recover_password']) and $this->params['recover_password'] === true) { ?>
-	<div class="wrapper" id="wrapper">
-		<div class="login_menu" id="login_menu">
-				<span class="title">set new password</span>
-				<form id="login_form" onsubmit="check(event, this, 'user/recover/password/confirm/set')">
+	<div class="wrapper">
+		<div class="menu">
+				<span class="title">set new pass</span>
+				<form id="form" onsubmit="check(event, this, 'user/recover/password/confirm/set')">
 					<div id="menu">
 						<div id="password">
 				    		<label for="password"><b>new password<b></label><br>
@@ -22,23 +22,23 @@
     </div>
 <?php }
 else { ?>
-    <div class="wrapper" id="wrapper">
-		    <div class="login_menu" id="login_menu">
-				<span class="title">send recovery link</span>
-				<form id="login_form" onsubmit="check(event, this, 'user/recover/password/request')">
+    <div class="wrapper">
+		    <div class="menu">
+				<span class="title">recover pass</span>
+				<form id="form" onsubmit="check(event, this, 'user/recover/password/request')">
 					<div id="menu">
 						<div id="login">
-				    		<label for="login"><b>login<b></label><br>
-							<input class="input_zone" type="text" name="login" id="login"><br>
+							<p><b>login</b></p>
+							<input class="input_zone" type="text" name="login"><br>
 						</div>
 						<div id="email">
-				    		<label for="email"><b>email<b></label><br>
-				    		<input class="input_zone" type="email" name="email" id="email"><br>
+							<p><b>email</b></p>
+				    		<input class="input_zone" type="email" name="email"><br>
 						</div>
 					</div>
-				    <button class="submit_button" id="send_button">send</button><br>
+				    <button class="submit_button">send</button><br>
 			    </form>
-				<a href="user/login" id="link_back">back</a>
+				<a id="link_back" href="user/login">back</a>
 		    </div>
     </div>
 <?php }

@@ -5,7 +5,8 @@
 @keyframes         fade-in {   0% { opacity: 0.1; }   100% { opacity: 1; }   }
 
 body {
-    font-family: 'Amatic SC', cursive;
+    /*font-family: 'Amatic SC', cursive;*/
+    font-family: 'Open Sans Condensed', sans-serif;
     background: silver;
     display: flex;
     flex-direction: column;
@@ -129,21 +130,9 @@ header {
     box-shadow: 0 0 15px 2px gold;
 }
 
-/*LOGIN STYLES*/
+/*ENTER MENUS STYLES*/
 
-.login_menu {
-    width: 280px;
-    background: goldenrod;
-    border-radius: 5px;
-    margin: 10% auto;
-    text-align: center;
-    font-weight: bold;
-    box-shadow: 0 0 2px 1px gray;
-}
-
-/*REGISTRATION STYLES*/
-
-.registration_menu {
+.menu {
     width: 280px;
     background: goldenrod;
     border-radius: 5px;
@@ -156,8 +145,7 @@ header {
 /*BUTTON STYLES*/
 
 .submit_button {
-    font-family: 'Amatic SC', cursive;
-    font-size: 20px;
+    font-size: 14px;
     width: 60px;
     margin: 12px auto;
     background-color: silver;
@@ -168,8 +156,7 @@ header {
 }
 
 .help_button {
-    font-family: 'Amatic SC', cursive;
-    font-size: 16px;
+    font-size: 14px;
     width: 90px;
     margin: 12px auto;
     background-color: silver;
@@ -220,7 +207,7 @@ header {
     margin: 5% auto;
     background: goldenrod;
     border-radius: 10px;
-    font-size: 24px;
+    font-size: 20px;
     font-weight: bold;
     text-align: center;
     padding: 10px 10px;

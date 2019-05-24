@@ -2,12 +2,12 @@
 
 	class componentMail {
 
-		public static function sendActivationLink($token) {
+		public static function sendActivationLink($token, $post) {
 
-			$login = $_POST['login'];
+			$login = $post['login'];
 			//$path = 'http://localhost:8080/user/register/confirm/'.$token;
 			$path = 'http://localhost/user/register/confirm/'.$token;
-			$to = $_POST['email'];
+			$to = $post['email'];
 			$headers =	"From: camagrubot@gmail.com\r\n".
 				"Reply-To: no-reply\r\n".
 				"MIME=Version: 1.0\r\n".

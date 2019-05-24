@@ -1,21 +1,22 @@
 <div class="wrapper">
-	<div class="login_menu">
+	<div class="menu">
 		<span class="title">sign in</span>
-		<form id="login_form" onsubmit="check(event, this, 'user/login/validate')">
+		<form id="form" onsubmit="check(event, this, 'user/login/validate')">
 			<div id="menu">
 				<div id="login">
-					<label for="login"><b>login<b></label><br>
-					<input class="input_zone" type="text" name="login" id="login"><br>
+					<p><b>login</b></p>
+					<input class="input_zone" type="text" name="login"><br>
 				</div>
 				<div id="password">
-					<label for="password">password</label><br>
-					<input class="input_zone" type="password" name="password" id="password"><br>
+					<p><b>password</b></p>
+					<input class="input_zone" type="password" name="password"><br>
 				</div>
 			</div>
 			<button type="submit" class="submit_button">login</button>
 		</form>
 		<form action="user/recover/password" method="post">
 			<button type="submit" class="help_button">forgot password?</button>
-		</form><a href="/">back</a>
+		</form>
+		<a id="link_back" href="/">back</a>
 	</div>
 </div>

@@ -52,20 +52,20 @@
 		}
 
 		//checks for login and/or email exist in database
-		private function validateIfExistsInDb($request) {
+		private function validateIfExistsInDb($request, $post) {
 
 			if ($request === 'check_login') {
-				$pseudo = [':login' => $_POST['login']];
+				$pseudo = [':login' => $post['login']];
 				$query = 'SELECT login FROM users WHERE login = :login';
 				$error = ['id' => 'login', 'warning' => 'this login is already taken'];
 			}
 			elseif ($request === 'check_email') {
-				$pseudo = [':email' => $_POST['email']];
+				$pseudo = [':email' => $post['email']];
 				$query = 'SELECT email FROM users WHERE email = :email';
 				$error = ['id' => 'email', 'warning' => 'this email is already taken'];
 			}
 			elseif ($request === 'check_both') {
-				$pseudo = [':login' => $_POST['login'], ':email' => $_POST['email']];
+				$pseudo = [':login' => $post['login'], ':email' => $post['email']];
 				$query = 'SELECT login FROM users WHERE login = :login OR email = :email';
 				$error = ['id' => 'menu', 'warning' => 'login or/and menu are already taken'];
 			}
@@ -80,7 +80,7 @@
 
 		//REGISTRATION
 		//checks input registration data from user
-		public function validateRegistrationData() {
+		public function validateRegistrationData($post) {
 
 			$request = [
 				'login' => true,
@@ -89,21 +89,21 @@
 				'confirm' => true
 			];
 
-			if (($result = self::validateIsFullFields($request)) !== true)
+			if (($result = self::validateIsFullFields($request, $post)) !== true)
 				return $result;
-			elseif (($result = self::validateInputData($request)) !== true)
+			elseif (($result = self::validateInputData($request, $post)) !== true)
 				return $result;
-			elseif (($result = self::validateIfExistsInDb('check_both')) !== true)
+			elseif (($result = self::validateIfExistsInDb('check_both', $post)) !== true)
 				return $result;
 			return true;
 		}
 
 		//inserts valid registration data into database
-		public function insertValidRegistrationDataInDb($token) {
+		public function insertValidRegistrationDataInDb($token, $post) {
 
-			$login = $_POST['login'];
-			$email = $_POST['email'];
-			$password = password_hash($_POST['password'], PASSWORD_BCRYPT);
+			$login = $post['login'];
+			$email = $post['email'];
+			$password = password_hash($post['password'], PASSWORD_BCRYPT);
 			$this->query("INSERT INTO users(login, email, password, token) 
 										VALUES ('$login', '$email', '$password', '$token')");
 		}
