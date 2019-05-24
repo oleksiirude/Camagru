@@ -1,5 +1,11 @@
 AddType application/x-httpd-php .htm .html
 
+Options All -Indexes
+
+<FilesMatch "^(autoloader|debug).php$">
+  deny from all
+</FilesMatch>
+
 RewriteEngine On
 
 RewriteCond %{REQUEST_FILENAME} !-d

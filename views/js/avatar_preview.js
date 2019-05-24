@@ -12,7 +12,7 @@ function getAvatarPreview() {
 			new_elem = document.createElement('p');
 			new_elem.id = 'temp_preview';
 			new_elem.innerHTML = 'too big file!';
-			new_elem.setAttribute('style', 'color: red; font-size: xx-large');
+			new_elem.setAttribute('style', 'color: red; font-size: large');
 			preview.appendChild(new_elem);
 			return;
 		}
@@ -32,7 +32,7 @@ function getAvatarPreview() {
 		new_elem = document.createElement('p');
 		new_elem.id = 'temp_preview';
 		new_elem.innerHTML = 'invalid file!';
-		new_elem.setAttribute('style', 'color: red; font-size: xx-large');
+		new_elem.setAttribute('style', 'color: red; font-size: large');
 		preview.appendChild(new_elem);
 	}
 }

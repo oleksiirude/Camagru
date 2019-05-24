@@ -33,7 +33,7 @@ function ajax(event, object, action) {
 		if (ajax.readyState === 4) {
 			let result = JSON.parse(ajax.responseText);
 			//let result = ajax.responseText;
-			//console.log(result);
+			console.log(result);
 			if (result === true)
 				location.href = '';
 			else if (result === 'link')
@@ -45,6 +45,17 @@ function ajax(event, object, action) {
 			else if (result === 'registered')
 				messageDone("activation link has been sent<br>check email",
 					'main page', '/');
+			else if (result === 'login_changed')
+				messageDone("your login has been changed<br>",
+					'back', 'user/settings');
+			else if (result === 'email_changed')
+				messageDone("your email has been changed<br>",
+					'back', 'user/settings');
+			else if (result === 'password_changed')
+				messageDone("your password has been changed<br>",
+					'back', 'user/settings');
+			else if (result === 'avatar_changed')
+				location.href = 'user/profile';
 			else
 				addWarning(result);
 		}

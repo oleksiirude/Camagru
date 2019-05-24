@@ -110,11 +110,12 @@
 
 		public function actionSetNewLogin() {
 			$this->onlyForLogged();
-			if (($result = $this->model->changeLogin()) !== true) {
-				$this->view->showMessage('Something went wrong', $result);
-				exit;
+			if (($result = $this->model->changeLogin($this->post)) !== true) {
+				echo json_encode($result);
+				return true;
 			}
-			$this->view->showMessage('Camagru: success', 'Your login has been changed!');
+			echo json_encode('login_changed');
+			return true;
 		}
 
 		//CHANGE EMAIL
@@ -125,15 +126,14 @@
 		}
 
 		public function actionSetNewEmail() {
-			if(!isset($_SESSION['user_logged'])) {
-				componentView::errorHandle(404);
+			$this->onlyForLogged();
+			if (($result = $this->model->changeEmail($this->post)) !== true) {
+				echo json_encode($result);
+				return true;
 			}
-			elseif (($result = $this->model->changeEmail()) !== true) {
-				$this->view->showMessage('Camagru: something went wrong', $result);
-				exit;
-			}
-			componentMail::sendToNewEmail();
-			$this->view->showMessage('Email changing', 'Your email has been changed!');
+			componentMail::sendToNewEmail($this->post);
+			echo json_encode('email_changed');
+			return true;
 		}
 
 		//PASSWORD CHANGE
@@ -144,14 +144,13 @@
 		}
 
 		public function actionSetNewPassword() {
-			if(!isset($_SESSION['user_logged']))
-				componentView::redirect('');
-			elseif (($result = $this->model->setNewPassword()) !== true) {
-				$this->view->showMessage('Camagru: something went wrong', $result);
-				exit;
+			$this->onlyForLogged();
+			if (($result = $this->model->setNewPassword($this->post)) !== true) {
+				echo json_encode($result);
+				return true;
 			}
-			$this->view->showMessage('Camagru: success', 'Your password has been changed!');
-
+			echo json_encode('password_changed');
+			return true;
 		}
 
 		//PROFILE
@@ -168,7 +167,7 @@
 			return true;
 		}
 
-		//DELETE ACCOUNT
+		//DELETE ACCOUNT -> DO MORE COMPLEX DELETE!
 		public function actionDeleteAccount() {
 			$this->onlyForLogged();
 			$this->view->render('Camagru: delete account');
@@ -176,7 +175,6 @@
 
 		public function actionDeleteAccountConfirm() {
 			$this->onlyForLogged();
-			//add complex deleting!
 			$this->model->deleteAccount();
 			session_destroy();
 			componentView::redirect('');
@@ -189,11 +187,13 @@
 		}
 
 		public function actionChangeAvatarSet() {
-
 			$this->onlyForLogged();
-			if (($result = $this->model->setNewAvatar()) !== true)
-				$this->view->showMessage('Something went wrong', $result);
-			componentView::redirect('user/settings');
+			if (($result = $this->model->setNewAvatar()) !== true) {
+				echo json_encode($result);
+				return true;
+			}
+			echo json_encode(true);
+			return true;
 		}
 
 		public function actionChangeAvatarDelete() {
@@ -201,11 +201,5 @@
 			$this->onlyForLogged();
 			$this->model->setAvatarDelete();
 			componentView::redirect('user/settings');
-		}
-
-		//STATUS OR ERROR MESSAGE (temporary, I hope)
-		public function showStatus($title, $result) {
-			$this->view->showMessage($title, $result);
-			exit;
 		}
 	}

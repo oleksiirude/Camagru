@@ -15,5 +15,6 @@
 	<?php require_once (ROOT.'views/default/footer.php'); ?>
 	<script src="views/js/avatar_preview.js"></script>
 	<script src="views/js/ajax.js"></script>
+	<script src="views/js/ajax_img.js"></script>
 </body>
 </html>

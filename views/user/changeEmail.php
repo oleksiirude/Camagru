@@ -1,12 +1,16 @@
 <div class="wrapper">
-    <div class="change_menu">
+	<div class="menu">
 	    <span class="title">change email</span>
-		    <form action="user/change/email/set" method="post">
-			    <label for="email">New email:</label>
-				<input class="input_zone" type="text" name="email" id="email"
-					   data-tooltip="• example@example.com"><br>
-			    <button type="submit" class="submit_button">change</button>
-		    </form>
-		<br><a href="user/settings">back</a>
-    </div>
+			<form id="form" onsubmit="check(event, this, 'user/change/email/set')">
+				<div id="menu">
+					<div id="email">
+						<p><b>new email</b></p>
+						<input class="input_zone" type="text" name="email"
+							   data-tooltip="• example@example.com"><br>
+					</div>
+				</div>
+				<button type="submit" class="submit_button">change</button>
+			</form>
+		<br><a id="link_back" href="user/settings">back</a>
+	</div>
 </div>

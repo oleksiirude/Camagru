@@ -1,5 +1,5 @@
 <div class="wrapper">
-	<div class="change_menu">
+	<div class="menu">
 		<span class="title">delete account</span>
 		<form action="user/delete/account/confirm" method="post">
 			<p>are you sure?</p>

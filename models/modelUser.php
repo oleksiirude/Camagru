@@ -200,47 +200,47 @@
 		}
 
 		//PASSWORD CHANGE
-		private function validateSetNewPasswordIntention() {
+		private function validateSetNewPasswordIntention($post) {
 
 			$request = ['password' => true, 'confirm' => true];
 
-			if (($result = self::validateIsFullFields($request)) !== true)
+			if (($result = self::validateIsFullFields($request, $post)) !== true)
 				return $result;
-			elseif (($result = self::validateInputData($request)) !== true)
+			elseif (($result = self::validateInputData($request, $post)) !== true)
 				return $result;
 			return true;
 		}
 
-		public function setNewPassword() {
-			if (($result = $this->validateSetNewPasswordIntention()) !== true)
+		public function setNewPassword($post) {
+			if (($result = $this->validateSetNewPasswordIntention($post)) !== true)
 				return $result;
 			$login = $_SESSION['user_logged'];
-			$password = password_hash($_POST['password'], PASSWORD_BCRYPT);
+			$password = password_hash($post['password'], PASSWORD_BCRYPT);
 			$this->query("UPDATE users SET password = '$password' 
 										WHERE users.login = '$login'");
 			return true;
 		}
 
 		//EMAIL CHANGE
-		private function validateChangeEmailIntention() {
+		private function validateChangeEmailIntention($post) {
 
 			$request = ['email' => true];
 
-			if (($result = self::validateIsFullFields($request)) !== true)
+			if (($result = self::validateIsFullFields($request, $post)) !== true)
 				return $result;
-			elseif (($result = self::validateInputData($request)) !== true)
+			elseif (($result = self::validateInputData($request, $post)) !== true)
 				return $result;
-			elseif (($result = self::validateIfExistsInDb('check_email')) !== true)
+			elseif (($result = self::validateIfExistsInDb('check_email', $post)) !== true)
 				return $result;
 			return true;
 		}
 
-		public function changeEmail() {
+		public function changeEmail($post) {
 
-			if (($result = $this->validateChangeEmailIntention()) !== true)
+			if (($result = $this->validateChangeEmailIntention($post)) !== true)
 				return $result;
 			$login = $_SESSION['user_logged'];
-			$new_email = $_POST['email'];
+			$new_email = $post['email'];
 			$this->query("UPDATE users SET email = '$new_email' 
 										WHERE users.login = '$login'");
 			$_SESSION['email'] = $new_email;
@@ -248,25 +248,25 @@
 		}
 
 		//LOGIN CHANGE
-		private function validateChangeLoginIntention() {
+		private function validateChangeLoginIntention($post) {
 
 			$request = ['login' => true];
 
-			if (($result = self::validateIsFullFields($request)) !== true)
+			if (($result = self::validateIsFullFields($request, $post)) !== true)
 				return $result;
-			elseif (($result = self::validateInputData($request)) !== true)
+			elseif (($result = self::validateInputData($request, $post)) !== true)
 				return $result;
-			elseif (($result = self::validateIfExistsInDb('check_login')) !== true)
+			elseif (($result = self::validateIfExistsInDb('check_login', $post)) !== true)
 				return $result;
 			return true;
 		}
 
-		public function changeLogin() {
+		public function changeLogin($post) {
 
-			if (($result = $this->validateChangeLoginIntention()) !== true)
+			if (($result = $this->validateChangeLoginIntention($post)) !== true)
 				return $result;
 			$old_login = $_SESSION['user_logged'];
-			$new_login = $_POST['login'];
+			$new_login = $post['login'];
 			$this->query("UPDATE users SET login = '$new_login' 
 										WHERE users.login = '$old_login'");
 			$_SESSION['user_logged'] = $new_login;

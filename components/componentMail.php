@@ -37,9 +37,9 @@
 			mail($to, $subject, $message, $headers);
 		}
 
-		public static function sendToNewEmail() {
+		public static function sendToNewEmail($post) {
 			$login = $_SESSION['user_logged'];
-			$to = $_POST['email'];
+			$to = $post['email'];
 			$headers =	"From: camagrubot@gmail.com\r\n".
 				"Reply-To: no-reply\r\n".
 				"MIME=Version: 1.0\r\n".

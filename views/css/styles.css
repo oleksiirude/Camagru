@@ -27,9 +27,7 @@ a:hover { transition: 220ms; color: lightgray }
 /*smooth start effect ot choosen elements*/
 #temp_preview { animation: fade-in 0.7s linear }
 
-.enter_menu, .login_menu, .registration_menu,
-.settings_menu, .change_avatar_menu, .change_menu,
-.tooltip, .avatar, .error, .message {
+.menu, .enter_menu, .settings_menu, .tooltip, .avatar, .error, .message {
     -webkit-animation: fade-in 0.3s linear; /* Safari 4+ */
     -moz-animation: fade-in 0.3s linear; /* Fx 5+ */
     -o-animation: fade-in 0.3s linear; /* Opera 12+ */
@@ -191,17 +189,6 @@ header {
     box-shadow: 0 0 2px 1px gray;
 }
 
-.change_menu {
-    font-weight: bold;
-    font-size: 20px;
-    width: 280px;
-    background: goldenrod;
-    border-radius: 5px;
-    margin: 10% auto;
-    text-align: center;
-    box-shadow: 0 0 2px 1px gray;
-}
-
 .message {
     width: 260px;
     margin: 5% auto;
@@ -235,18 +222,7 @@ header {
 }
 
 /*CHANGE AVATAR*/
-.change_avatar_menu {
-    font-weight: bold;
-    font-size: 20px;
-    width: 280px;
-    background: goldenrod;
-    border-radius: 5px;
-    margin: 10% auto;
-    text-align: center;
-    box-shadow: 0 0 2px 1px gray;
-}
-
-.upload_avatar input[type="file"] {display: none}
+.upload_avatar input[type="file"] { display: none }
 
 .upload_avatar label {
     display: inline-block;

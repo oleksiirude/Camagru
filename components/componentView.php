@@ -37,11 +37,6 @@
 			exit;
 		}
 
-		public function showMessage($title, $message) {
-			require_once (ROOT."views/default/message.php");
-			exit;
-		}
-
 		public static function errorHandle($code) {
 			http_response_code($code);
 			require_once (ROOT.'views/error/error.php');
@@ -55,10 +50,10 @@
 
 			//checks real MIME-type
 			if (!preg_match('/.*[.jpg|.jpeg|.png]$/i', $mime))
-				return 'inappropriate file!';
+				return ['id' => 'email', 'warning' => 'inappropriate file!'];
 			//checks upload status
 			if ($errorCode !== UPLOAD_ERR_OK || !is_uploaded_file($filePath))
-				return 'upload error, try later!';
+				return ['id' => 'email', 'warning' => 'upload error, try later!'];
 			return true;
 		}
 
