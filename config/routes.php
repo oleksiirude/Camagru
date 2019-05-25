@@ -135,4 +135,9 @@
 			'action' => 'workshop'
 		],
 
+		'workshop/savephoto' => [
+			'controller' => 'workshop',
+			'action' => 'savePhoto'
+		],
+
 	];

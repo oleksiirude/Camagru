@@ -16,5 +16,6 @@
 	<script src="views/js/avatar_preview.js"></script>
 	<script src="views/js/ajax.js"></script>
 	<script src="views/js/ajax_img.js"></script>
+    <script src="views/js/cam.js"></script>
 </body>
 </html>
