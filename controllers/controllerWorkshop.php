@@ -8,7 +8,7 @@
 			$this->model = new modelUser();
 		}
 
-		//Workshop
+		//workshop
 		public function actionWorkshop() {
 			$this->onlyForLogged();
 			$this->view->render('Camagru: workshop');
@@ -17,10 +17,11 @@
 
 		public function actionSavePhoto() {
 			$base64 = str_replace(' ', '+', json_decode($_POST['photo']));
+			$return = $base64;
 			$base64 = str_replace('data:image/png;base64,', '', $base64);
 			$photo = base64_decode($base64);
-			file_put_contents('tmp/'.md5(time()).'.png',$photo);
-			echo json_encode(true);
+			//file_put_contents('tmp/'.md5(time()).'.png',$photo);
+			echo $return;
 			return true;
 		}
 	}

@@ -2,12 +2,14 @@ function getWebcam() {
     let video = document.getElementById('video');
 
     if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-        document.getElementsByClassName('camera')[0].remove();
-        document.getElementById('video').setAttribute('style', 'display: block');
-        document.getElementById('snap').setAttribute('style', 'display: block');
 
         navigator.mediaDevices.getUserMedia({video: true}).then(function (stream) {
             video.srcObject = stream;
+            document.getElementsByClassName('camera')[0].remove();
+            document.getElementById('video').setAttribute('style', 'display: block');
+            setTimeout(() =>
+                document.getElementById('snap').setAttribute('style', 'display: block'),
+                1200);
             video.play();
         })
     }
@@ -21,6 +23,7 @@ function makeSnap() {
     context.drawImage(video, 0, 0, 640, 480);
     ajax_test(canvas.toDataURL());
 }
+
 
 function ajax_test(photo) {
 
@@ -38,11 +41,17 @@ function ajax_test(photo) {
         if (ajax.readyState === 4) {
             //let result = JSON.parse(ajax.responseText);
             let result = ajax.responseText;
-            console.log(result);
-            if (result === true)
-               console.log('ok');
-            else
-                console.log('ko');
+            if (result) {
+                let pics = document.getElementsByClassName('pics')[0];
+                console.log(pics.childElementCount);
+                if (pics.childElementCount >= 2)
+                    pics.childNodes[0].remove();
+                console.log(pics);
+                let img = document.createElement('img');
+                img.setAttribute('src', result);
+                img.setAttribute('class', 'pic');
+                pics.appendChild(img);
+            }
         }
     }
 }

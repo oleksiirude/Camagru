@@ -275,16 +275,26 @@ header {
 #video, #canvas { margin-left: 10px }
 #canvas {margin-top: 4px; display: none}
 #snap {margin-top: 20px}
-.preview {
-    margin: 10px auto 10px auto;
-    background-color: darkgrey;
-    width: 700px;
-    height: 500px;
+
+.pics{
     border-radius: 5px;
+    margin: 8px auto 10px auto;
+    background-color: darkgrey;
+    width: 820px;
+    min-height: 210px;
+    padding-top: 10px;
+    padding-left: 20px;
+}
+
+.pic {
+    width: 260px;
+    height: 200px;
+    border-radius: 5px;
+    border: grey solid 2px;
+    margin-left: 2px;
 }
 
 /*CHANGE END*/
-
 footer {
     width: 68%;
     min-width: 600px;
