@@ -43,10 +43,10 @@ function ajax_test(photo) {
             let result = ajax.responseText;
             if (result) {
                 let pics = document.getElementsByClassName('pics')[0];
-                console.log(pics.childElementCount);
+                //console.log(pics.childElementCount);
                 if (pics.childElementCount >= 2)
                     pics.childNodes[0].remove();
-                console.log(pics);
+                //console.log(pics);
                 let img = document.createElement('img');
                 img.setAttribute('src', result);
                 img.setAttribute('class', 'pic');

@@ -4,8 +4,15 @@
 @-o-keyframes      fade-in {   0% { opacity: 0.1; }   100% { opacity: 1; }   }
 @keyframes         fade-in {   0% { opacity: 0.1; }   100% { opacity: 1; }   }
 
+::-webkit-scrollbar { width: 3px; height: 3px; }
+::-webkit-scrollbar-button { background-color: #666; }
+::-webkit-scrollbar-track {  background-color: #999; }
+::-webkit-scrollbar-track-piece { background-color: #ffffff; }
+::-webkit-scrollbar-thumb { height: 50px; background-color: #666; border-radius: 3px; }
+::-webkit-scrollbar-corner { background-color: #999; }
+::-webkit-resizer { background-color: #666; }
+
 body {
-    /*font-family: 'Amatic SC', cursive;*/
     font-family: 'Open Sans Condensed', sans-serif;
     background: silver;
     display: flex;
@@ -27,7 +34,7 @@ a:hover { transition: 220ms; color: lightgray }
 /*smooth start effect ot choosen elements*/
 #temp_preview { animation: fade-in 0.7s linear }
 
-.menu, .enter_menu, .settings_menu, .tooltip, .avatar, .error, .message, #snap {
+.menu, .enter_menu, .settings_menu, .tooltip, .avatar, .error, .message, .pic, #snap {
     -webkit-animation: fade-in 0.3s linear; /* Safari 4+ */
     -moz-animation: fade-in 0.3s linear; /* Fx 5+ */
     -o-animation: fade-in 0.3s linear; /* Opera 12+ */
@@ -92,6 +99,8 @@ header {
     width: 70%;
     min-width: 730px;
     margin: auto;
+    padding-left: 10px;
+    padding-right: 10px;
     background: lightgrey;
     box-shadow: 0 0 2px 1px grey;
     z-index: 1;
@@ -253,6 +262,7 @@ header {
     width: 700px;
     height: 530px;
     padding-top: 10px;
+    box-shadow: 1px 1px 1px 1px grey;
 }
 
 .camera {
@@ -270,6 +280,7 @@ header {
     height: 490px;
     margin-left: auto;
     margin-right: auto;
+    box-shadow: 1px 1px 1px 1px grey;
 }
 
 #video, #canvas { margin-left: 10px }
@@ -280,10 +291,12 @@ header {
     border-radius: 5px;
     margin: 8px auto 10px auto;
     background-color: darkgrey;
-    width: 820px;
+    max-width: 820px;
+    min-width: 680px;
     min-height: 210px;
     padding-top: 10px;
     padding-left: 20px;
+    box-shadow: 1px 1px 1px 1px grey;
 }
 
 .pic {
@@ -291,7 +304,40 @@ header {
     height: 200px;
     border-radius: 5px;
     border: grey solid 2px;
-    margin-left: 2px;
+    margin-left: 8px;
+    box-shadow: 1px 1px 1px 1px dimgrey;
+}
+
+.masks {
+    border-radius: 5px;
+    margin: 8px auto 10px auto;
+    background-color: darkgrey;
+    max-width: 820px;
+    min-width: 680px;
+    height: 200px;
+    padding-top: 10px;
+    padding-left: 20px;
+    box-shadow: 1px 1px 1px 1px grey;
+    overflow: auto;
+}
+
+ul {
+    margin: 0;
+    padding: 4px;
+    text-align: center;
+}
+
+.mask {
+    width: 100px;
+    cursor: pointer;
+}
+
+ul li  {
+    display: inline;
+}
+
+.masks_list {
+    display: inline;
 }
 
 /*CHANGE END*/
