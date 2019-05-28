@@ -7,14 +7,20 @@
       <change beforePath="$PROJECT_DIR$/config/config.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/config.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/routes.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/routes.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controllers/controllerUser.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/controllerUser.php" afterDir="false" />
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/controllers/controllerWorkshop.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/controllerWorkshop.php" afterDir="false" />
+=======
+>>>>>>> 0251df9a219e502e3f91d8b929742b2a2cbdb9d4
       <change beforePath="$PROJECT_DIR$/models/modelUser.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/modelUser.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/css/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/views/css/styles.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/default/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/default/index.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/js/ajax.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/views/js/ajax_img.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/views/js/avatar_preview.js" beforeDir="false" afterPath="$PROJECT_DIR$/views/js/avatar_preview.js" afterDir="false" />
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/views/js/dragndrop.js" beforeDir="false" afterPath="$PROJECT_DIR$/views/js/dragndrop.js" afterDir="false" />
+=======
+>>>>>>> 0251df9a219e502e3f91d8b929742b2a2cbdb9d4
       <change beforePath="$PROJECT_DIR$/views/pictures/avatars/4.jpeg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/views/pictures/avatars/5.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/views/pictures/avatars/5.jpeg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/user/changeAvatar.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/user/changeAvatar.php" afterDir="false" />
@@ -24,7 +30,10 @@
       <change beforePath="$PROJECT_DIR$/views/user/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/user/login.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/user/recoverPassword.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/user/recoverPassword.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/user/register.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/user/register.php" afterDir="false" />
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/views/workshop/workshop.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/workshop/workshop.php" afterDir="false" />
+=======
+>>>>>>> 0251df9a219e502e3f91d8b929742b2a2cbdb9d4
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -33,6 +42,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
+<<<<<<< HEAD
     <splitter split-orientation="horizontal" split-proportion="0.52472705">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
@@ -41,24 +51,84 @@
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="104">
                   <caret line="16" selection-start-line="16" selection-end-line="16" />
+=======
+    <splitter split-orientation="horizontal" split-proportion="0.4874759">
+      <split-first>
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/views/js/avatar_preview.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="850">
+                  <caret line="50" column="45" selection-start-line="50" selection-start-column="45" selection-end-line="50" selection-end-column="45" />
+>>>>>>> 0251df9a219e502e3f91d8b929742b2a2cbdb9d4
                 </state>
               </provider>
             </entry>
           </file>
           <file pinned="false" current-in-tab="true">
+<<<<<<< HEAD
             <entry file="file://$PROJECT_DIR$/views/js/dragndrop.js">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="476">
                   <caret line="28" column="33" lean-forward="true" selection-start-line="28" selection-start-column="33" selection-end-line="28" selection-end-column="33" />
+=======
+            <entry file="file://$PROJECT_DIR$/controllers/controllerUser.php">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="1105">
+                  <caret line="208" column="52" selection-start-line="208" selection-start-column="52" selection-end-line="208" selection-end-column="52" />
+                  <folding>
+                    <element signature="n#__construct#0;n#controllerUser#0;n#!!top" />
+                    <element signature="n#actionRegister#0;n#controllerUser#0;n#!!top" />
+                    <element signature="n#actionRegisterValidate#0;n#controllerUser#0;n#!!top" />
+                    <element signature="n#actionConfirmRegistration#0;n#controllerUser#0;n#!!top" />
+                    <element signature="n#actionLogin#0;n#controllerUser#0;n#!!top" />
+                    <element signature="n#actionLoginValidate#0;n#controllerUser#0;n#!!top" />
+                    <element signature="n#actionLogout#0;n#controllerUser#0;n#!!top" />
+                    <element signature="n#actionRecoverPassword#0;n#controllerUser#0;n#!!top" />
+                    <element signature="n#actionRecoverPasswordSendLink#0;n#controllerUser#0;n#!!top" />
+                    <element signature="n#actionRecoverPasswordConfirm#0;n#controllerUser#0;n#!!top" />
+                    <element signature="n#actionRecoverSetNewPassword#0;n#controllerUser#0;n#!!top" />
+                    <element signature="n#actionChangeLogin#0;n#controllerUser#0;n#!!top" />
+                    <element signature="n#actionSetNewLogin#0;n#controllerUser#0;n#!!top" />
+                    <element signature="n#actionChangeEmail#0;n#controllerUser#0;n#!!top" />
+                    <element signature="n#actionSetNewEmail#0;n#controllerUser#0;n#!!top" />
+                    <element signature="n#actionChangePassword#0;n#controllerUser#0;n#!!top" />
+                    <element signature="n#actionSetNewPassword#0;n#controllerUser#0;n#!!top" />
+                    <element signature="n#actionProfile#0;n#controllerUser#0;n#!!top" />
+                    <element signature="n#actionSettings#0;n#controllerUser#0;n#!!top" />
+                    <element signature="n#actionDeleteAccount#0;n#controllerUser#0;n#!!top" />
+                    <element signature="n#actionDeleteAccountConfirm#0;n#controllerUser#0;n#!!top" />
+                    <element signature="n#actionChangeAvatar#0;n#controllerUser#0;n#!!top" />
+                    <element signature="n#actionChangeAvatarSet#0;n#controllerUser#0;n#!!top" />
+                    <element signature="n#actionChangeAvatarSet#0;n#controllerUser#0;n#!!top" />
+                    <element signature="n#actionChangeAvatarDelete#0;n#controllerUser#0;n#!!top" />
+                  </folding>
+>>>>>>> 0251df9a219e502e3f91d8b929742b2a2cbdb9d4
                 </state>
               </provider>
             </entry>
           </file>
           <file pinned="false" current-in-tab="false">
+<<<<<<< HEAD
             <entry file="file://$PROJECT_DIR$/views/workshop/workshop.php">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="34">
                   <caret line="2" column="23" selection-start-line="2" selection-start-column="23" selection-end-line="2" selection-end-column="23" />
+=======
+            <entry file="file://$PROJECT_DIR$/components/componentController.php">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="34">
+                  <caret line="2" column="19" selection-start-line="2" selection-start-column="19" selection-end-line="2" selection-end-column="19" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/views/user/changeAvatar.php">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="68">
+                  <caret line="4" column="82" selection-start-line="4" selection-start-column="82" selection-end-line="4" selection-end-column="82" />
+>>>>>>> 0251df9a219e502e3f91d8b929742b2a2cbdb9d4
                 </state>
               </provider>
             </entry>
@@ -67,20 +137,54 @@
       </split-first>
       <split-second>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+<<<<<<< HEAD
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/controllers/controllerWorkshop.php">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="600">
                   <caret line="53" column="9" selection-start-line="53" selection-start-column="9" selection-end-line="53" selection-end-column="9" />
+=======
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/controllers/controllerWorkshop.php">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="306">
+                  <caret line="18" column="12" selection-start-line="18" selection-start-column="12" selection-end-line="22" selection-end-column="66" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/components/componentView.php">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="442">
+                  <caret line="78" column="80" selection-start-line="78" selection-start-column="80" selection-end-line="78" selection-end-column="80" />
+                  <folding>
+                    <element signature="n#__construct#0;n#componentView#0;n#!!top" />
+                    <element signature="n#specifyPath#0;n#componentView#0;n#!!top" />
+                    <element signature="n#render#0;n#componentView#0;n#!!top" />
+                    <element signature="n#toMainPage#0;n#componentView#0;n#!!top" />
+                    <element signature="n#errorHandle#0;n#componentView#0;n#!!top" />
+                    <element signature="n#basicPictureChecks#0;n#componentView#0;n#!!top" />
+                    <element signature="n#setOrientation#0;n#componentView#0;n#!!top" />
+                    <element signature="n#resizeForAvatarPreview#0;n#componentView#0;n#!!top" />
+                  </folding>
+>>>>>>> 0251df9a219e502e3f91d8b929742b2a2cbdb9d4
                 </state>
               </provider>
             </entry>
           </file>
           <file pinned="false" current-in-tab="false">
+<<<<<<< HEAD
             <entry file="file://$PROJECT_DIR$/views/css/styles.css">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="289">
                   <caret line="288" column="25" selection-start-line="288" selection-start-column="25" selection-end-line="288" selection-end-column="25" />
+=======
+            <entry file="file://$PROJECT_DIR$/config/routes.php">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="401">
+                  <caret line="116" column="45" selection-start-line="116" selection-start-column="45" selection-end-line="116" selection-end-column="45" />
+>>>>>>> 0251df9a219e502e3f91d8b929742b2a2cbdb9d4
                 </state>
               </provider>
             </entry>
@@ -100,6 +204,11 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
+<<<<<<< HEAD
+=======
+      <find>'Amatic SC'</find>
+      <find>butt</find>
+>>>>>>> 0251df9a219e502e3f91d8b929742b2a2cbdb9d4
       <find>messa</find>
       <find>validateRe</find>
       <find>login_from</find>
@@ -128,8 +237,11 @@
       <find>new_elem</find>
       <find>avatar_preview</find>
       <find>tit</find>
+<<<<<<< HEAD
       <find>cons</find>
       <find>snap</find>
+=======
+>>>>>>> 0251df9a219e502e3f91d8b929742b2a2cbdb9d4
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -138,6 +250,10 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
+<<<<<<< HEAD
+=======
+        <option value="$PROJECT_DIR$/views/user/change_password.php" />
+>>>>>>> 0251df9a219e502e3f91d8b929742b2a2cbdb9d4
         <option value="$PROJECT_DIR$/debug.php" />
         <option value="$PROJECT_DIR$/views/default/temporary.php" />
         <option value="$PROJECT_DIR$/views/workshop/dashboard.php" />
@@ -166,6 +282,11 @@
         <option value="$PROJECT_DIR$/.htaccess" />
         <option value="$PROJECT_DIR$/views/pictures/avatars/.htaccess" />
         <option value="$PROJECT_DIR$/models/.htaccess" />
+<<<<<<< HEAD
+=======
+        <option value="$PROJECT_DIR$/controllers/controllerWorkshop.php" />
+        <option value="$PROJECT_DIR$/views/workshop/workshop.php" />
+>>>>>>> 0251df9a219e502e3f91d8b929742b2a2cbdb9d4
         <option value="$PROJECT_DIR$/views/js/cam.js" />
         <option value="$PROJECT_DIR$/config/config.php" />
         <option value="$PROJECT_DIR$/components/componentMail.php" />
@@ -181,14 +302,21 @@
         <option value="$PROJECT_DIR$/views/user/changeAvatar.php" />
         <option value="$PROJECT_DIR$/controllers/controllerUser.php" />
         <option value="$PROJECT_DIR$/views/js/avatar_preview.js" />
+<<<<<<< HEAD
+=======
+        <option value="$PROJECT_DIR$/views/css/styles.css" />
+>>>>>>> 0251df9a219e502e3f91d8b929742b2a2cbdb9d4
         <option value="$PROJECT_DIR$/models/modelUser.php" />
         <option value="$PROJECT_DIR$/views/default/index.php" />
         <option value="$PROJECT_DIR$/views/js/set_new_avatar.js" />
         <option value="$PROJECT_DIR$/components/componentView.php" />
+<<<<<<< HEAD
         <option value="$PROJECT_DIR$/views/css/styles.css" />
         <option value="$PROJECT_DIR$/controllers/controllerWorkshop.php" />
         <option value="$PROJECT_DIR$/views/workshop/workshop.php" />
         <option value="$PROJECT_DIR$/views/js/dragndrop.js" />
+=======
+>>>>>>> 0251df9a219e502e3f91d8b929742b2a2cbdb9d4
       </list>
     </option>
   </component>
@@ -216,6 +344,7 @@
             <path>
               <item name="htdocs" type="b2602c69:ProjectViewProjectNode" />
               <item name="htdocs" type="462c0819:PsiDirectoryNode" />
+<<<<<<< HEAD
               <item name="controllers" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -228,12 +357,19 @@
               <item name="htdocs" type="462c0819:PsiDirectoryNode" />
               <item name="views" type="462c0819:PsiDirectoryNode" />
               <item name="js" type="462c0819:PsiDirectoryNode" />
+=======
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+>>>>>>> 0251df9a219e502e3f91d8b929742b2a2cbdb9d4
             </path>
             <path>
               <item name="htdocs" type="b2602c69:ProjectViewProjectNode" />
               <item name="htdocs" type="462c0819:PsiDirectoryNode" />
               <item name="views" type="462c0819:PsiDirectoryNode" />
+<<<<<<< HEAD
               <item name="workshop" type="462c0819:PsiDirectoryNode" />
+=======
+              <item name="default" type="462c0819:PsiDirectoryNode" />
+>>>>>>> 0251df9a219e502e3f91d8b929742b2a2cbdb9d4
             </path>
           </expand>
           <select />
@@ -311,12 +447,20 @@
       <workItem from="1558939026606" duration="7873000" />
       <workItem from="1559023477063" duration="1381000" />
       <workItem from="1559025518622" duration="2000" />
+<<<<<<< HEAD
       <workItem from="1559025569305" duration="26170000" />
+=======
+      <workItem from="1559025569305" duration="15377000" />
+>>>>>>> 0251df9a219e502e3f91d8b929742b2a2cbdb9d4
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
+<<<<<<< HEAD
     <option name="totallyTimeSpent" value="306839000" />
+=======
+    <option name="totallyTimeSpent" value="296046000" />
+>>>>>>> 0251df9a219e502e3f91d8b929742b2a2cbdb9d4
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -368,6 +512,11 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
+<<<<<<< HEAD
+=======
+    <entry file="file://$PROJECT_DIR$/views/user/dashboard.php" />
+    <entry file="file://$PROJECT_DIR$/views/workshop/dashboard.php" />
+>>>>>>> 0251df9a219e502e3f91d8b929742b2a2cbdb9d4
     <entry file="file://$PROJECT_DIR$/config/data.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="442">
@@ -462,6 +611,16 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
+=======
+    <entry file="file://$PROJECT_DIR$/views/workshop/workshop.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="24" column="6" lean-forward="true" selection-start-line="24" selection-start-column="6" selection-end-line="24" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+>>>>>>> 0251df9a219e502e3f91d8b929742b2a2cbdb9d4
     <entry file="file://$PROJECT_DIR$/views/user/changeLogin.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
@@ -511,6 +670,16 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
+=======
+    <entry file="file://$PROJECT_DIR$/views/js/tooltips.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" selection-start-line="13" selection-end-line="13" />
+        </state>
+      </provider>
+    </entry>
+>>>>>>> 0251df9a219e502e3f91d8b929742b2a2cbdb9d4
     <entry file="file://$PROJECT_DIR$/views/user/register.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="374">
@@ -546,6 +715,16 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
+=======
+    <entry file="file://$PROJECT_DIR$/views/js/cam.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="16" selection-start-line="16" selection-end-line="16" />
+        </state>
+      </provider>
+    </entry>
+>>>>>>> 0251df9a219e502e3f91d8b929742b2a2cbdb9d4
     <entry file="file://$PROJECT_DIR$/views/js/ajax_img.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="476">
@@ -553,6 +732,16 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
+=======
+    <entry file="file://$PROJECT_DIR$/views/user/changeAvatar.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="82" selection-start-line="4" selection-start-column="82" selection-end-line="4" selection-end-column="82" />
+        </state>
+      </provider>
+    </entry>
+>>>>>>> 0251df9a219e502e3f91d8b929742b2a2cbdb9d4
     <entry file="file://$PROJECT_DIR$/components/componentController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
@@ -560,6 +749,16 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
+=======
+    <entry file="file://$PROJECT_DIR$/views/css/styles.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="299">
+          <caret line="251" column="19" selection-start-line="251" selection-start-column="19" selection-end-line="251" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+>>>>>>> 0251df9a219e502e3f91d8b929742b2a2cbdb9d4
     <entry file="file://$PROJECT_DIR$/views/js/ajax.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
@@ -574,6 +773,23 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
+=======
+    <entry file="file://$PROJECT_DIR$/views/js/set_new_avatar.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="21" column="55" selection-start-line="21" selection-start-column="55" selection-end-line="21" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/js/avatar_preview.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="850">
+          <caret line="50" column="45" selection-start-line="50" selection-start-column="45" selection-end-line="50" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+>>>>>>> 0251df9a219e502e3f91d8b929742b2a2cbdb9d4
     <entry file="file://$PROJECT_DIR$/controllers/controllerUser.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1105">
@@ -639,23 +855,37 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/views/user/changeAvatar.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="4" column="82" selection-start-line="4" selection-start-column="82" selection-end-line="4" selection-end-column="82" />
+=======
+    <entry file="file://$PROJECT_DIR$/controllers/controllerWorkshop.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="18" column="12" selection-start-line="18" selection-start-column="12" selection-end-line="22" selection-end-column="66" />
+>>>>>>> 0251df9a219e502e3f91d8b929742b2a2cbdb9d4
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/components/componentView.php">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="391">
+=======
+        <state relative-caret-position="442">
+>>>>>>> 0251df9a219e502e3f91d8b929742b2a2cbdb9d4
           <caret line="78" column="80" selection-start-line="78" selection-start-column="80" selection-end-line="78" selection-end-column="80" />
           <folding>
             <element signature="n#__construct#0;n#componentView#0;n#!!top" />
             <element signature="n#specifyPath#0;n#componentView#0;n#!!top" />
             <element signature="n#render#0;n#componentView#0;n#!!top" />
             <element signature="n#toMainPage#0;n#componentView#0;n#!!top" />
+<<<<<<< HEAD
             <element signature="n#redirect#0;n#componentView#0;n#!!top" />
+=======
+>>>>>>> 0251df9a219e502e3f91d8b929742b2a2cbdb9d4
             <element signature="n#errorHandle#0;n#componentView#0;n#!!top" />
             <element signature="n#basicPictureChecks#0;n#componentView#0;n#!!top" />
             <element signature="n#setOrientation#0;n#componentView#0;n#!!top" />
@@ -664,6 +894,7 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/views/js/tooltips.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
@@ -723,5 +954,7 @@
         </state>
       </provider>
     </entry>
+=======
+>>>>>>> 0251df9a219e502e3f91d8b929742b2a2cbdb9d4
   </component>
 </project>
