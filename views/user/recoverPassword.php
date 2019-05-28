@@ -2,7 +2,7 @@
 	<div class="wrapper">
 		<div class="menu">
 				<span class="title">set new pass</span>
-				<form id="form" onsubmit="check(event, this, 'user/recover/password/confirm/set')">
+				<form id="form" action="user/recover/password/confirm/set">
 					<div id="menu">
 						<div id="password">
 				    		<label for="password"><b>new password<b></label><br>
@@ -25,7 +25,7 @@ else { ?>
     <div class="wrapper">
 		    <div class="menu">
 				<span class="title">recover pass</span>
-				<form id="form" onsubmit="check(event, this, 'user/recover/password/request')">
+				<form id="form" action="user/recover/password/request">
 					<div id="menu">
 						<div id="login">
 							<p><b>login</b></p>

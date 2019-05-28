@@ -1,7 +1,7 @@
 <div class="wrapper">
     <div class="menu">
 	    <span class="title">change login</span>
-			<form id="form" onsubmit="check(event, this, 'user/change/login/set')">
+			<form id="form" action="user/change/login/set">
 				<div id="menu">
 					<div id="login">
 						<p><b>new login</b></p>

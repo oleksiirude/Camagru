@@ -14,8 +14,8 @@
 	    <?php echo $content; ?>
 	<?php require_once (ROOT.'views/default/footer.php'); ?>
 	<script src="views/js/avatar_preview.js"></script>
-	<script src="views/js/ajax.js"></script>
-	<script src="views/js/ajax_img.js"></script>
+	<script src="views/js/ajax_forms.js"></script>
+	<script src="views/js/set_new_avatar.js"></script>
     <script src="views/js/cam.js"></script>
     <script src="views/js/dragndrop.js"></script>
 </body>

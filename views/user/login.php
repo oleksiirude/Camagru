@@ -1,7 +1,7 @@
 <div class="wrapper">
 	<div class="menu">
 		<span class="title">sign in</span>
-		<form id="form" onsubmit="check(event, this, 'user/login/validate')">
+		<form id="form" action="user/login/validate">
 			<div id="menu">
 				<div id="login">
 					<p><b>login</b></p>

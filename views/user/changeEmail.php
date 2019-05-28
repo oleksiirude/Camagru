@@ -1,7 +1,7 @@
 <div class="wrapper">
 	<div class="menu">
 	    <span class="title">change email</span>
-			<form id="form" onsubmit="check(event, this, 'user/change/email/set')">
+			<form id="form" action="user/change/email/set">
 				<div id="menu">
 					<div id="email">
 						<p><b>new email</b></p>

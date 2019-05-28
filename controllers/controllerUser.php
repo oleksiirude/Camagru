@@ -186,9 +186,19 @@
 			$this->view->render('Camagru: change avatar');
 		}
 
+		public function actionChangeAvatarValidate() {
+			$this->onlyForLogged();
+			if (($result = $this->model->validateNewAvatar()) !== true) {
+				echo json_encode($result);
+				return true;
+			}
+			echo json_encode($result);
+			return true;
+		}
+
 		public function actionChangeAvatarSet() {
 			$this->onlyForLogged();
-			if (($result = $this->model->setNewAvatar()) !== true) {
+			if (($result = $this->model->setNewAvatar($this->post)) !== true) {
 				echo json_encode($result);
 				return true;
 			}

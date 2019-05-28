@@ -34,7 +34,7 @@ a:hover { transition: 220ms; color: lightgray }
 /*smooth start effect ot choosen elements*/
 #temp_preview { animation: fade-in 0.7s linear }
 
-.menu, .enter_menu, .settings_menu, .tooltip, .avatar, .error, .message, .pic, #snap {
+.menu, .enter_menu, .settings_menu, .tooltip, .avatar, .error, .message, .pic, .avatar_preview, #snap {
     -webkit-animation: fade-in 0.3s linear; /* Safari 4+ */
     -moz-animation: fade-in 0.3s linear; /* Fx 5+ */
     -o-animation: fade-in 0.3s linear; /* Opera 12+ */
@@ -241,14 +241,15 @@ header {
 
 .avatar_preview {
     margin: 5px auto;
-    width: 80px;
-    height: 80px;
+    width: 120px;
+    height: 120px;
     border-radius: 50%;
 }
 
 /*WORKSHOP*/
 .title {
-    font-size: 30px;
+    font-size: 36px;
+    color: #333333;
     text-align: center;
 }
 
@@ -374,4 +375,5 @@ footer {
 .error {
     color: darkred;
     font-family: Candara, sans-serif;
+    font-size: 12px;
 }
