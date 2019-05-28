@@ -20,7 +20,7 @@ function set_new_avatar(e) {
 		}
 		if (ajax.readyState === 4) {
 			let result = JSON.parse(ajax.responseText);
-			console.log(result);
+			//console.log(result);
 			if (result === true)
 				messageDone("your avatar has been changed<br>",
 					'back', 'user/settings');

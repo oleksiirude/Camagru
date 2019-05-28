@@ -48,20 +48,24 @@ function makeSnap() {
 
     context.drawImage(video, 0, 0, 640, 480);
     let images = document.getElementsByClassName('workplace')[0].getElementsByClassName('mask');
-    let data = getData(images);
-
-
-    ajax_montage(canvas.toDataURL());
+    ajax_montage(canvas.toDataURL(), getData(images));
 }
 
 
-function ajax_montage(photo) {
+function ajax_montage(photo, data) {
 
     let ajax = new XMLHttpRequest();
     ajax.open('POST', 'workshop/savephoto', true);
     ajax.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-    let json = 'photo='+JSON.stringify(photo);
-    //console.log(json);
+    //let json = 'photo='+JSON.stringify(photo)+'data='+JSON.stringify(data);
+
+    let value = Object.keys(data).length;
+    let json = {};
+    while (value-- >= 0)
+        json[value] = data[value];
+    json['photo'] = photo;
+
+    json = 'box='+JSON.stringify(json);
     ajax.send(json);
 
     ajax.onreadystatechange = function () {
@@ -71,9 +75,9 @@ function ajax_montage(photo) {
         if (ajax.readyState === 4) {
             //let result = JSON.parse(ajax.responseText);
             let result = ajax.responseText;
+            console.log(result);
             if (result) {
                 let pics = document.getElementsByClassName('pics')[0];
-                //console.log(pics.childElementCount);
                 if (pics.childElementCount >= 2)
                     pics.childNodes[0].remove();
                 //console.log(pics);
