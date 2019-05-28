@@ -1,34 +1,18 @@
 function dragndrop(e) {
 
-    let test = document.getElementsByClassName('video').length;
-    if (test < 2) {
-        let snap = document.getElementById('snap');
-        snap.disabled = false;
-    }
-
-    let zone = document.getElementsByClassName('video')[0];
+    let parent = document.getElementsByClassName('workplace')[0];
     let elem = e.target;
 
     let limits = {
-        top: zone.offsetTop,
-        right: zone.offsetWidth + zone.offsetLeft - elem.offsetWidth + 10,
-        bottom: zone.offsetHeight + zone.offsetTop - elem.offsetHeight + 10,
-        left: zone.offsetLeft
+        top: parent.offsetTop,
+        right: parent.offsetWidth + parent.offsetLeft - elem.offsetWidth + 10,
+        bottom: parent.offsetHeight + parent.offsetTop - elem.offsetHeight + 10,
+        left: parent.offsetLeft
     };
 
     let object = e.target;
-
-    let parentPos = document.getElementsByClassName('video')[0].getBoundingClientRect();
-    let childPos = object.getBoundingClientRect();
-    let relativePos = {};
-
-    relativePos.top = childPos.top - parentPos.top;
-    relativePos.left = childPos.left - parentPos.left;
-
-    object.style.position = 'absolute';
     object.style.zIndex = '1000';
 
-    let parent = document.getElementsByClassName('video')[0];
     parent.appendChild(object);
     moveAt(e);
 
@@ -85,12 +69,17 @@ function dragndrop(e) {
 }
 
 function create_clone(e) {
+    let test = document.getElementsByClassName('workplace').length;
+    if (test < 2) {
+        let snap = document.getElementById('snap');
+        snap.disabled = false;
+    }
     let new_mask = document.createElement('img');
     new_mask.setAttribute('src', e.target.src);
     new_mask.setAttribute('class', 'mask');
     new_mask.setAttribute('style', 'position: absolute');
     new_mask.addEventListener('mousedown', dragndrop);
-    let parent = document.getElementsByClassName('video')[0];
+    let parent = document.getElementsByClassName('workplace')[0];
     parent.insertBefore(new_mask, parent.firstChild);
 }
 

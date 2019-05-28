@@ -274,7 +274,7 @@ header {
     cursor: pointer;
 }
 
-.video {
+.workplace {
     border-radius: 5px;
     background-color: #333333;
     width: 640px;
@@ -330,6 +330,7 @@ ul {
 
 .mask {
     width: 100px;
+    z-index: 99;
     cursor: pointer;
 }
 

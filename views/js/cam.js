@@ -15,17 +15,47 @@ function getWebcam() {
     }
 }
 
+function getData(images) {
+    let data = {};
+    let parentPos = document.getElementsByClassName('workplace')[0].getBoundingClientRect();
+
+    for (let i = 0; i < images.length; i++) {
+        let childPos = images[i].getBoundingClientRect();
+        let relativePos = {};
+
+        relativePos.top = childPos.top - parentPos.top;
+        relativePos.left = childPos.left - parentPos.left;
+
+        //let remove = /http:\/\/localhost:8080\//; //for unit
+        let remove = /http:\/\/localhost\//; //for home
+        let link = images[i].src;
+        link = link.replace(remove, '');
+        data[i] = {
+            link: link,
+            sizeW: images[i].offsetWidth,
+            sizeH: images[i].offsetHeight,
+            posTop: parseInt(relativePos.top),
+            posLeft: parseInt(relativePos.left)
+        }
+    }
+    return data;
+}
+
 function makeSnap() {
     let canvas = document.getElementById('canvas');
     let context = canvas.getContext('2d');
     let video = document.getElementById('video');
 
     context.drawImage(video, 0, 0, 640, 480);
-    ajax_test(canvas.toDataURL());
+    let images = document.getElementsByClassName('workplace')[0].getElementsByClassName('mask');
+    let data = getData(images);
+
+
+    ajax_montage(canvas.toDataURL());
 }
 
 
-function ajax_test(photo) {
+function ajax_montage(photo) {
 
     let ajax = new XMLHttpRequest();
     ajax.open('POST', 'workshop/savephoto', true);
