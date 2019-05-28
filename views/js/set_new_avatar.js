@@ -1,12 +1,18 @@
-function ajax_img(event, object, action) {
-	event.preventDefault();
+let form_avatar = document.getElementById('form_avatar');
+if (form_avatar)
+	form_avatar.addEventListener('submit', set_new_avatar);
 
-	let file = document.getElementById('change_avatar').files[0];
-	let formData = new FormData();
-	formData.append('avatar', file);
+function set_new_avatar(e) {
+	e.preventDefault();
+	let avatar = document.getElementById('new_avatar').getAttribute('src');
+
 	let ajax = new XMLHttpRequest();
-	ajax.open('POST', action, true);
-	ajax.send(formData);
+	let data = {};
+	ajax.open('POST', 'user/change/avatar/set', true);
+	data['avatar'] = avatar;
+	avatar = JSON.stringify(data);
+	//console.log(avatar);
+	ajax.send(avatar);
 
 	ajax.onreadystatechange = function () {
 		if (ajax.status !== 200) {
@@ -14,7 +20,6 @@ function ajax_img(event, object, action) {
 		}
 		if (ajax.readyState === 4) {
 			let result = JSON.parse(ajax.responseText);
-			//let result = ajax.responseText;
 			console.log(result);
 			if (result === true)
 				messageDone("your avatar has been changed<br>",

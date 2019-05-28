@@ -67,7 +67,7 @@
 			elseif ($request === 'check_both') {
 				$pseudo = [':login' => $post['login'], ':email' => $post['email']];
 				$query = 'SELECT login FROM users WHERE login = :login OR email = :email';
-				$error = ['id' => 'menu', 'warning' => 'login or/and menu are already taken'];
+				$error = ['id' => 'menu', 'warning' => 'login or/and email are already taken'];
 			}
 			$sth = $this->prepare($query);
 			$sth->execute($pseudo);
@@ -120,7 +120,6 @@
 			$this->query("UPDATE users SET token = '', confirm = '1' WHERE users.id = '$id'");
 			return true;
 		}
-
 
 		//LOGIN
 		public function validateInputLoginData($post) {
@@ -288,29 +287,31 @@
 			unlink($file);
 		}
 
-		public function setNewAvatar() {
-		$filePath = $_FILES['avatar']['tmp_name'];
-		$errorCode = $_FILES['avatar']['error'];
+		public function validateNewAvatar() {
+			$filePath = $_FILES['avatar']['tmp_name'];
+			$errorCode = $_FILES['avatar']['error'];
 
-		if (($result = componentView::basicPictureChecks($filePath, $errorCode)) !== true)
-			return $result;
+			if (($result = componentView::basicPictureChecks($filePath, $errorCode)) !== true)
+				return $result;
+			$id = $_SESSION['user_id'];
+			preg_match("/.*(jpeg|jpg|png)$/i", $_FILES['avatar']['type'], $matches);
+			$type = $matches[1];
+			$name = $id.'tmp'.'.'.$matches[1];
+			$base64 = componentView::resizeForAvatarPreview($filePath, $name, $type);
+			return $base64;
+		}
 
+		public function setNewAvatar($post) {
+		$base64 = explode(',', $post['avatar']);
+		if (preg_match('~png~', $base64[0]))
+			$type = 'png';
+		else
+			$type = 'jpeg';
+
+		$photo = base64_decode($base64[1]);
 		$id = $_SESSION['user_id'];
-
-		//delete present avatar
-		$avatars = scandir(ROOT.'views/pictures/avatars');
-		foreach ($avatars as $avatar)
-			if (preg_match("/^$id./", $avatar))
-				self::deleteOldAvatar($avatar);
-
-		//get new avatar name like 'users_id.type of image -> 1.jpg'
-		preg_match("/.*(jpeg|jpg|png)$/i", $_FILES['avatar']['type'], $matches);
-		$type = $matches[1];
-		$name = $id.'.'.$matches[1];
-		$destination = 'views/pictures/avatars/'.$name;
-
-		//resize image for less weight
-		componentView::resizeForAvatar($filePath, $name, $type);
+		$destination = 'views/pictures/avatars/'.$id.'.'.$type;
+		file_put_contents($destination, $photo);
 		$this->query("UPDATE users SET avatar = '$destination' WHERE users.id = '$id'");
 		$_SESSION['avatar'] = $destination;
 		return true;

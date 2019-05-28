@@ -112,6 +112,11 @@
 			'action' => 'changeAvatar'
 		],
 
+		'user/change/avatar/validate' => [
+			'controller' => 'user',
+			'action' => 'changeAvatarValidate'
+		],
+
 		'user/change/avatar/set' => [
 			'controller' => 'user',
 			'action' => 'changeAvatarSet'

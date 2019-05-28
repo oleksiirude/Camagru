@@ -1,4 +1,10 @@
-function check(event, object, action) {
+let form = document.getElementById('form');
+if (form)
+	form.addEventListener('submit', check);
+
+function check(e) {
+	e.preventDefault();
+	let action = e.target.getAttribute('action');
 	let warning = document.getElementById('warning');
 	if (warning)
 		warning.remove();
@@ -8,12 +14,10 @@ function check(event, object, action) {
 	let link_back = document.getElementById('link_back');
 	if (link_back)
 		link_back.setAttribute('style', 'display: none');
-	ajax(event, object, action);
+	ajax(e.target, action);
 }
 
-function ajax(event, object, action) {
-	event.preventDefault();
-
+function ajax(object, action) {
 	let ajax = new XMLHttpRequest();
 	ajax.open('POST', action, true);
 

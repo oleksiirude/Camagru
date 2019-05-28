@@ -50,10 +50,10 @@
 
 			//checks real MIME-type
 			if (!preg_match('/.*[.jpg|.jpeg|.png]$/i', $mime))
-				return ['id' => 'email', 'warning' => 'inappropriate file!'];
+				return ['result' => 'false', 'warning' => 'inappropriate image!'];
 			//checks upload status
 			if ($errorCode !== UPLOAD_ERR_OK || !is_uploaded_file($filePath))
-				return ['id' => 'email', 'warning' => 'upload error, try later!'];
+				return ['result' => 'false', 'warning' => 'upload error, try later!'];
 			return true;
 		}
 
@@ -76,7 +76,7 @@
 			return $image;
 		}
 
-		public static function resizeForAvatar($filePath, $name, $type) {
+		public static function resizeForAvatarPreview($filePath, $name, $type) {
 			$width = 240;
 			$height = 240;
 
@@ -84,7 +84,8 @@
 				$image = imagecreatefrompng($filePath);
 			else
 				$image = imagecreatefromjpeg($filePath);
-			$image = self::setOrientation($filePath, $image);
+			if (!preg_match('/png/i', $type))
+				$image = self::setOrientation($filePath, $image);
 			$new = imagecreatetruecolor(240, 240);
 
 			if ($type === 'png' || $type === 'PNG') {
@@ -97,11 +98,17 @@
 				0, 0, $width, $height, imagesx($image),imagesy($image));
 
 			if ($type === 'png' || $type === 'PNG')
-				imagepng($new, ROOT.'views/pictures/avatars/'.$name);
+				imagepng($new, ROOT . 'views/pictures/avatars/' . $name);
 			else
 				imagejpeg($new, ROOT.'views/pictures/avatars/'.$name);
-
 			imagedestroy($image);
 			imagedestroy($new);
+
+			$img = file_get_contents(ROOT . 'views/pictures/avatars/' . $name);
+			unlink(ROOT . 'views/pictures/avatars/' . $name);
+			$base64 = "data:image/$type;base64,".base64_encode($img);
+			$result = ['result' => true, 'base64' => $base64];
+			return $result;
+
 		}
 	}
