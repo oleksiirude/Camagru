@@ -19,5 +19,6 @@
 	<script src="views/js/set_new_avatar.js"></script>
     <script src="views/js/cam.js"></script>
     <script src="views/js/dragndrop.js"></script>
+	<script src="views/js/users_pic.js"></script>
 </body>
 </html>

@@ -109,6 +109,40 @@
 			$base64 = "data:image/$type;base64,".base64_encode($img);
 			$result = ['result' => true, 'base64' => $base64];
 			return $result;
+		}
 
+		public static function resizeForUsersPic($filePath, $name, $type) {
+			$width = 640;
+			$height = 480;
+
+			if ($type === 'png' || $type === 'PNG')
+				$image = imagecreatefrompng($filePath);
+			else
+				$image = imagecreatefromjpeg($filePath);
+			if (!preg_match('/png/i', $type))
+				$image = self::setOrientation($filePath, $image);
+			$new = imagecreatetruecolor($width, $height);
+
+			if ($type === 'png' || $type === 'PNG') {
+				imagesavealpha($new, true);
+				$color = imagecolorallocatealpha($new, 0, 0, 0, 127);
+				imagefill($new, 0, 0, $color);
+			}
+
+			imagecopyresampled($new, $image, 0, 0,
+				0, 0, $width, $height, imagesx($image),imagesy($image));
+
+			if ($type === 'png' || $type === 'PNG')
+				imagepng($new, ROOT . 'views/pictures/avatars/' . $name);
+			else
+				imagejpeg($new, ROOT.'views/pictures/avatars/'.$name);
+			imagedestroy($image);
+			imagedestroy($new);
+
+			$img = file_get_contents(ROOT . 'views/pictures/avatars/' . $name);
+			unlink(ROOT . 'views/pictures/avatars/' . $name);
+			$base64 = "data:image/$type;base64,".base64_encode($img);
+			$result = ['result' => true, 'base64' => $base64];
+			return $result;
 		}
 	}

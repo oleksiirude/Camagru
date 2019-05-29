@@ -15,7 +15,7 @@
 
 			$i = 0;
 			foreach ($data as $elem) {
-				@$mask = imagecreatefrompng($elem['link']);
+				$mask = imagecreatefrompng($elem['link']);
 				$maskWidthInitial = imagesx($mask);
 				$maskHeightInitial = imagesy($mask);
 				$maskWidthCaptured = $elem['sizeW'];
@@ -38,4 +38,17 @@
 			return $preview;
 		}
 
+		public function validateUsersPic() {
+			$filePath = $_FILES['pic']['tmp_name'];
+			$errorCode = $_FILES['pic']['error'];
+
+			if (($result = componentView::basicPictureChecks($filePath, $errorCode)) !== true)
+				return $result;
+			$id = $_SESSION['user_id'];
+			preg_match("/.*(jpeg|jpg|png)$/i", $_FILES['pic']['type'], $matches);
+			$type = $matches[1];
+			$name = $id.'tmp'.'.'.$matches[1];
+			$base64 = componentView::resizeForUsersPic($filePath, $name, $type);
+			return $base64;
+		}
 	}

@@ -9,7 +9,11 @@
 			<canvas id="canvas" style="visibility: hidden" width="620" height="480"></canvas>
         </div>
 		<div class="nowebcam">
-			<span>if you don't have a webcam upload your own image <span><button class="submit_button">upload</button>
+			<form id="upload_pic" class="upload_pic" enctype="multipart/form-data">
+				<label for="upload">or upload your own png/jpeg image</label>
+				<input id="upload" type="file" accept=".png, .jpg, .jpeg" name="image" onchange="getUsersPicInWorkplace()"><br>
+			</form>
+			<button id="back_upload" class="submit_button" onclick="backToMain()">back</button>
 		</div>
     </div>
     <div class="masks">

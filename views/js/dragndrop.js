@@ -74,15 +74,18 @@ function dragndrop(e) {
 }
 
 function create_clone(e) {
-    let test = document.getElementsByClassName('workplace').length;
-    if (test < 2) {
+    let mask_existence = document.getElementsByClassName('workplace').length;
+    if (mask_existence < 2) {
         let snap = document.getElementById('snap');
         snap.disabled = false;
     }
     let new_mask = document.createElement('img');
     let parent = document.getElementsByClassName('workplace')[0];
     let images = parent.getElementsByClassName('mask');
-    if (images.length > 9)
+
+    let deny_mask_add = document.getElementsByClassName('camera')[0];
+    let users_pic = document.getElementById('users_pic');
+    if (deny_mask_add.offsetWidth || images.length > 9)
         return;
     new_mask.setAttribute('src', e.target.src);
     new_mask.setAttribute('class', 'mask');

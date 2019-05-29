@@ -35,7 +35,8 @@ a:hover { transition: 220ms; color: lightgray }
 #temp_preview { animation: fade-in 0.7s linear }
 
 .menu, .enter_menu, .settings_menu, .tooltip, .avatar, .error,
-.message, .pic, .avatar_preview, .nowebcam, .camera, #back,#snap {
+.message, .pic, .avatar_preview, .nowebcam, .camera, .valid_pic, #back, #snap,
+#back_upload {
     -webkit-animation: fade-in 0.3s linear; /* Safari 4+ */
     -moz-animation: fade-in 0.3s linear; /* Fx 5+ */
     -o-animation: fade-in 0.3s linear; /* Opera 12+ */
@@ -273,6 +274,42 @@ header {
     cursor: pointer;
 }
 
+.nowebcam {
+    font-weight: bold;
+    text-align: center;
+    margin-right: 10px;
+}
+
+.upload_pic input[type="file"] { display: none }
+
+.upload_pic label {
+    display: inline-block;
+    width: 204px;
+    height: 22px;
+    margin-top: 5px;
+    background: gray;
+    cursor: pointer;
+    border: solid 1px black;
+    border-radius: 5px;
+    box-shadow: 1px 1px 1px 1px grey;
+}
+
+.upload_pic label:hover { background: silver }
+
+.pic_error {
+    font-size: 28px;
+    color: silver;
+    text-align: center;
+    padding-top: 200px;
+}
+
+.valid_pic {
+    margin-top: 5px;
+    margin-left: 5px;
+    width: 630px;
+    height: 470px;
+}
+
 .workplace {
     border-radius: 5px;
     background-color: #333333;
@@ -290,16 +327,23 @@ header {
     margin-left: 250px;
     display: none;
 }
+
+#users_pic_snap {
+    margin-top: 20px;
+    margin-left: 250px;
+    display: none;
+}
+
 #back {
     margin-top: 20px;
     display: none;
     float: right;
 }
 
-.nowebcam {
-    font-weight: bold;
+#back_upload {
+    margin-top: 10px;
+    display: none;
     float: right;
-    margin-right: 10px;
 }
 
 .pics{

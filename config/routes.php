@@ -140,9 +140,14 @@
 			'action' => 'workshop'
 		],
 
-		'workshop/getpreview' => [
+		'workshop/getpreviewwebcam' => [
 			'controller' => 'workshop',
-			'action' => 'getPreview'
+			'action' => 'getPreviewWebcam'
+		],
+
+		'workshop/userspicvalidate' => [
+			'controller' => 'workshop',
+			'action' => 'usersPicValidate'
 		],
 
 	];

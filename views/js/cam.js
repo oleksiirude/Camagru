@@ -26,7 +26,7 @@ function turnOffWebCam() {
     let video = document.getElementById('video');
     video.srcObject.getTracks().forEach(track => track.stop());
 
-    document.getElementsByClassName('nowebcam')[0].setAttribute('style', 'display: inline-block');
+    document.getElementsByClassName('nowebcam')[0].setAttribute('style', 'display: block');
     document.getElementById('video').setAttribute('style', 'display: none');
     document.getElementsByClassName('camera')[0].setAttribute('style', 'display: inline-block');
     document.getElementById('snap').setAttribute('style', 'display: none');
@@ -76,11 +76,10 @@ function makeSnap() {
     ajax_montage(canvas.toDataURL(), getData(images));
 }
 
-
 function ajax_montage(photo, data) {
 
     let ajax = new XMLHttpRequest();
-    ajax.open('POST', 'workshop/getpreview', true);
+    ajax.open('POST', 'workshop/getpreviewwebcam', true);
     ajax.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     //let json = 'photo='+JSON.stringify(photo)+'data='+JSON.stringify(data);
 
@@ -101,7 +100,7 @@ function ajax_montage(photo, data) {
             //let result = JSON.parse(ajax.responseText);
             let result = ajax.responseText;
             //console.log(result);
-            if (result) {
+            if (result && result.search(/Fatal error/) < 0) {
                 let pics = document.getElementsByClassName('pics')[0];
                 if (pics.childElementCount >= 2)
                     pics.childNodes[0].remove();
@@ -109,9 +108,9 @@ function ajax_montage(photo, data) {
                 img.setAttribute('src', result);
                 img.setAttribute('class', 'pic');
                 pics.appendChild(img);
-                let snap = document.getElementById('snap');
-                snap.disabled = false;
             }
+            let snap = document.getElementById('snap');
+            snap.disabled = false;
         }
     }
 }
