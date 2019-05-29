@@ -75,7 +75,7 @@ function ajax_montage(photo, data) {
         if (ajax.readyState === 4) {
             //let result = JSON.parse(ajax.responseText);
             let result = ajax.responseText;
-            console.log(result);
+            //console.log(result);
             if (result) {
                 let pics = document.getElementsByClassName('pics')[0];
                 if (pics.childElementCount >= 2)
