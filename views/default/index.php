@@ -5,6 +5,7 @@
     <base href="/">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title><?= $title; ?></title>
+	<link rel="shortcut icon" href="views/pictures/service/logo.ico" type="image/x-icon">
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300&display=swap" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="/views/css/styles.css">
 	<script src="views/js/tooltips.js"></script>

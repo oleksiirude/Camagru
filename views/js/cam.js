@@ -5,14 +5,33 @@ function getWebcam() {
 
         navigator.mediaDevices.getUserMedia({video: true}).then(function (stream) {
             video.srcObject = stream;
-            document.getElementsByClassName('camera')[0].remove();
+            // document.getElementsByClassName('camera')[0].remove();
+            document.getElementsByClassName('camera')[0].setAttribute('style', 'display: none');
             document.getElementById('video').setAttribute('style', 'display: block');
             setTimeout(() =>
-                document.getElementById('snap').setAttribute('style', 'display: block'),
-                1200);
+                document.getElementById('snap')
+                    .setAttribute('style', 'display: inline-block'),1200);
+            setTimeout(() =>
+                document.getElementById('back')
+                    .setAttribute('style', 'display: inline-block'),1200);
             video.play();
         })
     }
+}
+
+function turnOffWebCam() {
+    let video = document.getElementById('video');
+    video.srcObject.getTracks().forEach(track => track.stop());
+
+    document.getElementById('video').setAttribute('style', 'display: none');
+    document.getElementsByClassName('camera')[0].setAttribute('style', 'display: inline-block');
+    document.getElementById('snap').setAttribute('style', 'display: none')
+    document.getElementById('back').setAttribute('style', 'display: none')
+
+    let images = document.getElementsByClassName('workplace')[0].getElementsByClassName('mask');
+    if (images.length > 0)
+        while (images.length--)
+            images[0].remove();
 }
 
 function getData(images) {
@@ -42,6 +61,8 @@ function getData(images) {
 }
 
 function makeSnap() {
+    let snap = document.getElementById('snap');
+    snap.disabled = true;
     let canvas = document.getElementById('canvas');
     let context = canvas.getContext('2d');
     let video = document.getElementById('video');
@@ -55,7 +76,7 @@ function makeSnap() {
 function ajax_montage(photo, data) {
 
     let ajax = new XMLHttpRequest();
-    ajax.open('POST', 'workshop/savephoto', true);
+    ajax.open('POST', 'workshop/getpreview', true);
     ajax.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     //let json = 'photo='+JSON.stringify(photo)+'data='+JSON.stringify(data);
 
@@ -80,11 +101,12 @@ function ajax_montage(photo, data) {
                 let pics = document.getElementsByClassName('pics')[0];
                 if (pics.childElementCount >= 2)
                     pics.childNodes[0].remove();
-                //console.log(pics);
                 let img = document.createElement('img');
                 img.setAttribute('src', result);
                 img.setAttribute('class', 'pic');
                 pics.appendChild(img);
+                let snap = document.getElementById('snap');
+                snap.disabled = false;
             }
         }
     }

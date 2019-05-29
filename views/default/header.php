@@ -5,7 +5,7 @@
 
 <header>
     <div class="logo">
-        <a href="/"><img class="camagru" src="views/pictures/logo.png" alt="CAMAGRU" title="CAMAGRU"></a>
+        <a href="/"><img class="camagru" src="views/pictures/service/logo.png" alt="CAMAGRU" title="CAMAGRU"></a>
     </div>
 	<?php if (isset($_SESSION['user_logged'])) { ?>
         <nav class="navbar">

@@ -140,9 +140,9 @@
 			'action' => 'workshop'
 		],
 
-		'workshop/savephoto' => [
+		'workshop/getpreview' => [
 			'controller' => 'workshop',
-			'action' => 'savePhoto'
+			'action' => 'getPreview'
 		],
 
 	];

@@ -3,8 +3,9 @@
     <div class="webcam">
         <div class="workplace">
             <video id="video" width="620" height="480" autoplay></video>
-            <img class="camera" src="views/pictures/camera.png" alt="camera" onclick="getWebcam()">
+            <img class="camera" src="views/pictures/service/camera.png" alt="camera" onclick="getWebcam()">
             <button id="snap" class="submit_button" onclick="makeSnap()">SNAP!</button>
+			<button id="back" class="submit_button" onclick="turnOffWebCam()">back</button>
 			<canvas id="canvas" style="visibility: hidden" width="620" height="480"></canvas>
         </div>
     </div>

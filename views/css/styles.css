@@ -253,8 +253,6 @@ header {
     text-align: center;
 }
 
-#video, #snap { display: none }
-
 .webcam {
     border-radius: 5px;
     align-content: center;
@@ -284,9 +282,10 @@ header {
     box-shadow: 1px 1px 1px 1px grey;
 }
 
-#video, #canvas { margin-left: 10px }
+#video, #canvas { margin-left: 10px; display: none }
 #canvas { margin-top: 4px; display: none }
-#snap { margin-top: 20px }
+#snap { margin-top: 20px; display: none }
+#back { margin-top: 20px; display: none }
 
 .pics{
     border-radius: 5px;

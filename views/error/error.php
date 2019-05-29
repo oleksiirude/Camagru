@@ -6,6 +6,7 @@
 	<base href="/">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Camagru: error</title>
+	<link rel="shortcut icon" href="views/pictures/service/logo.ico" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css?family=Amatic+SC:400,700&display=swap" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="/views/css/styles.css">
 </head>
