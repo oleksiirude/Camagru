@@ -31,8 +31,9 @@ function dragndrop(e) {
                 object.remove();
             let images = document.getElementsByClassName('workplace')[0]
                 .getElementsByClassName('mask');
-            if (!images.length)
+            if (!images.length) {
                 snap.disabled = true;
+            }
         } else if (e.pageY > limits.top) {
             newLocation.y = e.pageY - 10;
         }
@@ -83,9 +84,11 @@ function create_clone(e) {
     let parent = document.getElementsByClassName('workplace')[0];
     let images = parent.getElementsByClassName('mask');
 
-    let deny_mask_add = document.getElementsByClassName('camera')[0];
-    let users_pic = document.getElementById('users_pic');
-    if (deny_mask_add.offsetWidth || images.length > 9)
+    let webcam = document.getElementById('video');
+    let pic = document.getElementById('valid_pic');
+    if (!webcam.offsetWidth && !pic)
+        return;
+    if (images.length > 9)
         return;
     new_mask.setAttribute('src', e.target.src);
     new_mask.setAttribute('class', 'mask');

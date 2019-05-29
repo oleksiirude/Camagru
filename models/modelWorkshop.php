@@ -3,7 +3,7 @@
 	class modelWorkshop extends componentModel {
 
 		//gets base64 shot from webcam and mask images, creates collage from this stuff
-		public function getPreviewFromWebCam($base64, $data) {
+		public function getPreview($base64, $data) {
 
 			$webshoot = imagecreatefromstring(base64_decode($base64));
 
@@ -28,13 +28,25 @@
 				$i++;
 			}
 
-			$name = md5(time().$_SESSION['user_logged']).'png';
-			imagepng($webshoot, ROOT."tmp/$name");
+			$name = md5(time().$_SESSION['user_logged']);
+			imagepng($webshoot, ROOT."tmp/$name".'.png');
 			imagedestroy($webshoot);
-			$img = file_get_contents(ROOT."tmp/$name");
-			unlink(ROOT."tmp/$name");
 
-			$preview = 'data:image/png;base64,'.base64_encode($img);
+			$image = imagecreatefrompng(ROOT."tmp/$name".'.png');
+			unlink(ROOT."tmp/$name".'.png');
+
+			$bg = imagecreatetruecolor(imagesx($image), imagesy($image));
+			imagefill($bg, 0, 0, imagecolorallocate($bg, 255, 255, 255));
+			imagealphablending($bg, TRUE);
+			imagecopy($bg, $image, 0, 0, 0, 0, imagesx($image), imagesy($image));
+			imagedestroy($image);
+			imagejpeg($bg, ROOT."tmp/$name".'.jpeg', 100);
+			imagedestroy($bg);
+
+			$img = file_get_contents(ROOT."tmp/$name".'.jpeg');
+			unlink(ROOT."tmp/$name".'.jpeg');
+
+			$preview = 'data:image/jpeg;base64,'.base64_encode($img);
 			return $preview;
 		}
 
@@ -48,7 +60,9 @@
 			preg_match("/.*(jpeg|jpg|png)$/i", $_FILES['pic']['type'], $matches);
 			$type = $matches[1];
 			$name = $id.'tmp'.'.'.$matches[1];
-			$base64 = componentView::resizeForUsersPic($filePath, $name, $type);
+			$base64 = componentView::resizePic($filePath, $name, $type, 640, 480);
+			if (!$base64)
+				return ['result' => 'false', 'warning' => 'invalid file!'];
 			return $base64;
 		}
 	}

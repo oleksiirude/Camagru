@@ -19,7 +19,6 @@
     <div class="masks">
         <ul>
             <li><img class="mask" src="views/pictures/masks/mask1.png" alt="mask1"></li>
-            <li><img class="mask" src="views/pictures/masks/mask2.png" alt="mask2"</li>
             <li><img class="mask" src="views/pictures/masks/sunglasses1.png" alt="sg1"</li>
             <li><img class="mask" src="views/pictures/masks/sunglasses2.png" alt="sg2"</li>
             <li><img class="mask" src="views/pictures/masks/sunglasses3.png" alt="sg3"</li>

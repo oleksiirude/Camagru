@@ -73,15 +73,14 @@ function makeSnap() {
 
     context.drawImage(video, 0, 0, 640, 480);
     let images = document.getElementsByClassName('workplace')[0].getElementsByClassName('mask');
-    ajax_montage(canvas.toDataURL(), getData(images));
+    ajaxMontage(canvas.toDataURL(), getData(images), 'webcam');
 }
 
-function ajax_montage(photo, data) {
+function ajaxMontage(photo, data, source) {
 
     let ajax = new XMLHttpRequest();
-    ajax.open('POST', 'workshop/getpreviewwebcam', true);
+    ajax.open('POST', 'workshop/getpreview', true);
     ajax.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-    //let json = 'photo='+JSON.stringify(photo)+'data='+JSON.stringify(data);
 
     let value = Object.keys(data).length;
     let json = {};
@@ -97,7 +96,6 @@ function ajax_montage(photo, data) {
             location.href = 'error';
         }
         if (ajax.readyState === 4) {
-            //let result = JSON.parse(ajax.responseText);
             let result = ajax.responseText;
             //console.log(result);
             if (result && result.search(/Fatal error/) < 0) {
@@ -109,8 +107,13 @@ function ajax_montage(photo, data) {
                 img.setAttribute('class', 'pic');
                 pics.appendChild(img);
             }
-            let snap = document.getElementById('snap');
-            snap.disabled = false;
+            if (source === 'webcam') {
+                let snap = document.getElementById('snap');
+                snap.disabled = false;
+            } else if (source === 'pic') {
+                let snap = document.getElementById('users_pic_snap');
+                snap.disabled = false;
+            }
         }
     }
 }

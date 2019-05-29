@@ -16,6 +16,7 @@ function getUsersPicInWorkplace() {
 			pic_error.className = 'pic_error';
 			pic_error.innerHTML = 'too big image!<p style="font-size: 16px">up to 5mb is valid</p>';
 			workplace.appendChild(pic_error);
+			return;
 		}
 
 		let formData = new FormData();
@@ -33,6 +34,7 @@ function getUsersPicInWorkplace() {
 		 		//let result = ajax.responseText;
 		 		//console.log(result);
 		 		if (result['result'] === true) {
+					clearCanvas();
 					valid_pic = document.createElement('img');
 					valid_pic.id = 'valid_pic';
 					valid_pic.className = 'valid_pic';
@@ -67,6 +69,7 @@ function getUsersPicInWorkplace() {
 }
 
 function backToMain() {
+	clearCanvas();
 	let pic_error = document.getElementById('pic_error');
 	if (pic_error)
 		pic_error.remove();
@@ -93,5 +96,19 @@ function backToMain() {
 }
 
 function getUsersPicPreview() {
+	let snap = document.getElementById('users_pic_snap');
+	snap.disabled = true;
+	let canvas = document.getElementById('canvas');
+	let context = canvas.getContext('2d');
+	let pic = document.getElementById('valid_pic');
 
+	context.drawImage(pic, 0, 0, 640, 480);
+	let images = document.getElementsByClassName('workplace')[0].getElementsByClassName('mask');
+	ajaxMontage(canvas.toDataURL(), getData(images), 'pic');
+}
+
+function clearCanvas() {
+	let canvas = document.getElementById('canvas');
+	let context = canvas.getContext('2d');
+	context.clearRect(0, 0, canvas.width, canvas.height);
 }

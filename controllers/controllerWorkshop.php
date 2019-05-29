@@ -18,12 +18,12 @@
 			return true;
 		}
 
-		public function actionGetPreviewWebcam() {
+		public function actionGetPreview() {
 			$this->onlyForLogged();
 			$data = (array)json_decode($_POST['box']);
 			$base64 = str_replace(' ', '+', array_pop($data));
 			$base64 = str_replace('data:image/png;base64,', '', $base64);
-			$preview = $this->model->getPreviewFromWebCam($base64, $data);
+			$preview = $this->model->getPreview($base64, $data);
 			echo $preview;
 			return true;
 		}
@@ -37,5 +37,4 @@
 			echo json_encode($result);
 			return true;
 		}
-
 }

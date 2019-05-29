@@ -297,7 +297,9 @@
 			preg_match("/.*(jpeg|jpg|png)$/i", $_FILES['avatar']['type'], $matches);
 			$type = $matches[1];
 			$name = $id.'tmp'.'.'.$matches[1];
-			$base64 = componentView::resizeForAvatarPreview($filePath, $name, $type);
+			$base64 = componentView::resizePic($filePath, $name, $type, 240, 240);
+			if (!$base64)
+				return ['result' => 'false', 'warning' => 'invalid file!'];
 			return $base64;
 		}
 

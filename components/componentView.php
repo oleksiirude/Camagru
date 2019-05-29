@@ -1,6 +1,7 @@
 <?php
 
-	class componentView {
+	class componentView
+	{
 		public $path;
 		public $params = [];
 
@@ -8,43 +9,49 @@
 			$this->path = ROOT.'views/'.$route['controller'].'/'.$route['action'].'.php';
 		}
 
-		private function specifyPath() {
+		private function specifyPath()
+		{
 			if (strstr($this->path, 'recoverPasswordConfirm')) {
 				$this->path = preg_replace('~recoverPasswordConfirm~', 'recoverPassword', $this->path);
 				$this->params['recover_password'] = true;
 			}
 		}
 
-		public function render($title) {
+		public function render($title)
+		{
 			$this->specifyPath();
 			ob_start();
-			require_once ($this->path);
+			require_once($this->path);
 			$content = ob_get_clean();
-			require_once (ROOT.'views/default/index.php');
+			require_once(ROOT . 'views/default/index.php');
 			exit;
 		}
 
-		public static function toMainPage($title) {
+		public static function toMainPage($title)
+		{
 			ob_start();
-			require_once (ROOT.'views/user/content.php');
+			require_once(ROOT . 'views/user/content.php');
 			$content = ob_get_clean();
-			require_once (ROOT."views/default/index.php");
+			require_once(ROOT . "views/default/index.php");
 			exit;
 		}
 
-		public static function redirect($path) {
-			header('Location: /'.$path);
+		public static function redirect($path)
+		{
+			header('Location: /' . $path);
 			exit;
 		}
 
-		public static function errorHandle($code) {
+		public static function errorHandle($code)
+		{
 			http_response_code($code);
-			require_once (ROOT.'views/error/error.php');
+			require_once(ROOT . 'views/error/error.php');
 			exit;
 		}
 
 		//WORK WITH IMAGES
-		public static function basicPictureChecks($filePath, $errorCode) {
+		public static function basicPictureChecks($filePath, $errorCode)
+		{
 			$fi = finfo_open(FILEINFO_MIME_TYPE);
 			$mime = (string)finfo_file($fi, $filePath);
 
@@ -57,7 +64,8 @@
 			return true;
 		}
 
-		public static function setOrientation($filePath, $image) {
+		public static function setOrientation($filePath, $image)
+		{
 			$exif = exif_read_data($filePath);
 
 			if (!empty($exif['Orientation'])) {
@@ -76,49 +84,16 @@
 			return $image;
 		}
 
-		public static function resizeForAvatarPreview($filePath, $name, $type) {
-			$width = 240;
-			$height = 240;
+		public static function resizePic($filePath, $name, $type, $width, $height)
+		{
 
-			if ($type === 'png' || $type === 'PNG')
+			if (preg_match('~png~i', $type))
 				$image = imagecreatefrompng($filePath);
-			else
-				$image = imagecreatefromjpeg($filePath);
-			if (!preg_match('/png/i', $type))
-				$image = self::setOrientation($filePath, $image);
-			$new = imagecreatetruecolor(240, 240);
-
-			if ($type === 'png' || $type === 'PNG') {
-				imagesavealpha($new, true);
-				$color = imagecolorallocatealpha($new, 0, 0, 0, 127);
-				imagefill($new, 0, 0, $color);
+			else if (preg_match('~jpe?g~i', $type)) {
+				@$image = imagecreatefromjpeg($filePath);
+				if (!$image)
+					return false;
 			}
-
-			imagecopyresampled($new, $image, 0, 0,
-				0, 0, $width, $height, imagesx($image),imagesy($image));
-
-			if ($type === 'png' || $type === 'PNG')
-				imagepng($new, ROOT . 'views/pictures/avatars/' . $name);
-			else
-				imagejpeg($new, ROOT.'views/pictures/avatars/'.$name);
-			imagedestroy($image);
-			imagedestroy($new);
-
-			$img = file_get_contents(ROOT . 'views/pictures/avatars/' . $name);
-			unlink(ROOT . 'views/pictures/avatars/' . $name);
-			$base64 = "data:image/$type;base64,".base64_encode($img);
-			$result = ['result' => true, 'base64' => $base64];
-			return $result;
-		}
-
-		public static function resizeForUsersPic($filePath, $name, $type) {
-			$width = 640;
-			$height = 480;
-
-			if ($type === 'png' || $type === 'PNG')
-				$image = imagecreatefrompng($filePath);
-			else
-				$image = imagecreatefromjpeg($filePath);
 			if (!preg_match('/png/i', $type))
 				$image = self::setOrientation($filePath, $image);
 			$new = imagecreatetruecolor($width, $height);
@@ -130,18 +105,18 @@
 			}
 
 			imagecopyresampled($new, $image, 0, 0,
-				0, 0, $width, $height, imagesx($image),imagesy($image));
+				0, 0, $width, $height, imagesx($image), imagesy($image));
 
 			if ($type === 'png' || $type === 'PNG')
 				imagepng($new, ROOT . 'views/pictures/avatars/' . $name);
 			else
-				imagejpeg($new, ROOT.'views/pictures/avatars/'.$name);
+				imagejpeg($new, ROOT . 'views/pictures/avatars/' . $name);
 			imagedestroy($image);
 			imagedestroy($new);
 
 			$img = file_get_contents(ROOT . 'views/pictures/avatars/' . $name);
 			unlink(ROOT . 'views/pictures/avatars/' . $name);
-			$base64 = "data:image/$type;base64,".base64_encode($img);
+			$base64 = "data:image/$type;base64," . base64_encode($img);
 			$result = ['result' => true, 'base64' => $base64];
 			return $result;
 		}
