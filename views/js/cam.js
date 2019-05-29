@@ -5,15 +5,18 @@ function getWebcam() {
 
         navigator.mediaDevices.getUserMedia({video: true}).then(function (stream) {
             video.srcObject = stream;
-            // document.getElementsByClassName('camera')[0].remove();
+            document.getElementsByClassName('nowebcam')[0].setAttribute('style', 'display: none');
             document.getElementsByClassName('camera')[0].setAttribute('style', 'display: none');
             document.getElementById('video').setAttribute('style', 'display: block');
+            let snap = document.getElementById('snap');
             setTimeout(() =>
-                document.getElementById('snap')
-                    .setAttribute('style', 'display: inline-block'),1200);
+                snap.setAttribute('style', 'display: inline-block'),1200);
             setTimeout(() =>
                 document.getElementById('back')
                     .setAttribute('style', 'display: inline-block'),1200);
+            let images = document.getElementsByClassName('workplace')[0].getElementsByClassName('mask');
+            if (!images.length)
+                snap.disabled = true;
             video.play();
         })
     }
@@ -23,10 +26,11 @@ function turnOffWebCam() {
     let video = document.getElementById('video');
     video.srcObject.getTracks().forEach(track => track.stop());
 
+    document.getElementsByClassName('nowebcam')[0].setAttribute('style', 'display: inline-block');
     document.getElementById('video').setAttribute('style', 'display: none');
     document.getElementsByClassName('camera')[0].setAttribute('style', 'display: inline-block');
-    document.getElementById('snap').setAttribute('style', 'display: none')
-    document.getElementById('back').setAttribute('style', 'display: none')
+    document.getElementById('snap').setAttribute('style', 'display: none');
+    document.getElementById('back').setAttribute('style', 'display: none');
 
     let images = document.getElementsByClassName('workplace')[0].getElementsByClassName('mask');
     if (images.length > 0)

@@ -34,7 +34,8 @@ a:hover { transition: 220ms; color: lightgray }
 /*smooth start effect ot choosen elements*/
 #temp_preview { animation: fade-in 0.7s linear }
 
-.menu, .enter_menu, .settings_menu, .tooltip, .avatar, .error, .message, .pic, .avatar_preview, #snap {
+.menu, .enter_menu, .settings_menu, .tooltip, .avatar, .error,
+.message, .pic, .avatar_preview, .nowebcam, .camera, #back,#snap {
     -webkit-animation: fade-in 0.3s linear; /* Safari 4+ */
     -moz-animation: fade-in 0.3s linear; /* Fx 5+ */
     -o-animation: fade-in 0.3s linear; /* Opera 12+ */
@@ -265,10 +266,10 @@ header {
 }
 
 .camera {
-    margin-top: 80px;
+    margin-top: 100px;
     margin-left: 160px;
     width: 300px;
-    height: 300px;
+    height: 280px;
     cursor: pointer;
 }
 
@@ -284,8 +285,22 @@ header {
 
 #video, #canvas { margin-left: 10px; display: none }
 #canvas { margin-top: 4px; display: none }
-#snap { margin-top: 20px; display: none }
-#back { margin-top: 20px; display: none }
+#snap {
+    margin-top: 20px;
+    margin-left: 250px;
+    display: none;
+}
+#back {
+    margin-top: 20px;
+    display: none;
+    float: right;
+}
+
+.nowebcam {
+    font-weight: bold;
+    float: right;
+    margin-right: 10px;
+}
 
 .pics{
     border-radius: 5px;

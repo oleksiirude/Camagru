@@ -8,6 +8,9 @@
 			<button id="back" class="submit_button" onclick="turnOffWebCam()">back</button>
 			<canvas id="canvas" style="visibility: hidden" width="620" height="480"></canvas>
         </div>
+		<div class="nowebcam">
+			<span>if you don't have a webcam upload your own image <span><button class="submit_button">upload</button>
+		</div>
     </div>
     <div class="masks">
         <ul>

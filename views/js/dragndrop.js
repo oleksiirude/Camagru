@@ -27,7 +27,12 @@ function dragndrop(e) {
             newLocation.x = e.pageX - 10;
         }
         if (e.pageY > limits.bottom) {
-                newLocation.y = limits.bottom - 10;
+                newLocation.y = limits.bottom - 60;
+                object.remove();
+            let images = document.getElementsByClassName('workplace')[0]
+                .getElementsByClassName('mask');
+            if (!images.length)
+                snap.disabled = true;
         } else if (e.pageY > limits.top) {
             newLocation.y = e.pageY - 10;
         }
@@ -75,11 +80,14 @@ function create_clone(e) {
         snap.disabled = false;
     }
     let new_mask = document.createElement('img');
+    let parent = document.getElementsByClassName('workplace')[0];
+    let images = parent.getElementsByClassName('mask');
+    if (images.length > 9)
+        return;
     new_mask.setAttribute('src', e.target.src);
     new_mask.setAttribute('class', 'mask');
     new_mask.setAttribute('style', 'position: absolute');
     new_mask.addEventListener('mousedown', dragndrop);
-    let parent = document.getElementsByClassName('workplace')[0];
     parent.insertBefore(new_mask, parent.firstChild);
 }
 

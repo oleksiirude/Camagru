@@ -15,7 +15,7 @@
 
 			$i = 0;
 			foreach ($data as $elem) {
-				$mask = imagecreatefrompng($elem['link']);
+				@$mask = imagecreatefrompng($elem['link']);
 				$maskWidthInitial = imagesx($mask);
 				$maskHeightInitial = imagesy($mask);
 				$maskWidthCaptured = $elem['sizeW'];
