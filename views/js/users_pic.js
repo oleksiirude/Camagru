@@ -9,7 +9,7 @@ function getUsersPicInWorkplace() {
 	document.getElementById('backFromPic').setAttribute('style', 'display: inline-block');
 
 
-	workplace = document.getElementsByClassName('workplace')[0];
+	workplace = document.getElementsByClassName('webcam')[0];
 
 	let pic = document.getElementById('upload').files[0];
 	if (/.*(.jpe?g|.png)$/i.test(pic.name)) {
@@ -46,6 +46,7 @@ function getUsersPicInWorkplace() {
 					snap.setAttribute('style', 'display: block');
 					snap.addEventListener('click', getUsersPicPreview);
 					snap.removeEventListener('click', makeSnap);
+					document.getElementsByClassName('masks')[0].setAttribute('style', 'display: block');
 				}
 				else {
 					pic_error = document.createElement('p');
@@ -84,7 +85,7 @@ function backFromPic() {
 	if (valid_pic)
 		valid_pic.remove();
 
-	let images = document.getElementsByClassName('workplace')[0].getElementsByClassName('mask');
+	let images = document.getElementsByClassName('webcam')[0].getElementsByClassName('mask');
 	if (images.length > 0)
 		while (images.length--)
 			images[0].remove();
@@ -98,7 +99,7 @@ function getUsersPicPreview() {
 	let pic = document.getElementById('valid_pic');
 
 	context.drawImage(pic, 0, 0, 640, 480);
-	let images = document.getElementsByClassName('workplace')[0].getElementsByClassName('mask');
+	let images = document.getElementsByClassName('webcam')[0].getElementsByClassName('mask');
 	ajaxMontage(canvas.toDataURL(), getData(images));
 }
 

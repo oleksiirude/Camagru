@@ -11,6 +11,8 @@ function getWebcam() {
             document.getElementsByClassName('noWebcam')[0].setAttribute('style', 'display: none');
             document.getElementsByClassName('camera')[0].setAttribute('style', 'display: none');
             document.getElementById('video').setAttribute('style', 'display: block');
+            document.getElementsByClassName('masks')[0].setAttribute('style', 'display: block');
+
 
             let snap = document.getElementById('snap');
             snap.addEventListener('click', makeSnap);
@@ -21,7 +23,7 @@ function getWebcam() {
             setTimeout(() =>
                 document.getElementById('backFromCam')
                     .setAttribute('style', 'display: inline-block'),1200);
-            let images = document.getElementsByClassName('workplace')[0].getElementsByClassName('mask');
+            let images = document.getElementsByClassName('webcam')[0].getElementsByClassName('mask');
             if (!images.length)
                 snap.disabled = true;
             video.play();
@@ -39,7 +41,7 @@ function backFromCam() {
     document.getElementById('snap').setAttribute('style', 'display: none');
     document.getElementById('backFromCam').setAttribute('style', 'display: none');
 
-    let images = document.getElementsByClassName('workplace')[0].getElementsByClassName('mask');
+    let images = document.getElementsByClassName('webcam')[0].getElementsByClassName('mask');
     if (images.length > 0)
         while (images.length--)
             images[0].remove();
@@ -47,7 +49,7 @@ function backFromCam() {
 
 function getData(images) {
     let data = {};
-    let parentPos = document.getElementsByClassName('workplace')[0].getBoundingClientRect();
+    let parentPos = document.getElementsByClassName('webcam')[0].getBoundingClientRect();
 
     for (let i = 0; i < images.length; i++) {
         let childPos = images[i].getBoundingClientRect();
@@ -79,7 +81,7 @@ function makeSnap() {
     let video = document.getElementById('video');
 
     context.drawImage(video, 0, 0, 640, 480);
-    let images = document.getElementsByClassName('workplace')[0].getElementsByClassName('mask');
+    let images = document.getElementsByClassName('webcam')[0].getElementsByClassName('mask');
     ajaxMontage(canvas.toDataURL(), getData(images));
 }
 
@@ -115,6 +117,7 @@ function ajaxMontage(photo, data) {
             }
             let snap = document.getElementById('snap');
                 snap.disabled = false;
+            document.getElementsByClassName('pics')[0].setAttribute('style', 'display: block');
         }
     }
 }

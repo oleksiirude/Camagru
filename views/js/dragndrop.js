@@ -1,6 +1,6 @@
 function dragndrop(e) {
 
-    let parent = document.getElementsByClassName('workplace')[0];
+    let parent = document.getElementsByClassName('webcam')[0];
     let elem = e.target;
     elem.style.zIndex = '1000';
 
@@ -27,7 +27,7 @@ function dragndrop(e) {
         if (e.pageY > limits.bottom) {
                 newLocation.y = limits.bottom - 60;
                 elem.remove();
-            let images = document.getElementsByClassName('workplace')[0]
+            let images = document.getElementsByClassName('webcam')[0]
                 .getElementsByClassName('mask');
             if (!images.length) {
                 snap.disabled = true;
@@ -73,13 +73,13 @@ function dragndrop(e) {
 }
 
 function createClone(e) {
-    let mask_existence = document.getElementsByClassName('workplace').length;
+    let mask_existence = document.getElementsByClassName('webcam').length;
     if (mask_existence < 2) {
         let snap = document.getElementById('snap');
         snap.disabled = false;
     }
     let new_mask = document.createElement('img');
-    let parent = document.getElementsByClassName('workplace')[0];
+    let parent = document.getElementsByClassName('webcam')[0];
     let images = parent.getElementsByClassName('mask');
 
     let webcam = document.getElementById('video');

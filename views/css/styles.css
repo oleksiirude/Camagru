@@ -4,13 +4,17 @@
 @-o-keyframes      fade-in {   0% { opacity: 0.1; }   100% { opacity: 1; }   }
 @keyframes         fade-in {   0% { opacity: 0.1; }   100% { opacity: 1; }   }
 
-::-webkit-scrollbar { width: 3px; height: 3px; }
-::-webkit-scrollbar-button { background-color: #666; }
-::-webkit-scrollbar-track {  background-color: #999; }
-::-webkit-scrollbar-track-piece { background-color: #ffffff; }
-::-webkit-scrollbar-thumb { height: 50px; background-color: #666; border-radius: 3px; }
-::-webkit-scrollbar-corner { background-color: #999; }
-::-webkit-resizer { background-color: #666; }
+::-webkit-scrollbar { width: 8px; }
+
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
+}
 
 body {
     font-family: 'Open Sans Condensed', sans-serif;
@@ -35,8 +39,8 @@ a:hover { transition: 220ms; color: lightgray }
 #temp_preview { animation: fade-in 0.7s linear }
 
 .menu, .enter_menu, .settings_menu, .tooltip, .avatar, .error,
-.message, .pic, .avatar_preview, .noWebcam, .camera, .valid_pic, #backFromCam, #snap,
-#backFromPic {
+.message, .pic, .pics, .avatar_preview, .noWebcam, .camera, .valid_pic,
+.masks, #backFromCam, #snap, #backFromPic {
     -webkit-animation: fade-in 0.3s linear; /* Safari 4+ */
     -moz-animation: fade-in 0.3s linear; /* Fx 5+ */
     -o-animation: fade-in 0.3s linear; /* Opera 12+ */
@@ -144,6 +148,49 @@ header {
 }
 
 /*BUTTON STYLES*/
+.snap_button {
+    box-shadow: 0 0 2px 1px gray;
+    background-color: #d0451b;
+    border-radius: 3px;
+    border: 1px solid #942911;
+    cursor: pointer;
+    color: #ffffff;
+    width: 70px;
+    height: 30px;
+    font-size: 16px;
+    text-shadow: 0 1px 0 #854629;
+}
+
+.snap_button:hover {
+    background-color: #bc3315;
+}
+
+.snap_button:active {
+    position: relative;
+    top: 1px;
+}
+
+.back_button {
+    box-shadow: 0 0 2px 1px gray;
+    background-color: #5a5a5a;
+    border-radius: 3px;
+    border: 1px solid #323232;
+    cursor: pointer;
+    color: #cecece;
+    width: 50px;
+    height: 24px;
+    font-size: 14px;
+    text-shadow: 0 1px 0 #242424;
+}
+
+.back_button:hover {
+    background-color: gray;
+}
+
+.back_button:active {
+    position: relative;
+    top: 1px;
+}
 
 .submit_button {
     font-size: 14px;
@@ -179,7 +226,6 @@ header {
 }
 
 /*SETTINGS*/
-
 .settings_menu {
     font-weight: bold;
     font-size: 26px;
@@ -310,7 +356,7 @@ header {
     height: 470px;
 }
 
-.workplace {
+.webcam {
     border-radius: 5px;
     background-color: #333333;
     width: 640px;
@@ -323,30 +369,26 @@ header {
 #video, #canvas { margin-left: 10px; display: none }
 #canvas { margin-top: 4px; display: none }
 #snap {
-    margin-top: 10px;
-    margin-left: 250px;
-    display: none;
-}
-
-#users_pic_snap {
-    margin-top: 20px;
-    margin-left: 250px;
+    margin-top: 6px;
+    margin-left: 300px;
     display: none;
 }
 
 #backFromCam {
-    margin-top: 20px;
+    margin-top: 15px;
     display: none;
     float: right;
 }
 
 #backFromPic {
-    margin-top: 10px;
+    margin-top: 4px;
+    margin-right: 20px;
     display: none;
     float: right;
 }
 
 .pics{
+    display: none;
     border-radius: 5px;
     margin: 8px auto 10px auto;
     background-color: darkgrey;
@@ -354,7 +396,6 @@ header {
     min-width: 680px;
     min-height: 210px;
     padding-top: 10px;
-    padding-left: 20px;
     box-shadow: 1px 1px 1px 1px grey;
 }
 
@@ -363,11 +404,12 @@ header {
     height: 200px;
     border-radius: 5px;
     border: grey solid 2px;
-    margin-left: 8px;
+    margin-left: 7px;
     box-shadow: 1px 1px 1px 1px dimgrey;
 }
 
 .masks {
+    display: none;
     border-radius: 5px;
     margin: 8px auto 10px auto;
     background-color: darkgrey;
@@ -396,11 +438,7 @@ ul li  {
     display: inline;
 }
 
-.masks_list {
-    display: inline;
-}
-
-/*CHANGE END*/
+/*FOOTER STUFF*/
 footer {
     width: 68%;
     min-width: 600px;
@@ -425,6 +463,7 @@ footer {
     float: left;
 }
 
+/*TOOLTIP FOR FORMS*/
 .tooltip {
     position: absolute;
     padding: 5px 10px;
@@ -434,12 +473,6 @@ footer {
     background: silver;
     box-shadow: 0 0 1px 1px grey;
     z-index: 1;
-}
-
-.info {
-    margin-left: 4px;
-    width: 15px;
-    height: 15px;
 }
 
 /*ERROR MASSAGES*/
