@@ -2,7 +2,7 @@ function dragndrop(e) {
 
     let parent = document.getElementsByClassName('webcam')[0];
     let elem = e.target;
-    elem.style.zIndex = '1000';
+    elem.style.zIndex = '10';
 
     let limits = {
         top: parent.offsetTop,
@@ -88,9 +88,9 @@ function createClone(e) {
         return;
     if (images.length > 9)
         return;
-    new_mask.setAttribute('src', e.target.src);
-    new_mask.setAttribute('class', 'mask');
-    new_mask.setAttribute('style', 'position: absolute');
+    new_mask.src = e.target.src;
+    new_mask.className = 'mask';
+    new_mask.style.position = 'absolute';
     new_mask.addEventListener('mousedown', dragndrop);
     parent.insertBefore(new_mask, parent.firstChild);
 }

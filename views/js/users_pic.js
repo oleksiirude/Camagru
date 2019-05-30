@@ -4,9 +4,9 @@ document.getElementById('upload').addEventListener('change', getUsersPicInWorkpl
 function getUsersPicInWorkplace() {
 	let workplace, pic_error, valid_pic, snap;
 
-	document.getElementsByClassName('camera')[0].setAttribute('style', 'display: none');
-	document.getElementsByClassName('uploadPic')[0].setAttribute('style', 'display: none');
-	document.getElementById('backFromPic').setAttribute('style', 'display: inline-block');
+	document.getElementsByClassName('camera')[0].style.display = 'none';
+	document.getElementsByClassName('uploadPic')[0].style.display = 'none';
+	document.getElementById('backFromPic').style.display = 'inline-block';
 
 
 	workplace = document.getElementsByClassName('webcam')[0];
@@ -43,10 +43,13 @@ function getUsersPicInWorkplace() {
 					workplace.appendChild(valid_pic);
 
 					snap = document.getElementById('snap');
-					snap.setAttribute('style', 'display: block');
+					snap.style.display = 'block';
 					snap.addEventListener('click', getUsersPicPreview);
 					snap.removeEventListener('click', makeSnap);
-					document.getElementsByClassName('masks')[0].setAttribute('style', 'display: block');
+					let images = document.getElementsByClassName('webcam')[0].getElementsByClassName('mask');
+					if (!images.length)
+						snap.disabled = true;
+					document.getElementsByClassName('masks')[0].style.display = 'block';
 				}
 				else {
 					pic_error = document.createElement('p');
@@ -73,13 +76,14 @@ function backFromPic() {
 	if (pic_error)
 		pic_error.remove();
 
-	document.getElementsByClassName('snapContainer')[0].setAttribute('style', 'display: block');
-	document.getElementById('video').setAttribute('style', 'display: none');
-	document.getElementsByClassName('camera')[0].setAttribute('style', 'display: inline-block');
-	document.getElementById('snap').setAttribute('style', 'display: none');
-	document.getElementById('backFromCam').setAttribute('style', 'display: none');
-	document.getElementsByClassName('uploadPic')[0].setAttribute('style', 'display: block');
-	document.getElementById('backFromPic').setAttribute('style', 'display: none');
+	document.getElementById('video').style.display = 'none';
+
+	document.getElementById('snap').style.display = 'none';
+	document.getElementById('backFromCam').style.display = 'none';
+	document.getElementById('backFromPic').style.display = 'none';
+	document.getElementsByClassName('snapContainer')[0].style.display = 'block';
+	document.getElementsByClassName('uploadPic')[0].style.display = 'block';
+	document.getElementsByClassName('camera')[0].style.display = 'inline-block';
 
 	let valid_pic = document.getElementById('valid_pic');
 	if (valid_pic)

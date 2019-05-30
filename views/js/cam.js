@@ -8,10 +8,10 @@ function getWebcam() {
 
         navigator.mediaDevices.getUserMedia({video: true}).then(function (stream) {
             video.srcObject = stream;
-            document.getElementsByClassName('noWebcam')[0].setAttribute('style', 'display: none');
-            document.getElementsByClassName('camera')[0].setAttribute('style', 'display: none');
-            document.getElementById('video').setAttribute('style', 'display: block');
-            document.getElementsByClassName('masks')[0].setAttribute('style', 'display: block');
+            document.getElementsByClassName('noWebcam')[0].style.display = 'none';
+            document.getElementsByClassName('camera')[0].style.display = 'none';
+            document.getElementById('video').style.display = 'block';
+            document.getElementsByClassName('masks')[0].style.display = 'block';
 
 
             let snap = document.getElementById('snap');
@@ -19,10 +19,9 @@ function getWebcam() {
             snap.removeEventListener('click', getUsersPicPreview);
 
             setTimeout(() =>
-                snap.setAttribute('style', 'display: inline-block'),1200);
+                snap.style.display = 'inline-block',1200);
             setTimeout(() =>
-                document.getElementById('backFromCam')
-                    .setAttribute('style', 'display: inline-block'),1200);
+                document.getElementById('backFromCam').style.display = 'inline-block',1200);
             let images = document.getElementsByClassName('webcam')[0].getElementsByClassName('mask');
             if (!images.length)
                 snap.disabled = true;
@@ -35,11 +34,11 @@ function backFromCam() {
     let video = document.getElementById('video');
     video.srcObject.getTracks().forEach(track => track.stop());
 
-    document.getElementsByClassName('noWebcam')[0].setAttribute('style', 'display: block');
-    document.getElementById('video').setAttribute('style', 'display: none');
-    document.getElementsByClassName('camera')[0].setAttribute('style', 'display: inline-block');
-    document.getElementById('snap').setAttribute('style', 'display: none');
-    document.getElementById('backFromCam').setAttribute('style', 'display: none');
+    document.getElementById('video').style.display = 'none';
+    document.getElementById('snap').style.display = 'none';
+    document.getElementById('backFromCam').style.display = 'none';
+    document.getElementsByClassName('noWebcam')[0].style.display = 'block';
+    document.getElementsByClassName('camera')[0].style.display = 'inline-block';
 
     let images = document.getElementsByClassName('webcam')[0].getElementsByClassName('mask');
     if (images.length > 0)
@@ -113,11 +112,12 @@ function ajaxMontage(photo, data) {
                 let img = document.createElement('img');
                 img.setAttribute('src', result);
                 img.setAttribute('class', 'pic');
+                img.addEventListener('click', doPost);
                 pics.appendChild(img);
             }
             let snap = document.getElementById('snap');
                 snap.disabled = false;
-            document.getElementsByClassName('pics')[0].setAttribute('style', 'display: block');
+            document.getElementsByClassName('pics')[0].style.display = 'block';
         }
     }
 }

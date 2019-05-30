@@ -20,5 +20,6 @@
     <script src="views/js/cam.js"></script>
     <script src="views/js/dragndrop.js"></script>
 	<script src="views/js/users_pic.js"></script>
+	<script src="views/js/make_post.js"></script>
 </body>
 </html>
