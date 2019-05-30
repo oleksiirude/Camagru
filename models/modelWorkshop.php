@@ -62,7 +62,7 @@
 			$name = $id.'tmp'.'.'.$matches[1];
 			$base64 = componentView::resizePic($filePath, $name, $type, 640, 480);
 			if (!$base64)
-				return ['result' => 'false', 'warning' => 'invalid file!'];
+				return ['result' => false, 'warning' => 'invalid file!'];
 			return $base64;
 		}
 	}

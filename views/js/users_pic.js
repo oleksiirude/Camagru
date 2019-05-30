@@ -1,5 +1,9 @@
-document.getElementById('backFromPic').addEventListener('click', backFromPic);
-document.getElementById('upload').addEventListener('change', getUsersPicInWorkplace);
+let backFromPicButton = document.getElementById('backFromPic');
+	if (backFromPicButton)
+		backFromPicButton.addEventListener('click', backFromPic);
+let upload = document.getElementById('upload');
+	if (upload)
+		upload.addEventListener('change', getUsersPicInWorkplace);
 
 function getUsersPicInWorkplace() {
 	let workplace, pic_error, valid_pic, snap;
@@ -7,7 +11,6 @@ function getUsersPicInWorkplace() {
 	document.getElementsByClassName('camera')[0].style.display = 'none';
 	document.getElementsByClassName('uploadPic')[0].style.display = 'none';
 	document.getElementById('backFromPic').style.display = 'inline-block';
-
 
 	workplace = document.getElementsByClassName('webcam')[0];
 

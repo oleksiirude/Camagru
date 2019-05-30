@@ -150,4 +150,8 @@
 			'action' => 'usersPicValidate'
 		],
 
+		'workshop/addpost' => [
+			'controller' => 'workshop',
+			'action' => 'addPost'
+		],
 	];

@@ -64,14 +64,14 @@
     <select />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.66279817">
+    <splitter split-orientation="horizontal" split-proportion="0.486138">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/views/workshop/workshop.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="68">
-                  <caret line="4" column="62" selection-start-line="4" selection-start-column="62" selection-end-line="4" selection-end-column="62" />
+                <state>
+                  <caret selection-end-column="29" />
                   <folding>
                     <element signature="n#style#0;n#canvas#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
                     <element signature="n#ul#0;n#div#1;n#div#0;n#!!top" />
@@ -83,8 +83,17 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/views/js/make_post.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="221">
-                  <caret line="13" column="44" selection-start-line="13" selection-start-column="44" selection-end-line="13" selection-end-column="44" />
+                <state relative-caret-position="192">
+                  <caret line="41" column="41" selection-start-line="41" selection-start-column="41" selection-end-line="41" selection-end-column="41" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/config/routes.php">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="631">
+                  <caret line="155" column="10" selection-start-line="155" selection-start-column="10" selection-end-line="155" selection-end-column="10" />
                 </state>
               </provider>
             </entry>
@@ -98,20 +107,29 @@
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/views/js/cam.js">
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/views/js/ajax_forms.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="408">
-                  <caret line="24" column="12" selection-start-line="24" selection-start-column="12" selection-end-line="26" selection-end-column="37" />
+                <state relative-caret-position="155">
+                  <caret line="37" column="55" selection-start-line="37" selection-start-column="55" selection-end-line="37" selection-end-column="55" />
                 </state>
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="true">
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/views/js/cam.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="240">
+                  <caret line="99" column="34" lean-forward="true" selection-start-line="99" selection-start-column="34" selection-end-line="99" selection-end-column="34" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/views/js/users_pic.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="493">
-                  <caret line="50" column="45" selection-start-line="50" selection-start-column="45" selection-end-line="50" selection-end-column="45" />
+                <state relative-caret-position="-901">
+                  <caret line="13" selection-start-line="13" selection-end-line="13" />
                   <folding>
                     <element signature="n#style#0;n#p#0;n#!!top" expanded="true" />
                   </folding>
@@ -123,11 +141,37 @@
       </split-first>
       <split-second>
         <leaf>
-          <file pinned="false" current-in-tab="true">
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/views/css/styles.css">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="466">
-                  <caret line="500" column="22" selection-start-line="500" selection-start-column="22" selection-end-line="500" selection-end-column="22" />
+                <state relative-caret-position="520">
+                  <caret line="243" column="30" lean-forward="true" selection-start-line="243" selection-start-column="30" selection-end-line="243" selection-end-column="30" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/models/modelWorkshop.php">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="391">
+                  <caret line="68" lean-forward="true" selection-start-line="68" selection-end-line="68" />
+                  <folding>
+                    <element signature="n#getPreview#0;n#modelWorkshop#0;n#!!top" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/controllers/controllerWorkshop.php">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="425">
+                  <caret line="42" column="27" selection-start-line="42" selection-start-column="27" selection-end-line="42" selection-end-column="27" />
+                  <folding>
+                    <element signature="n#__construct#0;n#controllerWorkshop#0;n#!!top" />
+                    <element signature="n#actionWorkshop#0;n#controllerWorkshop#0;n#!!top" />
+                    <element signature="n#actionUsersPicValidate#0;n#controllerWorkshop#0;n#!!top" />
+                  </folding>
                 </state>
               </provider>
             </entry>
@@ -147,10 +191,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>up</find>
-      <find>upload_ava</find>
-      <find>upload</find>
-      <find>work</find>
       <find>now</find>
       <find>#snap</find>
       <find>camera</find>
@@ -175,8 +215,12 @@
       <find>.pic</find>
       <find>make_post</find>
       <find>pic_pre</find>
-      <find>pic</find>
       <find>descri</find>
+      <find>error</find>
+      <find>pic</find>
+      <find>sub</find>
+      <find>des</find>
+      <find>add_po</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -185,7 +229,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/views/workshop/dashboard.php" />
         <option value="$PROJECT_DIR$/components/componentDatabase.php" />
         <option value="$PROJECT_DIR$/views/user/profile.php" />
         <option value="$PROJECT_DIR$/views/tooltips.js" />
@@ -225,17 +268,18 @@
         <option value="$PROJECT_DIR$/views/js/tooltips.js" />
         <option value="$PROJECT_DIR$/models/modelUser.php" />
         <option value="$PROJECT_DIR$/components/componentView.php" />
+        <option value="$PROJECT_DIR$/views/js/dragndrop.js" />
+        <option value="$PROJECT_DIR$/views/default/index.php" />
+        <option value="$PROJECT_DIR$/views/default/footer.php" />
+        <option value="$PROJECT_DIR$/views/js/cam.js" />
+        <option value="$PROJECT_DIR$/views/js/users_pic.js" />
+        <option value="$PROJECT_DIR$/views/workshop/workshop.php" />
         <option value="$PROJECT_DIR$/config/routes.php" />
         <option value="$PROJECT_DIR$/models/modelWorkshop.php" />
         <option value="$PROJECT_DIR$/controllers/controllerWorkshop.php" />
-        <option value="$PROJECT_DIR$/views/default/footer.php" />
-        <option value="$PROJECT_DIR$/views/js/dragndrop.js" />
-        <option value="$PROJECT_DIR$/views/default/index.php" />
-        <option value="$PROJECT_DIR$/views/js/make_post.js" />
-        <option value="$PROJECT_DIR$/views/workshop/workshop.php" />
         <option value="$PROJECT_DIR$/views/css/styles.css" />
-        <option value="$PROJECT_DIR$/views/js/cam.js" />
-        <option value="$PROJECT_DIR$/views/js/users_pic.js" />
+        <option value="$PROJECT_DIR$/views/js/make_post.js" />
+        <option value="$PROJECT_DIR$/views/js/ajax_forms.js" />
       </list>
     </option>
   </component>
@@ -260,6 +304,21 @@
             <path>
               <item name="htdocs" type="b2602c69:ProjectViewProjectNode" />
               <item name="htdocs" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="htdocs" type="b2602c69:ProjectViewProjectNode" />
+              <item name="htdocs" type="462c0819:PsiDirectoryNode" />
+              <item name="config" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="htdocs" type="b2602c69:ProjectViewProjectNode" />
+              <item name="htdocs" type="462c0819:PsiDirectoryNode" />
+              <item name="controllers" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="htdocs" type="b2602c69:ProjectViewProjectNode" />
+              <item name="htdocs" type="462c0819:PsiDirectoryNode" />
+              <item name="models" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="htdocs" type="b2602c69:ProjectViewProjectNode" />
@@ -355,12 +414,12 @@
       <workItem from="1559025518622" duration="2000" />
       <workItem from="1559025569305" duration="37976000" />
       <workItem from="1559110572648" duration="42468000" />
-      <workItem from="1559198319845" duration="23333000" />
+      <workItem from="1559198319845" duration="32638000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="384446000" />
+    <option name="totallyTimeSpent" value="393751000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -521,9 +580,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/js/ajax_forms.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/views/error/error.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
@@ -621,47 +677,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config/routes.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="529">
-          <caret line="146" selection-start-line="146" selection-end-line="146" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models/modelWorkshop.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="34" selection-start-line="5" selection-start-column="34" selection-end-line="5" selection-end-column="34" />
-          <folding>
-            <element signature="n#getPreviewFromWebCam#0;n#modelWorkshop#0;n#!!top" />
-            <element signature="n#validateUsersPic#0;n#modelWorkshop#0;n#!!top" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/controllers/controllerWorkshop.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="20" column="44" selection-start-line="20" selection-start-column="44" selection-end-line="20" selection-end-column="44" />
-          <folding>
-            <element signature="n#__construct#0;n#controllerWorkshop#0;n#!!top" />
-            <element signature="n#actionWorkshop#0;n#controllerWorkshop#0;n#!!top" />
-            <element signature="n#actionGetPreviewWebcam#0;n#controllerWorkshop#0;n#!!top" />
-            <element signature="n#actionUsersPicValidate#0;n#controllerWorkshop#0;n#!!top" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/default/footer.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="151" selection-start-line="6" selection-start-column="151" selection-end-line="6" selection-end-column="151" />
-          <folding>
-            <element signature="n#style#0;n#img#0;n#a#0;n#div#1;n#footer#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/controllers/controllerUser.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="699">
@@ -730,24 +745,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/js/dragndrop.js">
+    <entry file="file://$PROJECT_DIR$/views/default/footer.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="478">
-          <caret line="94" column="4" lean-forward="true" selection-start-line="94" selection-start-column="4" selection-end-line="94" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/js/make_post.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="44" selection-start-line="13" selection-start-column="44" selection-end-line="13" selection-end-column="44" />
+        <state relative-caret-position="102">
+          <caret line="6" column="132" selection-start-line="6" selection-start-column="132" selection-end-line="6" selection-end-column="132" />
+          <folding>
+            <element signature="n#style#0;n#img#0;n#a#1;n#div#1;n#footer#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/views/workshop/workshop.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="62" selection-start-line="4" selection-start-column="62" selection-end-line="4" selection-end-column="62" />
+        <state>
+          <caret selection-end-column="29" />
           <folding>
             <element signature="n#style#0;n#canvas#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
             <element signature="n#ul#0;n#div#1;n#div#0;n#!!top" />
@@ -755,26 +766,76 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/views/js/users_pic.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-901">
+          <caret line="13" selection-start-line="13" selection-end-line="13" />
+          <folding>
+            <element signature="n#style#0;n#p#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/routes.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="631">
+          <caret line="155" column="10" selection-start-line="155" selection-start-column="10" selection-end-line="155" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/views/css/styles.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="466">
-          <caret line="500" column="22" selection-start-line="500" selection-start-column="22" selection-end-line="500" selection-end-column="22" />
+        <state relative-caret-position="520">
+          <caret line="243" column="30" lean-forward="true" selection-start-line="243" selection-start-column="30" selection-end-line="243" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/js/make_post.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="41" column="41" selection-start-line="41" selection-start-column="41" selection-end-line="41" selection-end-column="41" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/views/js/cam.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="24" column="12" selection-start-line="24" selection-start-column="12" selection-end-line="26" selection-end-column="37" />
+        <state relative-caret-position="240">
+          <caret line="99" column="34" lean-forward="true" selection-start-line="99" selection-start-column="34" selection-end-line="99" selection-end-column="34" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/js/users_pic.js">
+    <entry file="file://$PROJECT_DIR$/views/js/dragndrop.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="50" column="45" selection-start-line="50" selection-start-column="45" selection-end-line="50" selection-end-column="45" />
+        <state relative-caret-position="478">
+          <caret line="94" column="4" lean-forward="true" selection-start-line="94" selection-start-column="4" selection-end-line="94" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/js/ajax_forms.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="155">
+          <caret line="37" column="55" selection-start-line="37" selection-start-column="55" selection-end-line="37" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/modelWorkshop.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="68" lean-forward="true" selection-start-line="68" selection-end-line="68" />
           <folding>
-            <element signature="n#style#0;n#p#0;n#!!top" expanded="true" />
+            <element signature="n#getPreview#0;n#modelWorkshop#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controllers/controllerWorkshop.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="42" column="27" selection-start-line="42" selection-start-column="27" selection-end-line="42" selection-end-column="27" />
+          <folding>
+            <element signature="n#__construct#0;n#controllerWorkshop#0;n#!!top" />
+            <element signature="n#actionWorkshop#0;n#controllerWorkshop#0;n#!!top" />
+            <element signature="n#actionUsersPicValidate#0;n#controllerWorkshop#0;n#!!top" />
           </folding>
         </state>
       </provider>

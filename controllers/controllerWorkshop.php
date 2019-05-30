@@ -37,4 +37,11 @@
 			echo json_encode($result);
 			return true;
 		}
+
+		public function actionAddPost() {
+
+			var_dump($_POST);
+//			echo json_encode(true);
+			return true;
+		}
 }

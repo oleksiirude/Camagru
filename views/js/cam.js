@@ -1,5 +1,9 @@
-document.getElementById('backFromCam').addEventListener('click', backFromCam);
-document.getElementsByClassName('camera')[0].addEventListener('click', getWebcam);
+let backFromCamButton = document.getElementById('backFromCam');
+    if (backFromCamButton)
+        backFromCamButton.addEventListener('click', backFromCam);
+let camera = document.getElementsByClassName('camera')[0];
+    if (camera)
+        camera.addEventListener('click', getWebcam);
 
 function getWebcam() {
     let video = document.getElementById('video');
@@ -112,12 +116,12 @@ function ajaxMontage(photo, data) {
                 let img = document.createElement('img');
                 img.setAttribute('src', result);
                 img.setAttribute('class', 'pic');
-                img.addEventListener('click', doPost);
+                img.addEventListener('click', doPostIntention);
                 pics.appendChild(img);
+                document.getElementsByClassName('pics')[0].style.display = 'block';
             }
             let snap = document.getElementById('snap');
                 snap.disabled = false;
-            document.getElementsByClassName('pics')[0].style.display = 'block';
         }
     }
 }
