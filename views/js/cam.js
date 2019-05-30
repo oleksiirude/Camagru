@@ -1,3 +1,6 @@
+document.getElementById('backFromCam').addEventListener('click', backFromCam);
+document.getElementsByClassName('camera')[0].addEventListener('click', getWebcam);
+
 function getWebcam() {
     let video = document.getElementById('video');
 
@@ -5,32 +8,36 @@ function getWebcam() {
 
         navigator.mediaDevices.getUserMedia({video: true}).then(function (stream) {
             video.srcObject = stream;
-            document.getElementsByClassName('nowebcam')[0].setAttribute('style', 'display: none');
+            document.getElementsByClassName('noWebcam')[0].setAttribute('style', 'display: none');
             document.getElementsByClassName('camera')[0].setAttribute('style', 'display: none');
             document.getElementById('video').setAttribute('style', 'display: block');
+
             let snap = document.getElementById('snap');
+            snap.addEventListener('click', makeSnap);
+            snap.removeEventListener('click', getUsersPicPreview);
+
             setTimeout(() =>
                 snap.setAttribute('style', 'display: inline-block'),1200);
             setTimeout(() =>
-                document.getElementById('back')
+                document.getElementById('backFromCam')
                     .setAttribute('style', 'display: inline-block'),1200);
             let images = document.getElementsByClassName('workplace')[0].getElementsByClassName('mask');
             if (!images.length)
                 snap.disabled = true;
             video.play();
-        })
+        });
     }
 }
 
-function turnOffWebCam() {
+function backFromCam() {
     let video = document.getElementById('video');
     video.srcObject.getTracks().forEach(track => track.stop());
 
-    document.getElementsByClassName('nowebcam')[0].setAttribute('style', 'display: block');
+    document.getElementsByClassName('noWebcam')[0].setAttribute('style', 'display: block');
     document.getElementById('video').setAttribute('style', 'display: none');
     document.getElementsByClassName('camera')[0].setAttribute('style', 'display: inline-block');
     document.getElementById('snap').setAttribute('style', 'display: none');
-    document.getElementById('back').setAttribute('style', 'display: none');
+    document.getElementById('backFromCam').setAttribute('style', 'display: none');
 
     let images = document.getElementsByClassName('workplace')[0].getElementsByClassName('mask');
     if (images.length > 0)
@@ -73,10 +80,10 @@ function makeSnap() {
 
     context.drawImage(video, 0, 0, 640, 480);
     let images = document.getElementsByClassName('workplace')[0].getElementsByClassName('mask');
-    ajaxMontage(canvas.toDataURL(), getData(images), 'webcam');
+    ajaxMontage(canvas.toDataURL(), getData(images));
 }
 
-function ajaxMontage(photo, data, source) {
+function ajaxMontage(photo, data) {
 
     let ajax = new XMLHttpRequest();
     ajax.open('POST', 'workshop/getpreview', true);
@@ -97,7 +104,6 @@ function ajaxMontage(photo, data, source) {
         }
         if (ajax.readyState === 4) {
             let result = ajax.responseText;
-            //console.log(result);
             if (result && result.search(/Fatal error/) < 0) {
                 let pics = document.getElementsByClassName('pics')[0];
                 if (pics.childElementCount >= 2)
@@ -107,13 +113,8 @@ function ajaxMontage(photo, data, source) {
                 img.setAttribute('class', 'pic');
                 pics.appendChild(img);
             }
-            if (source === 'webcam') {
-                let snap = document.getElementById('snap');
+            let snap = document.getElementById('snap');
                 snap.disabled = false;
-            } else if (source === 'pic') {
-                let snap = document.getElementById('users_pic_snap');
-                snap.disabled = false;
-            }
         }
     }
 }

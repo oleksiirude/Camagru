@@ -35,8 +35,8 @@ a:hover { transition: 220ms; color: lightgray }
 #temp_preview { animation: fade-in 0.7s linear }
 
 .menu, .enter_menu, .settings_menu, .tooltip, .avatar, .error,
-.message, .pic, .avatar_preview, .nowebcam, .camera, .valid_pic, #back, #snap,
-#back_upload {
+.message, .pic, .avatar_preview, .noWebcam, .camera, .valid_pic, #backFromCam, #snap,
+#backFromPic {
     -webkit-animation: fade-in 0.3s linear; /* Safari 4+ */
     -moz-animation: fade-in 0.3s linear; /* Fx 5+ */
     -o-animation: fade-in 0.3s linear; /* Opera 12+ */
@@ -255,7 +255,7 @@ header {
     text-align: center;
 }
 
-.webcam {
+.snapContainer {
     border-radius: 5px;
     align-content: center;
     margin: 10px auto 10px auto;
@@ -269,20 +269,20 @@ header {
 .camera {
     margin-top: 100px;
     margin-left: 160px;
-    width: 300px;
+    width: 310px;
     height: 280px;
     cursor: pointer;
 }
 
-.nowebcam {
+.noWebcam {
     font-weight: bold;
     text-align: center;
     margin-right: 10px;
 }
 
-.upload_pic input[type="file"] { display: none }
+.uploadPic input[type="file"] { display: none }
 
-.upload_pic label {
+.uploadPic label {
     display: inline-block;
     width: 204px;
     height: 22px;
@@ -294,7 +294,7 @@ header {
     box-shadow: 1px 1px 1px 1px grey;
 }
 
-.upload_pic label:hover { background: silver }
+.uploadPic label:hover { background: silver }
 
 .pic_error {
     font-size: 28px;
@@ -323,7 +323,7 @@ header {
 #video, #canvas { margin-left: 10px; display: none }
 #canvas { margin-top: 4px; display: none }
 #snap {
-    margin-top: 20px;
+    margin-top: 10px;
     margin-left: 250px;
     display: none;
 }
@@ -334,13 +334,13 @@ header {
     display: none;
 }
 
-#back {
+#backFromCam {
     margin-top: 20px;
     display: none;
     float: right;
 }
 
-#back_upload {
+#backFromPic {
     margin-top: 10px;
     display: none;
     float: right;
@@ -411,6 +411,18 @@ footer {
     box-shadow: 0 0 1px 1px grey;
     text-align: center;
     flex-shrink: 0;
+}
+
+.github {
+    margin-top: 15px;
+    margin-right: 15px;
+    float: right;
+}
+
+.socials {
+    margin-top: 10px;
+    margin-left: 15px;
+    float: left;
 }
 
 .tooltip {

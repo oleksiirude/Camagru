@@ -1,9 +1,12 @@
+document.getElementById('backFromPic').addEventListener('click', backFromPic);
+document.getElementById('upload').addEventListener('change', getUsersPicInWorkplace);
+
 function getUsersPicInWorkplace() {
 	let workplace, pic_error, valid_pic, snap;
 
 	document.getElementsByClassName('camera')[0].setAttribute('style', 'display: none');
-	document.getElementsByClassName('upload_pic')[0].setAttribute('style', 'display: none');
-	document.getElementById('back_upload').setAttribute('style', 'display: inline-block');
+	document.getElementsByClassName('uploadPic')[0].setAttribute('style', 'display: none');
+	document.getElementById('backFromPic').setAttribute('style', 'display: inline-block');
 
 
 	workplace = document.getElementsByClassName('workplace')[0];
@@ -31,8 +34,6 @@ function getUsersPicInWorkplace() {
 		 	}
 		 	if (ajax.readyState === 4) {
 		 		let result = JSON.parse(ajax.responseText);
-		 		//let result = ajax.responseText;
-		 		//console.log(result);
 		 		if (result['result'] === true) {
 					clearCanvas();
 					valid_pic = document.createElement('img');
@@ -41,13 +42,10 @@ function getUsersPicInWorkplace() {
 					valid_pic.setAttribute('src', result['base64']);
 					workplace.appendChild(valid_pic);
 
-					snap = document.createElement('button');
-					snap.innerText = 'SNAP!';
-					snap.setAttribute('id', 'users_pic_snap');
-					snap.setAttribute('class', 'submit_button');
+					snap = document.getElementById('snap');
 					snap.setAttribute('style', 'display: block');
-					workplace.appendChild(snap);
 					snap.addEventListener('click', getUsersPicPreview);
+					snap.removeEventListener('click', makeSnap);
 				}
 				else {
 					pic_error = document.createElement('p');
@@ -68,26 +66,23 @@ function getUsersPicInWorkplace() {
 	}
 }
 
-function backToMain() {
+function backFromPic() {
 	clearCanvas();
 	let pic_error = document.getElementById('pic_error');
 	if (pic_error)
 		pic_error.remove();
 
-	document.getElementsByClassName('nowebcam')[0].setAttribute('style', 'display: block');
+	document.getElementsByClassName('snapContainer')[0].setAttribute('style', 'display: block');
 	document.getElementById('video').setAttribute('style', 'display: none');
 	document.getElementsByClassName('camera')[0].setAttribute('style', 'display: inline-block');
 	document.getElementById('snap').setAttribute('style', 'display: none');
-	document.getElementById('back').setAttribute('style', 'display: none');
-	document.getElementsByClassName('upload_pic')[0].setAttribute('style', 'display: block');
-	document.getElementById('back_upload').setAttribute('style', 'display: none');
+	document.getElementById('backFromCam').setAttribute('style', 'display: none');
+	document.getElementsByClassName('uploadPic')[0].setAttribute('style', 'display: block');
+	document.getElementById('backFromPic').setAttribute('style', 'display: none');
 
-	let users_pic = document.getElementById('valid_pic');
-	if (users_pic)
-		users_pic.remove();
-	let users_pic_snap = document.getElementById('users_pic_snap');
-	if (users_pic_snap)
-		users_pic_snap.remove();
+	let valid_pic = document.getElementById('valid_pic');
+	if (valid_pic)
+		valid_pic.remove();
 
 	let images = document.getElementsByClassName('workplace')[0].getElementsByClassName('mask');
 	if (images.length > 0)
@@ -96,7 +91,7 @@ function backToMain() {
 }
 
 function getUsersPicPreview() {
-	let snap = document.getElementById('users_pic_snap');
+	let snap = document.getElementById('snap');
 	snap.disabled = true;
 	let canvas = document.getElementById('canvas');
 	let context = canvas.getContext('2d');
@@ -104,7 +99,7 @@ function getUsersPicPreview() {
 
 	context.drawImage(pic, 0, 0, 640, 480);
 	let images = document.getElementsByClassName('workplace')[0].getElementsByClassName('mask');
-	ajaxMontage(canvas.toDataURL(), getData(images), 'pic');
+	ajaxMontage(canvas.toDataURL(), getData(images));
 }
 
 function clearCanvas() {

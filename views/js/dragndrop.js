@@ -2,6 +2,7 @@ function dragndrop(e) {
 
     let parent = document.getElementsByClassName('workplace')[0];
     let elem = e.target;
+    elem.style.zIndex = '1000';
 
     let limits = {
         top: parent.offsetTop,
@@ -10,10 +11,7 @@ function dragndrop(e) {
         left: parent.offsetLeft
     };
 
-    let object = e.target;
-    object.style.zIndex = '1000';
-
-    parent.appendChild(object);
+    parent.appendChild(elem);
     moveAt(e);
 
     function moveAt(e) {
@@ -28,7 +26,7 @@ function dragndrop(e) {
         }
         if (e.pageY > limits.bottom) {
                 newLocation.y = limits.bottom - 60;
-                object.remove();
+                elem.remove();
             let images = document.getElementsByClassName('workplace')[0]
                 .getElementsByClassName('mask');
             if (!images.length) {
@@ -47,34 +45,34 @@ function dragndrop(e) {
 
     document.onmousemove = (e) => { moveAt(e); };
 
-    object.onmouseup = () => {
+    elem.onmouseup = () => {
         document.onmousemove = null;
-        object.onmouseup = null;
+        elem.onmouseup = null;
     };
 
-    object.ondragstart = () => { return false; };
+    elem.ondragstart = () => { return false; };
 
-    object.ondblclick = () => {
+    elem.ondblclick = () => {
         let size, style;
 
-        size = object.offsetWidth + 10;
-        style = object.style;
+        size = elem.offsetWidth + 10;
+        style = elem.style;
         style.width = size + 'px';
     };
 
-    object.oncontextmenu = () => {
+    elem.oncontextmenu = () => {
         let size, style;
 
-        if (object.offsetWidth > 40) {
-            size = object.offsetWidth - 10;
-            style = object.style;
+        if (elem.offsetWidth > 40) {
+            size = elem.offsetWidth - 10;
+            style = elem.style;
             style.width = size + 'px';
         }
         return false;
     };
 }
 
-function create_clone(e) {
+function createClone(e) {
     let mask_existence = document.getElementsByClassName('workplace').length;
     if (mask_existence < 2) {
         let snap = document.getElementById('snap');
@@ -103,4 +101,4 @@ if (snap)
 let masks = document.getElementsByClassName('mask');
 if (masks)
     for (let i = 0; i < masks.length; i++)
-        masks[i].addEventListener('click', create_clone);
+        masks[i].addEventListener('click', createClone);
