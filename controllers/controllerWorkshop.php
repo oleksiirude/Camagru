@@ -39,9 +39,12 @@
 		}
 
 		public function actionAddPost() {
-
-			var_dump($_POST);
-//			echo json_encode(true);
+			$data = (array)json_decode($_POST['data']);
+			$base64 = str_replace(' ', '+', $data['photo']);
+			$base64 = str_replace('data:image/jpeg;base64,', '', $base64);
+			$description = htmlentities($data['description']);
+			$this->model->addPostToDb($base64, $description);
+			echo json_encode(true);
 			return true;
 		}
 }

@@ -36,14 +36,12 @@
 			exit;
 		}
 
-		public static function redirect($path)
-		{
+		public static function redirect($path) {
 			header('Location: /' . $path);
 			exit;
 		}
 
-		public static function errorHandle($code)
-		{
+		public static function errorHandle($code) {
 			http_response_code($code);
 			require_once(ROOT . 'views/error/error.php');
 			exit;
@@ -94,7 +92,7 @@
 				if (!$image)
 					return false;
 			}
-			if (!preg_match('/png/i', $type))
+			if (!preg_match('~png~i', $type))
 				$image = self::setOrientation($filePath, $image);
 			$new = imagecreatetruecolor($width, $height);
 

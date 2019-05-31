@@ -12,14 +12,14 @@
 						PRIMARY KEY (id)) ENGINE=InnoDB
 						CHARACTER SET utf8mb4",
 
-		'photos' => 'CREATE TABLE photos (
-						id_photo INT NOT NULL AUTO_INCREMENT,
-						id_user INT NOT NULL,
-						title VARCHAR(255) NOT NULL,
+		'posts' => 'CREATE TABLE posts (
+						id INT NOT NULL AUTO_INCREMENT,
+						user INT NOT NULL,
+						description VARCHAR(100) NOT NULL,
+						likes INT DEFAULT 0,
+						date DATETIME NOT NULL,
 						path VARCHAR(255) NOT NULL,
-						likes INT DEFAULT NULL,
-						date DATE DEFAULT NULL,
-						PRIMARY KEY (id_photo)) ENGINE=InnoDB
+						PRIMARY KEY (id)) ENGINE=InnoDB
 						CHARACTER SET utf8mb4',
 
 		'comments' => 'CREATE TABLE comments (

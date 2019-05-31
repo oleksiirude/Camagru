@@ -47,8 +47,7 @@ function ajaxDoPost(description, photo) {
 
 	let json = {};
 	json['photo'] = photo;
-	json['description'] = htmlEntities(description);
-	console.log(json);
+	json['description'] = description;
 	ajax.send('data='+JSON.stringify(json));
 
 	ajax.onreadystatechange = function () {
@@ -56,19 +55,10 @@ function ajaxDoPost(description, photo) {
 			location.href = 'error';
 		}
 		if (ajax.readyState === 4) {
-			// let result = JSON.parse(ajax.responseText);
-			let result = ajax.responseText;
+			let result = JSON.parse(ajax.responseText);
 			console.log(result);
-			if (result === true) {
+			if (result === true)
 				location.href = 'user/profile';
-				console.log('ok');
-			}
-			else
-				console.log('error');
 		}
 	}
-}
-
-function htmlEntities(str) {
-	return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 }
