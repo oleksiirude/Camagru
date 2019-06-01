@@ -17,17 +17,17 @@
 						user INT NOT NULL,
 						description VARCHAR(100) NOT NULL,
 						likes INT DEFAULT 0,
-						date DATETIME NOT NULL,
+						comments INT DEFAULT 0,
+						add_date DATETIME NOT NULL,
 						path VARCHAR(255) NOT NULL,
 						PRIMARY KEY (id)) ENGINE=InnoDB
 						CHARACTER SET utf8mb4',
 
 		'comments' => 'CREATE TABLE comments (
-						id_photo INT NOT NULL,
-						id_user INT NOT NULL,
-						id_author INT NOT NULL,
-						comment TEXT NOT NULL,
-						date DATE DEFAULT NULL) ENGINE=InnoDB
+						post INT NOT NULL,
+						author_id INT NOT NULL,
+						date DATETIME NOT NULL,
+						comment TEXT NOT NULL) ENGINE=InnoDB
 						CHARACTER SET utf8mb4'
 	);
 

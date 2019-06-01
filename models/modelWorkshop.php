@@ -71,14 +71,14 @@
             $user = $_SESSION['user_id'];
             date_default_timezone_set('Europe/Kiev');
             $date = date("Y-m-d H:i:s");
-		    $path = ROOT.'views/pictures/posts/'.$_SESSION['user_id'].','.md5(time()).'.jpeg';
+		    $path = 'views/pictures/posts/'.$_SESSION['user_id'].','.md5(time()).'.jpeg';
 
 		    $photo = base64_decode($base64);
 		    $photo = imagecreatefromstring($photo);
 		    imagejpeg($photo, $path);
 		    imagedestroy($photo);
 
-		    $sth = $this->prepare("INSERT INTO posts(user, description, date, path)
+		    $sth = $this->prepare("INSERT INTO posts(user, description, add_date, path)
                                             VALUES ('$user', :description, '$date','$path')");
 		    $sth->execute([':description' => $description]);
         }

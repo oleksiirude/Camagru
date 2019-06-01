@@ -47,7 +47,7 @@ function ajaxDoPost(description, photo) {
 
 	let json = {};
 	json['photo'] = photo;
-	json['description'] = description;
+	json['description'] = description.replace(/&/g, 'amp');
 	ajax.send('data='+JSON.stringify(json));
 
 	ajax.onreadystatechange = function () {

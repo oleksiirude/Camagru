@@ -88,10 +88,10 @@ header {
     width: 280px;
     height: 200px;
     background: goldenrod;
-    border-radius: 5px;
     margin: 10% auto;
     text-align: center;
     font-weight: bold;
+    border-radius: 5px;
     box-shadow: 0 0 2px 1px gray;
 }
 
@@ -486,12 +486,12 @@ ul li  {
 
 /*PROFILE*/
 .main_info {
-    margin-top: 76px;
+    margin-top: 10px;
     margin-left: 10px;
     position: fixed;
     text-align: center;
     width: 200px;
-    height: 220px;
+    /*height: 220px;*/
     background-color: goldenrod;
     border-radius: 5px;
     box-shadow: 1px 1px 1px 1px grey;
@@ -505,6 +505,72 @@ ul li  {
     border-radius: 50%;
     border: 2px solid grey;
     box-shadow: 0 0 20px gold;
+}
+
+.login_profile {
+    color: #5a5a5a;
+    font-size: 28px;
+}
+
+.email_profile {
+    word-wrap: break-word;
+    padding: 4px;
+}
+
+.posts_profile {
+    border-radius: 5px;
+    text-align: center;
+    margin: 10px auto 10px auto;
+    padding-bottom: 10px;
+    background-color: darkgrey;
+    width: 700px;
+    padding-top: 10px;
+    box-shadow: 1px 1px 1px 1px grey;
+}
+
+.post_container {
+    text-align: center;
+    width: 560px;
+    margin: 10px auto;
+    padding-bottom: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 2px 1px gray;
+}
+
+.post_photo {
+    cursor: pointer;
+    border-radius: 3px;
+    width: 540px;
+    margin: 10px auto auto;
+    border: goldenrod solid 3px;
+    box-shadow: 0 0 2px 1px lightgray;
+}
+
+.post_description {
+    word-wrap: break-word;
+    margin-top: -10px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 6px;
+    width: 400px;
+    border-radius: 0 0 5px 4px;
+    background-color: lightgray;
+}
+
+.activity_box {
+    margin-top: 6px;
+    font-family: AppleGothic, sans-serif;
+    background-color: goldenrod;
+    display: inline-block;
+    min-width: 80px;
+    border-radius: 3px;
+    margin-left: 4px;
+    border: black solid 1px;
+}
+
+.activity {
+    padding: 2px 0 2px 2px;
+    float: left;
 }
 
 /*FOOTER STUFF*/
@@ -569,7 +635,8 @@ footer {
 
 .menu, .enter_menu, .settings_menu, .tooltip, .avatar, .error,
 .message, .pic, .pics, .avatar_preview, .noWebcam, .camera, .valid_pic,
-.masks, .make_post, .description_value_error, .main_info, #backFromCam, #snap,
+.masks, .make_post, .description_value_error, .main_info,
+.post_container, #backFromCam, #snap,
 #backFromPic {
     -webkit-animation: fade-in 0.3s linear; /* Safari 4+ */
     -moz-animation: fade-in 0.3s linear; /* Fx 5+ */

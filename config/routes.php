@@ -154,4 +154,11 @@
 			'controller' => 'workshop',
 			'action' => 'addPost'
 		],
+
+        //CONTROLLER - PROFILE
+        //PROFILE
+        'profile/getmyfiveposts' => [
+            'controller' => 'profile',
+            'action' => 'getFivePosts'
+        ],
 	];
