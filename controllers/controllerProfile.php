@@ -10,12 +10,25 @@
         }
 
         public function actionGetFivePosts() {
-			$elements = $_POST['elements'];
-
             $this->onlyForLogged();
+			$elements = $_POST['elements'];
             $result = $this->model->getFivePosts($elements);
 			$result = json_encode($result);
 			echo $result;
             return true;
         }
+
+		public function actionGetNextPost() {
+			$this->onlyForLogged();
+			$result = $this->model->getNextPost($_POST['id']);
+			$result = json_encode($result);
+			echo $result;
+			return true;
+		}
+
+        public function actionDeletePost() {
+			$this->onlyForLogged();
+			$this->model->deletePost($_POST['id']);
+        	return true;
+		}
     }

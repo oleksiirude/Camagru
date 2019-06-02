@@ -28,7 +28,7 @@ function getAvatarPreview() {
 		ajax.open('POST', 'user/change/avatar/validate', true);
 		ajax.send(formData);
 
-		ajax.onreadystatechange = function () {
+		ajax.onreadystatechange = () => {
 			if (ajax.status !== 200) {
 				location.href = 'error';
 			}

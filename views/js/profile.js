@@ -45,18 +45,22 @@ function ajaxProfileFeed(parent, elements) {
     ajax.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     ajax.send('elements='+elements);
 
-    ajax.onreadystatechange = function () {
+    ajax.onreadystatechange = () => {
         if (ajax.status !== 200) {
             location.href = 'error';
         }
         if (ajax.readyState === 4) {
             let result = JSON.parse(ajax.responseText);
             //let result = ajax.responseText;
-             //console.log(result);
+            //console.log(result);
             if (result.length > 0)
-                addFivePosts(parent, result);
+                addContent(parent, result);
             else if (result['empty'] === true) {
-                let empty = document.createElement('p');
+                let empty = document.getElementById('empty');
+                if (empty)
+                    empty.remove();
+                empty = document.createElement('p');
+                empty.id = 'empty';
                 empty.style.fontWeight = 'bold';
                 empty.style.color = 'darkred';
                 empty.innerHTML = "You don't have any posts yet!";
@@ -66,26 +70,27 @@ function ajaxProfileFeed(parent, elements) {
     };
 }
 
-function addFivePosts(parent, result) {
+function addContent(parent, result) {
     let container, photo, description,
         activity, counter, likes, comments;
 
     for (let i = 0; i < result.length; i++) {
         container = document.createElement('div');
-        container.id = String(i);
         container.className = 'post_container';
 
         //append photo
         photo = document.createElement('img');
+        photo.id = 'img'+result[i]['id'];
         photo.className = 'post_photo';
         photo.src = result[i]['path'];
+        photo.addEventListener('click', removePostIntention);
         container.append(photo);
 
         //append description
         description = document.createElement('div');
         description.className = 'post_description';
         description.innerHTML += result[i]['description'];
-        description.innerHTML += '<br>'+result[i]['add_date'];
+        description.innerHTML += '<p><i>'+result[i]['add_date']+'</i></p>';
         container.append(description);
 
         //append activity - likes
@@ -123,4 +128,59 @@ function addFivePosts(parent, result) {
         //append all this stuff to container
         parent.append(container);
     }
+}
+
+function removePostIntention(e) {
+    let substrate = document.getElementsByClassName('substrate')[0];
+    let delete_post = document.getElementsByClassName('delete_post')[0];
+
+    delete_post.style.display = 'block';
+    delete_post.style.marginTop =  window.pageYOffset+100+'px';
+    substrate.style.display = 'block';
+
+    window.onclick = (e) => {
+        if (e.target === substrate) {
+            substrate.style.display = 'none';
+            delete_post.style.display = 'none';
+        }
+    };
+    let button = document.getElementById('delete_post');
+    button.onclick = () => { removePost(e, delete_post, substrate) };
+}
+
+function removePost(e, delete_post, substrate) {
+    e.target.parentElement.remove();
+    let id = e.target.id.replace('img', '');
+
+    let ajax = new XMLHttpRequest();
+    ajax.open('POST', 'profile/deletepost', true);
+    ajax.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    ajax.send('id='+id);
+    delete_post.style.display = 'none';
+    substrate.style.display = 'none';
+    let parent = document.getElementsByClassName('posts_profile')[0];
+    if (parent.childElementCount === 0)
+        ajaxProfileFeed(parent, 0);
+    else {
+        let last_post = parent.lastChild.childNodes[0].id.replace('img', '');
+        ajaxGetNextPost(parent, last_post);
+    }
+}
+
+function ajaxGetNextPost(parent, last_post) {
+    let ajax = new XMLHttpRequest();
+    ajax.open('POST', 'profile/getnextpost', true);
+    ajax.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    ajax.send('id='+last_post);
+
+    ajax.onreadystatechange = () => {
+        if (ajax.status !== 200) {
+            location.href = 'error';
+        }
+        if (ajax.readyState === 4) {
+            let result = JSON.parse(ajax.responseText);
+            if (result.length > 0)
+                addContent(parent, result);
+        }
+    };
 }

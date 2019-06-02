@@ -103,7 +103,7 @@ function ajaxMontage(photo, data) {
     json = 'box='+JSON.stringify(json);
     ajax.send(json);
 
-    ajax.onreadystatechange = function () {
+    ajax.onreadystatechange = () => {
         if (ajax.status !== 200) {
             location.href = 'error';
         }

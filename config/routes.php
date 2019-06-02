@@ -161,4 +161,14 @@
             'controller' => 'profile',
             'action' => 'getFivePosts'
         ],
+
+		'profile/getnextpost' => [
+			'controller' => 'profile',
+			'action' => 'getNextPost'
+		],
+
+		'profile/deletepost' => [
+			'controller' => 'profile',
+			'action' => 'deletePost'
+		],
 	];

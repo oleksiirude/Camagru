@@ -14,7 +14,7 @@ function set_new_avatar(e) {
 	//console.log(avatar);
 	ajax.send(avatar);
 
-	ajax.onreadystatechange = function () {
+	ajax.onreadystatechange = () => {
 		if (ajax.status !== 200) {
 			location.href = 'error';
 		}

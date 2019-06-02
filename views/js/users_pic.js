@@ -31,7 +31,7 @@ function getUsersPicInWorkplace() {
 		ajax.open('POST', 'workshop/userspicvalidate', true);
 		ajax.send(formData);
 
-		ajax.onreadystatechange = function () {
+		ajax.onreadystatechange = () => {
 		if (ajax.status !== 200) {
 		 		location.href = 'error';
 		 	}

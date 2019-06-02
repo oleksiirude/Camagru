@@ -50,7 +50,7 @@ function ajaxDoPost(description, photo) {
 	json['description'] = description.replace(/&/g, 'amp');
 	ajax.send('data='+JSON.stringify(json));
 
-	ajax.onreadystatechange = function () {
+	ajax.onreadystatechange = () => {
 		if (ajax.status !== 200) {
 			location.href = 'error';
 		}
