@@ -14,7 +14,7 @@
             <a href="user/settings">settings</a> |
             <a href="user/logout">logout</a>
         </nav>
-            <a href="user/profile"><img class="avatar" src="<?= $avatar ?>" alt="avatar" title="<?= $_SESSION['user_logged']; ?>"></a>
+            <a href="user/change/avatar"><img class="avatar" src="<?= $avatar ?>" alt="avatar" title="<?= $_SESSION['user_logged']; ?>"></a>
 	<?php }
 	else { ?>
 			<h1 class="title">WELCOME!</h1>

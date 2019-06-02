@@ -61,8 +61,8 @@ function getData(images) {
         relativePos.top = childPos.top - parentPos.top;
         relativePos.left = childPos.left - parentPos.left;
 
-        let remove = /http:\/\/localhost:8080\//; //for unit
-        //let remove = /http:\/\/localhost\//; //for home
+        //let remove = /http:\/\/localhost:8080\//; //for unit
+        let remove = /http:\/\/localhost\//; //for home
         let link = images[i].src;
         link = link.replace(remove, '');
         data[i] = {

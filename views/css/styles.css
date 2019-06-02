@@ -20,6 +20,7 @@ a:hover { transition: 220ms; color: lightgray }
 
 /*HEADER STYLES*/
 header {
+    position: fixed;
     width: 100%;
     min-width: 740px;
     height: 80px;
@@ -486,7 +487,7 @@ ul li  {
 
 /*PROFILE*/
 .main_info {
-    margin-top: 10px;
+    margin-top: 40px;
     margin-left: 10px;
     position: fixed;
     text-align: center;
@@ -498,6 +499,7 @@ ul li  {
 }
 
 .avatar_profile {
+    cursor: pointer;
     margin: 10px auto;
     display: block;
     width: 120px;
@@ -520,7 +522,7 @@ ul li  {
 .posts_profile {
     border-radius: 5px;
     text-align: center;
-    margin: 10px auto 10px auto;
+    margin: 40px auto 10px auto;
     padding-bottom: 10px;
     background-color: darkgrey;
     width: 700px;

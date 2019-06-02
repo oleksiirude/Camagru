@@ -10,12 +10,12 @@
         }
 
         public function actionGetFivePosts() {
-//        	$_POST['elements'];
+			$elements = $_POST['elements'];
+
             $this->onlyForLogged();
-            $result = $this->model->getFivePosts();
+            $result = $this->model->getFivePosts($elements);
 			$result = json_encode($result);
 			echo $result;
-//            echo json_encode(true);
             return true;
         }
     }

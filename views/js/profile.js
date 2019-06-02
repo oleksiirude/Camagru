@@ -1,6 +1,12 @@
 let main = document.getElementsByClassName('main_info')[0];
 if (main && window.outerWidth < 1640)
     main.style.display = 'none';
+
+let avatar_profile = document.getElementsByClassName('avatar_profile')[0];
+if (avatar_profile)
+    avatar_profile.addEventListener('click', function () {
+        window.scrollTo(0, 0);
+    });
 window.onresize = () => {
     if (main) {
         if (window.outerWidth < 1640)
@@ -11,8 +17,9 @@ window.onresize = () => {
     }
 };
 
-//if (document.documentURI === 'http://localhost/user/profile') //for home
-if (document.documentURI === 'http://localhost:8080/user/profile') { //for unit
+if (document.documentURI === 'http://localhost/user/profile') { //for home
+//if (document.documentURI === 'http://localhost:8080/user/profile') { //for unit
+    window.scrollTo(0, 0);
     let parent = document.getElementsByClassName('posts_profile')[0];
     ajaxProfileFeed(parent,0);
     window.onscroll = () => {
@@ -22,9 +29,9 @@ if (document.documentURI === 'http://localhost:8080/user/profile') { //for unit
             document.body.offsetHeight, document.documentElement.offsetHeight,
             document.body.clientHeight, document.documentElement.clientHeight
         );
-        clientHeight = document.documentElement.clientHeight + 40;
+        clientHeight = document.documentElement.clientHeight;
         position = scrollHeight - window.pageYOffset - clientHeight;
-        if (position < 0) {
+        if (position === 0) {
             elements = parent.getElementsByClassName('post_container').length;
             setTimeout(() =>
                 ajaxProfileFeed(parent, elements),500);
@@ -45,10 +52,10 @@ function ajaxProfileFeed(parent, elements) {
         if (ajax.readyState === 4) {
             let result = JSON.parse(ajax.responseText);
             //let result = ajax.responseText;
-            // console.log(result);
+             //console.log(result);
             if (result.length > 0)
                 addFivePosts(parent, result);
-            else {
+            else if (result['empty'] === true) {
                 let empty = document.createElement('p');
                 empty.style.fontWeight = 'bold';
                 empty.style.color = 'darkred';
@@ -78,6 +85,7 @@ function addFivePosts(parent, result) {
         description = document.createElement('div');
         description.className = 'post_description';
         description.innerHTML += result[i]['description'];
+        description.innerHTML += '<br>'+result[i]['add_date'];
         container.append(description);
 
         //append activity - likes
