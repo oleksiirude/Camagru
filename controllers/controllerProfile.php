@@ -31,4 +31,22 @@
 			$this->model->deletePost($_POST['id']);
         	return true;
 		}
+
+		public function actionGetComments() {
+			$this->onlyForLogged();
+			$result = $this->model->getComments($_POST['id']);
+			echo json_encode($result);
+			return true;
+		}
+
+		public function actionAddComment() {
+			$this->onlyForLogged();
+			$data = (array)json_decode($_POST['data']);
+			$post = $data['post'];
+			$comment = htmlentities($data['comment']);
+
+			$result = $this->model->addComment($post, $comment);
+			echo json_encode($result);
+			return true;
+		}
     }

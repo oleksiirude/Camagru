@@ -171,4 +171,14 @@
 			'controller' => 'profile',
 			'action' => 'deletePost'
 		],
+
+		'profile/getcomments' => [
+			'controller' => 'profile',
+			'action' => 'getComments'
+		],
+
+		'profile/addcomment' => [
+			'controller' => 'profile',
+			'action' => 'addComment'
+		],
 	];

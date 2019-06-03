@@ -5,7 +5,7 @@
 			<p>are you sure?</p>
 			<p>this action is irreversible!</p>
 			<a href="user/settings" class="cancel">cancel</a><br>
-			<button class="submit_button">delete anyway</button>
+			<button class="help_button">delete anyway</button>
 		</form>
 	</div>
 </div>

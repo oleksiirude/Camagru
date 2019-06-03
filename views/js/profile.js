@@ -115,6 +115,8 @@ function addContent(parent, result) {
         comments = document.createElement('img');
         comments.src = 'views/pictures/service/comment.png';
         comments.style.width = '30px';
+        comments.id = 'comments'+result[i]['id'];
+        comments.addEventListener('click', showComments);
         comments.setAttribute('alt', 'comments');
         comments.setAttribute('title', 'comments');
         comments.className = 'activity';
@@ -168,6 +170,7 @@ function removePost(e, delete_post, substrate) {
 }
 
 function ajaxGetNextPost(parent, last_post) {
+    window.scrollTo(0, 0);
     let ajax = new XMLHttpRequest();
     ajax.open('POST', 'profile/getnextpost', true);
     ajax.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');

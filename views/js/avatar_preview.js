@@ -42,7 +42,7 @@ function getAvatarPreview() {
 					new_elem.setAttribute('id', 'new_avatar');
 					new_elem.setAttribute('src', result['base64']);
 					preview.appendChild(new_elem);
-					document.getElementById('change_avatar_button').style.display = 'block';
+					document.getElementById('change_avatar_button').style.display = 'inline-block';
 				}
 				else {
 					preview = document.getElementById('avatar_preview');

@@ -14,13 +14,14 @@
 	<?php require_once (ROOT.'views/default/header.php'); ?>
 	    <?php echo $content; ?>
 	<?php require_once (ROOT.'views/default/footer.php'); ?>
-	<script src="views/js/avatar_preview.js"></script>
 	<script src="views/js/ajax_forms.js"></script>
+	<script src="views/js/avatar_preview.js"></script>
 	<script src="views/js/set_new_avatar.js"></script>
     <script src="views/js/cam.js"></script>
     <script src="views/js/dragndrop.js"></script>
 	<script src="views/js/users_pic.js"></script>
 	<script src="views/js/make_post.js"></script>
     <script src="views/js/profile.js"></script>
+	<script src="views/js/comments.js"></script>
 </body>
 </html>
