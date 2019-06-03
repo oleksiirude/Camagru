@@ -310,11 +310,14 @@
 		else
 			$type = 'jpeg';
 
+		$user = $_SESSION['user_logged'];
 		$photo = base64_decode($base64[1]);
 		$id = $_SESSION['user_id'];
 		$destination = 'views/pictures/avatars/'.$id.'.'.$type;
 		file_put_contents($destination, $photo);
 		$this->query("UPDATE users SET avatar = '$destination' WHERE users.id = '$id'");
+		$this->query("UPDATE comments SET author_avatar = '$destination' WHERE author_id = '$id'");
+		$this->query("UPDATE posts SET user_avatar = '$destination' WHERE user = '$user'");
 		$_SESSION['avatar'] = $destination;
 		return true;
 		}
@@ -323,10 +326,13 @@
 			$_SESSION['avatar'] = false;
 
 			$id = $_SESSION['user_id'];
+			$user = $_SESSION['user_logged'];
 			$avatars = scandir(ROOT.'views/pictures/avatars');
 			foreach ($avatars as $avatar)
 				if (preg_match("/^$id/", $avatar))
 						self::deleteOldAvatar($avatar);
 			$this->query("UPDATE users SET avatar = null WHERE users.id = '$id'");
+			$this->query("UPDATE comments SET author_avatar = 'views/pictures/avatars/default.png' WHERE author_id = '$id'");
+			$this->query("UPDATE posts SET user_avatar = 'views/pictures/avatars/default.png' WHERE user = '$user'");
 		}
 }

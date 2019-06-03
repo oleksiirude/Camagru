@@ -157,14 +157,14 @@
 
         //CONTROLLER - PROFILE
         //PROFILE
-        'profile/getmyfiveposts' => [
+        'profile/getfivepostsprofile' => [
             'controller' => 'profile',
-            'action' => 'getFivePosts'
+            'action' => 'getFivePostsProfile'
         ],
 
-		'profile/getnextpost' => [
+		'profile/getnextpostprofile' => [
 			'controller' => 'profile',
-			'action' => 'getNextPost'
+			'action' => 'getNextPostProfile'
 		],
 
 		'profile/deletepost' => [
@@ -181,4 +181,12 @@
 			'controller' => 'profile',
 			'action' => 'addComment'
 		],
+
+		//CONTROLLER
+		//MAIN FEED
+		'main/getfivepostsmain' => [
+			'controller' => 'main',
+			'action' => 'getFivePostsMain'
+		],
+
 	];

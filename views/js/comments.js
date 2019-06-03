@@ -108,7 +108,7 @@ function addComment(e) {
 		if (ajax.readyState === 4) {
 			let result = JSON.parse(ajax.responseText);
 			//let result = ajax.responseText;
-			console.log(result);
+			//console.log(result);
 			let counter = e.target.parentElement.parentElement.childNodes[3].childNodes[1];
 			counter.innerHTML = result[0]['counter'];
 

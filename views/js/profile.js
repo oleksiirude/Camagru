@@ -41,7 +41,7 @@ if (document.documentURI === 'http://localhost/user/profile') { //for home
 
 function ajaxProfileFeed(parent, elements) {
     let ajax = new XMLHttpRequest();
-    ajax.open('POST', 'profile/getmyfiveposts', true);
+    ajax.open('POST', 'profile/getfivepostsprofile', true);
     ajax.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     ajax.send('elements='+elements);
 
@@ -83,7 +83,25 @@ function addContent(parent, result) {
         photo.id = 'img'+result[i]['id'];
         photo.className = 'post_photo';
         photo.src = result[i]['path'];
-        photo.addEventListener('click', removePostIntention);
+        if (document.documentURI === 'http://localhost/user/profile') {//for home
+        // if (document.documentURI === 'http://localhost:8080/user/profile') { //for unit
+            photo.addEventListener('click', removePostIntention);
+            photo.style.cursor = 'pointer';
+        }
+        if (document.documentURI === 'http://localhost/') {//for home
+            // if (document.documentURI === 'http://localhost:8080/') { //for unit
+            let avatar, login;
+            avatar = document.createElement('img');
+            avatar.className = 'avatar_comment';
+            avatar.src = result[i]['user_avatar'];
+
+            login = document.createElement('span');
+            login.innerHTML = result[i]['user'];
+            login.className = 'user_post';
+
+            container.append(avatar);
+            container.append(login);
+        }
         container.append(photo);
 
         //append description
@@ -172,7 +190,7 @@ function removePost(e, delete_post, substrate) {
 function ajaxGetNextPost(parent, last_post) {
     window.scrollTo(0, 0);
     let ajax = new XMLHttpRequest();
-    ajax.open('POST', 'profile/getnextpost', true);
+    ajax.open('POST', 'profile/getnextpostprofile', true);
     ajax.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     ajax.send('id='+last_post);
 

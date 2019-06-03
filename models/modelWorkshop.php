@@ -68,7 +68,11 @@
 
 		public function addPostToDb($base64, $description) {
 
-            $user = $_SESSION['user_id'];
+            $user = $_SESSION['user_logged'];
+            if ($_SESSION['avatar'] === false)
+            	$user_avatar = 'views/pictures/avatars/default.png';
+            else
+            	$user_avatar = $_SESSION['avatar'];
             date_default_timezone_set('Europe/Kiev');
             $date = date("Y-m-d H:i:s");
 		    $path = 'views/pictures/posts/'.$_SESSION['user_id'].','.md5(time()).'.jpeg';
@@ -78,8 +82,8 @@
 		    imagejpeg($photo, $path);
 		    imagedestroy($photo);
 
-		    $sth = $this->prepare("INSERT INTO posts(user, description, add_date, path)
-                                            VALUES ('$user', :description, '$date','$path')");
+		    $sth = $this->prepare("INSERT INTO posts(user, user_avatar, description, add_date, path)
+                                            VALUES ('$user', '$user_avatar', :description, '$date','$path')");
 		    $sth->execute([':description' => $description]);
         }
 	}

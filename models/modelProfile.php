@@ -11,11 +11,11 @@
 			return $result;
 		}
 
-        public function getFivePosts($elements) {
-			$id = $_SESSION['user_id'];
+        public function getFivePostsProfile($elements) {
+			$user = $_SESSION['user_logged'];
 			$limit = 5 + (int)$elements;
 
-			$query = "SELECT * FROM posts WHERE user = '$id' ORDER BY add_date DESC LIMIT $limit";
+			$query = "SELECT * FROM posts WHERE user = '$user' ORDER BY add_date DESC LIMIT $limit";
 			$sth = $this->prepare($query);
 			$sth->execute();
 			$result = $sth->fetchAll(self::FETCH_ASSOC);
@@ -36,10 +36,10 @@
 			return $result;
         }
 
-        public function getNextPost($postid) {
-			$id = $_SESSION['user_id'];
+        public function getNextPostProfile($postid) {
+			$user = $_SESSION['user_logged'];
 
-			$sth = $this->query("SELECT * FROM posts WHERE user = '$id' AND id < '$postid' ORDER BY add_date DESC LIMIT 1");
+			$sth = $this->query("SELECT * FROM posts WHERE user = '$user' AND id < '$postid' ORDER BY add_date DESC LIMIT 1");
 			$result = $sth->fetchAll(self::FETCH_ASSOC);
 			if (!empty($result))
 				$result[0]['add_date'] = date("m-d-y g:i A", strtotime($result[0]['add_date']));

@@ -2,7 +2,9 @@
 
 	if (isset($_SESSION['user_logged'])) { ?>
 		<div class="wrapper">
-            <h1>main feed</h1>
+			<h1 class="title">MAIN FEED</h1>
+			<div class="posts_main">
+			</div>
 		</div>
 	<?php }
 	else { ?>

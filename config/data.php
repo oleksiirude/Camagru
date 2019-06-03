@@ -14,7 +14,8 @@
 
 		'posts' => 'CREATE TABLE posts (
 						id INT NOT NULL AUTO_INCREMENT,
-						user INT NOT NULL,
+						user VARCHAR(10)NOT NULL,
+						user_avatar VARCHAR(255) NOT NULL,
 						description VARCHAR(100) NOT NULL,
 						likes INT DEFAULT 0,
 						comments INT DEFAULT 0,

@@ -1,6 +1,6 @@
 <div class="substrate"></div>
 <div class="make_post">
-	<h2 class="title">MAKE POST</h2>
+	<h2 class="title" style="margin-top: 0">MAKE POST</h2>
 	<p class="description">tell everyone something about this photo</p>
 	<textarea class="description_zone" placeholder="type here up to 100 symbols" name="description" cols="40" rows="2"></textarea><br>
 	<button id="add_post" class="add_post_button">POST IT!</button>

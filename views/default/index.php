@@ -23,5 +23,6 @@
 	<script src="views/js/make_post.js"></script>
     <script src="views/js/profile.js"></script>
 	<script src="views/js/comments.js"></script>
+	<script src="views/js/main.js"></script>
 </body>
 </html>

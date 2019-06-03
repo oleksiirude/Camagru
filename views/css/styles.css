@@ -310,6 +310,7 @@ header {
 
 /*WORKSHOP*/
 .title {
+    margin-top: 80px;
     font-size: 36px;
     color: #333333;
     text-align: center;
@@ -318,7 +319,7 @@ header {
 .snapContainer {
     border-radius: 5px;
     align-content: center;
-    margin: 40px auto 10px auto;
+    margin: 0 auto 10px auto;
     background-color: darkgrey;
     width: 700px;
     height: 530px;
@@ -561,7 +562,7 @@ ul li  {
 .posts_profile {
     border-radius: 5px;
     text-align: center;
-    margin: 40px auto 10px auto;
+    margin: 0 auto 10px auto;
     padding-bottom: 10px;
     background-color: darkgrey;
     width: 700px;
@@ -573,18 +574,18 @@ ul li  {
     text-align: center;
     width: 560px;
     margin: 10px auto;
-    padding-bottom: 10px;
+    padding: 6px 6px 10px 6px;
     border-radius: 5px;
+    background-color: floralwhite;
     box-shadow: 0 0 2px 1px gray;
 }
 
 .post_photo {
-    cursor: pointer;
     border-radius: 3px;
     width: 540px;
-    margin: 10px auto auto;
+    margin: 2px auto auto;
     border: goldenrod solid 3px;
-    box-shadow: 0 0 2px 1px lightgray;
+    box-shadow: 0 2px 14px 4px lightgray;
 }
 
 .post_description {
@@ -648,6 +649,7 @@ ul li  {
 
 .avatar_comment {
     width: 30px;
+    height: 30px;
     border-radius: 50%;
     border: 1px solid grey;
     float: left;
@@ -663,6 +665,25 @@ ul li  {
 .comment_error {
     color: darkred;
     margin-bottom: 4px;
+}
+
+/*MAIN*/
+.posts_main {
+    border-radius: 5px;
+    text-align: center;
+    margin: 0 auto 10px auto;
+    padding-bottom: 10px;
+    background-color: darkgrey;
+    width: 700px;
+    padding-top: 10px;
+    box-shadow: 1px 1px 1px 1px grey;
+}
+
+.user_post {
+    float: left;
+    margin-top: 8px;
+    font-size: 18px;
+    font-weight: bold;
 }
 
 /*FOOTER STUFF*/

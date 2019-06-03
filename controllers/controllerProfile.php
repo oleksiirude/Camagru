@@ -1,6 +1,5 @@
 <?php
-    class controllerProfile extends componentController
-    {
+    class controllerProfile extends componentController {
         private $model;
 
         public function __construct($route)
@@ -9,18 +8,18 @@
             $this->model = new modelProfile();
         }
 
-        public function actionGetFivePosts() {
+        public function actionGetFivePostsProfile() {
             $this->onlyForLogged();
 			$elements = $_POST['elements'];
-            $result = $this->model->getFivePosts($elements);
+            $result = $this->model->getFivePostsProfile($elements);
 			$result = json_encode($result);
 			echo $result;
             return true;
         }
 
-		public function actionGetNextPost() {
+		public function actionGetNextPostProfile() {
 			$this->onlyForLogged();
-			$result = $this->model->getNextPost($_POST['id']);
+			$result = $this->model->getNextPostProfile($_POST['id']);
 			$result = json_encode($result);
 			echo $result;
 			return true;
