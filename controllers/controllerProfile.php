@@ -31,6 +31,7 @@
         	return true;
 		}
 
+		//COMMENTS
 		public function actionGetComments() {
 			$this->onlyForLogged();
 			$result = $this->model->getComments($_POST['id']);
@@ -47,5 +48,12 @@
 			$this->model->prepareNotification($post);
 			echo json_encode($result);
 			return true;
+		}
+
+		//LIKES
+		public function actionMakeLike() {
+			$this->onlyForLogged();
+			$this->model->addLike($_POST['post']);
+        	return true;
 		}
     }

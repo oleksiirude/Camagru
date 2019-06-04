@@ -25,6 +25,12 @@
 						PRIMARY KEY (id)) ENGINE=InnoDB
 						CHARACTER SET utf8mb4',
 
+		'likes' => "CREATE TABLE likes (
+						post INT NOT NULL,
+						owner INT NOT NULL,
+						list TEXT NOT NULL DEFAULT '') ENGINE=InnoDB
+						CHARACTER SET utf8mb4",
+
 		'comments' => 'CREATE TABLE comments (
 						post INT NOT NULL,
 						owner VARCHAR(10) NOT NULL,

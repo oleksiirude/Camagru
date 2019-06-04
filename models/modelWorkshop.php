@@ -85,5 +85,12 @@
 		    $sth = $this->prepare("INSERT INTO posts(user, user_avatar, description, add_date, path)
                                             VALUES ('$user', '$user_avatar', :description, '$date','$path')");
 		    $sth->execute([':description' => $description]);
+
+		    //get current post id and create row for this post in likes table
+			$sth = $this->query("SELECT id FROM posts WHERE path = '$path'");
+			$id = $sth->fetchAll(self::FETCH_ASSOC);;
+			$id = $id[0]['id'];
+			$user = $_SESSION['user_id'];
+			$this->query("INSERT INTO likes(post, owner) VALUES ('$id', '$user')");
         }
 	}

@@ -52,7 +52,7 @@
 			mail($to, $subject, $message, $headers);
 		}
 
-		public static function sendNotification($user, $email, $case) {
+		public static function sendNotification($user, $email) {
 			$headers =	"From: camagrubot@gmail.com\r\n".
 				"Reply-To: no-reply\r\n".
 				"MIME=Version: 1.0\r\n".
@@ -60,9 +60,8 @@
 			$subject = 'Activity in your post';
 			$message = "
 						<p>Hi, dear $user!</p>
-						<p>Someone has left $case in one of your posts!</p>
+						<p>Someone has left comment under one of your posts!</p>
 						<p>Check it out!</p>";
-			$res = mail($email, $subject, $message, $headers);
-			var_dump($res);
+			mail($email, $subject, $message, $headers);
 		}
 	}

@@ -115,7 +115,14 @@ function addContent(parent, result) {
         activity = document.createElement('div');
         activity.className = 'activity_box';
         likes = document.createElement('img');
-        likes.src = 'views/pictures/service/like.png';
+            if (result[i]['liked'] === '1') {
+                likes.id = 'liked';
+                likes.src = 'views/pictures/service/liked.png';
+            }
+            else {
+                likes.id = 'like';
+                likes.src = 'views/pictures/service/like.png';
+            }
         likes.style.width = '30px';
         likes.setAttribute('alt', 'likes');
         likes.setAttribute('title', 'likes');
@@ -230,7 +237,8 @@ function accessRights() {
             }
             else {
                 for (let i = 0; i < length; i++) {
-                    //likes[i].addEventListener('click', ???);
+                    if (likes[i].id === 'like')
+                        likes[i].addEventListener('click', makeLike);
                     comments[i].addEventListener('click', showComments);
                 }
             }

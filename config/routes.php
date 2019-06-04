@@ -203,6 +203,11 @@
 			'action' => 'addComment'
 		],
 
+		'profile/makelike' => [
+			'controller' => 'profile',
+			'action' => 'makeLike'
+		],
+
 		//CONTROLLER
 		//MAIN FEED
 		'main/getfivepostsmain' => [

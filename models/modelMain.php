@@ -26,6 +26,28 @@ class modelMain extends componentModel {
 		while ($elements--)
 			array_shift($result);
 
+		$i = 0;
+		if (!empty($_SESSION['user_id'])) {
+			$user = $_SESSION['user_id'];
+			foreach ($result as $item) {
+				$id = $item['id'];
+
+				$sth = $this->query("SELECT list FROM likes WHERE post = '$id'");
+				$list = $sth->fetchAll(self::FETCH_ASSOC);
+				if (!empty($list)) {
+					$list = $list[0]['list'];
+					if (preg_match("/$user/", $list))
+						$liked = '1';
+					else
+						$liked = '0';
+				}
+				else
+					$liked = '0';
+				$result[$i]['liked'] = $liked;
+				$i++;
+			}
+		}
+
 		if (!$full && empty($result))
 			return ['empty' => true];
 

@@ -27,6 +27,28 @@
 			while ($elements--)
 				array_shift($result);
 
+			$i = 0;
+			if (!empty($_SESSION['user_id'])) {
+				$user = $_SESSION['user_id'];
+				foreach ($result as $item) {
+					$id = $item['id'];
+
+					$sth = $this->query("SELECT list FROM likes WHERE post = '$id'");
+					$list = $sth->fetchAll(self::FETCH_ASSOC);
+					if (!empty($list)) {
+						$list = explode(',', $list[0]['list']);
+						$liked = '0';
+						foreach ($list as $elem)
+							if (preg_match("/$user/", $elem))
+								$liked = '1';
+					}
+					else
+						$liked = '0';
+					$result[$i]['liked'] = $liked;
+					$i++;
+				}
+			}
+
 			if (!$full && empty($result))
 				return ['empty' => true];
 
@@ -109,6 +131,21 @@
 			return $result;
 		}
 
+		public function addLike($post) {
+    		$user = $_SESSION['user_id'];
+
+			$sth = $this->query("SELECT * FROM likes WHERE post = '$post'");
+			$list = $sth->fetchAll(self::FETCH_ASSOC);
+			$user = $user.',';
+			if (empty($list))
+				$this->query("UPDATE likes SET list = '$user' WHERE post = '$post'");
+			else {
+				$list = $list[0]['list'].$user;
+				$this->query("UPDATE likes SET list = '$list' WHERE post = '$post'");
+			}
+			$this->query("UPDATE posts SET likes = likes+1 WHERE id = '$post'");
+		}
+
 		public function prepareNotification($post) {
     		//if comments author is posts owner do not send letter
 			$author = $author_id = $_SESSION['user_logged'];
@@ -126,6 +163,6 @@
 			if ($status === '0')
 				return;
 			$mail = new componentMail();
-			$mail::sendNotification($user, $email, 'comment');
+			$mail::sendNotification($user, $email);
 		}
     }
