@@ -34,6 +34,12 @@
 			'action' => 'logout'
 		],
 
+		//CHECK IF USER LOGGED IN
+		'user/iflogged' => [
+			'controller' => 'user',
+			'action' => 'ifLogged'
+		],
+
 		//PASSWORD RECOVERY
 		'user/recover/password' => [
 			'controller' => 'user',

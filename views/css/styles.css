@@ -86,14 +86,7 @@ header {
 
 /*ENTER MENU STYLES*/
 .enter_menu {
-    width: 280px;
-    height: 200px;
-    background: goldenrod;
-    margin: 10% auto;
-    text-align: center;
-    font-weight: bold;
-    border-radius: 5px;
-    box-shadow: 0 0 2px 1px gray;
+    margin-top: 18px;
 }
 
 .enter_choice {
@@ -610,7 +603,13 @@ ul li  {
     border: black solid 1px;
 }
 
-.activity {
+.activity_likes {
+    cursor: pointer;
+    padding: 2px 0 2px 2px;
+    float: left;
+}
+
+.activity_comments {
     cursor: pointer;
     padding: 2px 0 2px 2px;
     float: left;
@@ -723,7 +722,7 @@ footer {
     z-index: 1;
 }
 
-/*ERROR MASSAGES*/
+/*ERROR, WARN MASSAGES*/
 .error {
     color: darkred;
     font-family: Candara, sans-serif;
@@ -734,6 +733,23 @@ footer {
     margin-left: 184px;
     color: darkred;
     position: absolute;
+}
+
+.warn {
+    display: none;
+    text-align: center;
+    position: absolute;
+    padding: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    width: 220px;
+    background-color: goldenrod;
+    border-radius: 5px;
+    border: 1px solid black;
+    font-size: 20px;
+    z-index: 1001;
 }
 
 /*EXTRA*/

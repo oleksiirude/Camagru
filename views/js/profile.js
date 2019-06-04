@@ -89,7 +89,7 @@ function addContent(parent, result) {
             photo.style.cursor = 'pointer';
         }
         if (document.documentURI === 'http://localhost/') {//for home
-            // if (document.documentURI === 'http://localhost:8080/') { //for unit
+        // if (document.documentURI === 'http://localhost:8080/') { //for unit
             let avatar, login;
             avatar = document.createElement('img');
             avatar.className = 'avatar_comment';
@@ -119,7 +119,7 @@ function addContent(parent, result) {
         likes.style.width = '30px';
         likes.setAttribute('alt', 'likes');
         likes.setAttribute('title', 'likes');
-        likes.className = 'activity';
+        likes.className = 'activity_likes';
         counter = document.createElement('p');
         counter.innerHTML = result[i]['likes'];
         counter.style.paddingTop = '6px';
@@ -134,10 +134,9 @@ function addContent(parent, result) {
         comments.src = 'views/pictures/service/comment.png';
         comments.style.width = '30px';
         comments.id = 'comments'+result[i]['id'];
-        comments.addEventListener('click', showComments);
         comments.setAttribute('alt', 'comments');
         comments.setAttribute('title', 'comments');
-        comments.className = 'activity';
+        comments.className = 'activity_comments';
         counter = document.createElement('p');
         counter.innerHTML = result[i]['comments'];
         counter.style.paddingTop = '6px';
@@ -148,6 +147,7 @@ function addContent(parent, result) {
         //append all this stuff to container
         parent.append(container);
     }
+    accessRights(container);
 }
 
 function removePostIntention(e) {
@@ -202,6 +202,40 @@ function ajaxGetNextPost(parent, last_post) {
             let result = JSON.parse(ajax.responseText);
             if (result.length > 0)
                 addContent(parent, result);
+        }
+    };
+}
+
+function accessRights() {
+    let ajax = new XMLHttpRequest();
+    ajax.open('POST', 'user/iflogged', true);
+    ajax.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    ajax.send();
+
+    ajax.onreadystatechange = (comments) => {
+        if (ajax.status !== 200) {
+            location.href = 'error';
+        }
+        if (ajax.readyState === 4) {
+            let likes, comments, length;
+            likes = document.getElementsByClassName('activity_likes');
+            comments = document.getElementsByClassName('activity_comments');
+            length = comments.length;
+            let result = JSON.parse(ajax.responseText);
+            //let result = ajax.responseText;
+            //console.log(result);
+            if (result === false) {
+                for (let i = 0; i < length; i++) {
+                    likes[i].addEventListener('click', warn);
+                    comments[i].addEventListener('click', warn);
+                }
+            }
+            else {
+                for (let i = 0; i < length; i++) {
+                    //likes[i].addEventListener('click', ???);
+                    comments[i].addEventListener('click', showComments);
+                }
+            }
         }
     };
 }

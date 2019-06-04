@@ -62,6 +62,14 @@
 			}
 		}
 
+		public function actionIfLogged() {
+			if (isset($_SESSION['user_logged']) === false)
+				echo json_encode(false);
+			else
+				echo json_encode(true);
+			return true;
+		}
+
 		//PASSWORD RECOVERY
 		public function actionRecoverPassword() {
 			$this->onlyForUnlogged();

@@ -50,3 +50,18 @@ function ajaxMainFeed(parent, elements) {
 		}
 	};
 }
+
+function warn() {
+	let substrate = document.getElementsByClassName('substrate')[0];
+	let warn = document.getElementsByClassName('warn')[0];
+
+	warn.style.display = 'block';
+	warn.style.marginTop =  window.pageYOffset+100+'px';
+	substrate.style.display = 'block';
+	window.onclick = (e) => {
+		if (e.target === substrate) {
+			substrate.style.display = 'none';
+			warn.style.display = 'none';
+		}
+	};
+}

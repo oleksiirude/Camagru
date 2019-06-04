@@ -9,7 +9,6 @@
 		}
 
 		public function actionGetFivePostsMain() {
-			$this->onlyForLogged();
 			$elements = $_POST['elements'];
 			$result = $this->model->getFivePostsMain($elements);
 			$result = json_encode($result);

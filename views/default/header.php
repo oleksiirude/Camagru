@@ -17,6 +17,11 @@
             <a href="user/change/avatar"><img class="avatar" src="<?= $avatar ?>" alt="avatar" title="<?= $_SESSION['user_logged']; ?>"></a>
 	<?php }
 	else { ?>
-			<h1 class="title">WELCOME!</h1>
+		<div class="enter_menu">
+			<div class="enter_choice">
+				<a href="/user/login">log in</a> |
+				<a href="/user/register">sign up</a>
+			</div>
+		</div>
 	<?php } ?>
 </header>
