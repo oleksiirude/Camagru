@@ -8,13 +8,14 @@
 						password VARCHAR(255) NOT NULL,
 						confirm TINYINT(1) DEFAULT 0 NOT NULL,
 						token VARCHAR(32) DEFAULT '',
+						notification TINYINT(1) DEFAULT 1 NOT NULL,
 						avatar VARCHAR(255) DEFAULT NULL, 
 						PRIMARY KEY (id)) ENGINE=InnoDB
 						CHARACTER SET utf8mb4",
 
 		'posts' => 'CREATE TABLE posts (
 						id INT NOT NULL AUTO_INCREMENT,
-						user VARCHAR(10)NOT NULL,
+						user VARCHAR(10) NOT NULL,
 						user_avatar VARCHAR(255) NOT NULL,
 						description VARCHAR(100) NOT NULL,
 						likes INT DEFAULT 0,
@@ -26,6 +27,7 @@
 
 		'comments' => 'CREATE TABLE comments (
 						post INT NOT NULL,
+						owner VARCHAR(10) NOT NULL,
 						author_id INT NOT NULL,
 						author_login VARCHAR(10) NOT NULL,
 						author_avatar VARCHAR(255) NOT NULL,

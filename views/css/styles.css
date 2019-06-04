@@ -237,10 +237,10 @@ header {
     font-weight: bold;
     font-size: 26px;
     width: 280px;
-    height: 250px;
     background: goldenrod;
     border-radius: 5px;
     margin: 10% auto;
+    padding: 6px;
     text-align: center;
     box-shadow: 0 0 2px 1px gray;
 }
@@ -275,6 +275,72 @@ header {
     outline: none;
     font-size: 14px;
     background-color: beige;
+}
+
+/*NOTIFICATION*/
+#switch {
+    width: 60px;
+    height: 40px;
+    transform: translate(-50%, -50%);
+    margin: 50px auto;
+}
+
+#switch:hover {
+    cursor: pointer;
+}
+
+#slider {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 120px;
+    height: 50px;
+    margin: auto;
+    border-radius: 70px;
+    background-color: #222;
+    transition: all 0.3s ease-in-out;
+}
+
+#slider.change {
+    opacity: 0.3;
+}
+
+#circle {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 40px;
+    height: 40px;
+    margin: auto 0 0 5px;
+    border-radius: 160px;
+    background-color: goldenrod;
+    transition: all 0.3s ease-in-out;
+}
+
+#circle.change {
+    background-color: gray;
+    left: 70px;
+}
+
+#circle-content {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 10px;
+    margin: auto;
+    border: 2px solid #222;
+    border-radius: 70px;
+    transition: all 0.3s ease-in-out;
+}
+
+#circle-content.change {
+    width: 10px;
+    opacity: 0.3;
 }
 
 /*CHANGE AVATAR*/
@@ -661,11 +727,6 @@ ul li  {
     font-style: italic;
 }
 
-.comment_error {
-    color: darkred;
-    margin-bottom: 4px;
-}
-
 /*MAIN*/
 .posts_main {
     border-radius: 5px;
@@ -735,6 +796,11 @@ footer {
     position: absolute;
 }
 
+.comment_error {
+    color: darkred;
+    margin-bottom: 4px;
+}
+
 .warn {
     display: none;
     text-align: center;
@@ -766,7 +832,7 @@ footer {
 .message, .pic, .pics, .avatar_preview, .noWebcam, .camera, .valid_pic,
 .masks, .make_post, .description_value_error, .main_info,
 .post_container, .delete_post, .comment_box, .comment_container,
-.comment_error, #backFromCam, #snap,
+.comment_error, .warn, #backFromCam, #snap,
 #backFromPic {
     -webkit-animation: fade-in 0.3s linear; /* Safari 4+ */
     -moz-animation: fade-in 0.3s linear; /* Fx 5+ */

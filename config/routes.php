@@ -139,6 +139,21 @@
 			'action' => 'settings'
 		],
 
+		'user/change/notifications' => [
+			'controller' => 'user',
+			'action' => 'changeNotifications'
+		],
+
+		'user/getnotificationsmode' => [
+			'controller' => 'user',
+			'action' => 'getNotificationsMode'
+		],
+
+		'user/setnotificationsmode' => [
+			'controller' => 'user',
+			'action' => 'setNotificationsMode'
+		],
+
 		//CONTROLLER - WORKSHOP
 		//WORKSHOP
 		'workshop' => [

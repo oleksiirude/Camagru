@@ -222,8 +222,6 @@ function accessRights() {
             comments = document.getElementsByClassName('activity_comments');
             length = comments.length;
             let result = JSON.parse(ajax.responseText);
-            //let result = ajax.responseText;
-            //console.log(result);
             if (result === false) {
                 for (let i = 0; i < length; i++) {
                     likes[i].addEventListener('click', warn);

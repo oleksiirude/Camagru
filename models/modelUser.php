@@ -335,4 +335,27 @@
 			$this->query("UPDATE comments SET author_avatar = 'views/pictures/avatars/default.png' WHERE author_id = '$id'");
 			$this->query("UPDATE posts SET user_avatar = 'views/pictures/avatars/default.png' WHERE user = '$user'");
 		}
+
+		//NOTIFICATION
+		public function getNotificationsMode() {
+			$user = $_SESSION['user_id'];
+
+			$sth = $this->query("SELECT notification FROM users WHERE id = '$user'");
+			$result = $sth->fetchAll(self::FETCH_ASSOC);
+			if ($result[0]['notification'] === '1')
+				$result = true;
+			else
+				$result = false;
+			return $result;
+		}
+
+		public function setNotificationsMode($boolean) {
+			$user = $_SESSION['user_id'];
+			if ($boolean === true)
+				$status = '1';
+			else
+				$status = '0';
+
+			$this->query("UPDATE users SET notification = '$status' WHERE id = '$user'");
+		}
 }

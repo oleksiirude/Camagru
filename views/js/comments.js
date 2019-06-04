@@ -81,6 +81,9 @@ function getComments(id, comment_box, container) {
 }
 
 function addComment(e) {
+	let button = e.target;
+	button.disabled = true;
+
 	let error = document.getElementById('comment_error');
 	if (error)
 		error.remove();
@@ -138,6 +141,9 @@ function addComment(e) {
 			last.insertBefore(box, last.childNodes[length]);
 		}
 	};
+	setTimeout( () => {
+		button.disabled = false;
+	}, 3000);
 }
 
 function validateInputComment(input, parent) {

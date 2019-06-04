@@ -24,5 +24,6 @@
     <script src="views/js/profile.js"></script>
 	<script src="views/js/comments.js"></script>
 	<script src="views/js/main.js"></script>
+	<script src="views/js/notifications.js"></script>
 </body>
 </html>

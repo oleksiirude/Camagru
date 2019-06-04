@@ -80,9 +80,14 @@
 			date_default_timezone_set('Europe/Kiev');
 			$date = date("Y-m-d H:i:s");
 
+			//get post owner
+			$sth = $this->query("SELECT user FROM posts WHERE id = '$post'");
+			$owner = $sth->fetchAll(self::FETCH_ASSOC);
+			$owner = $owner[0]['user'];
+
 			//add comment
-			$sth = $this->prepare("INSERT INTO comments(post, author_id, author_login, author_avatar, add_date, comment)
-                 VALUES ('$post', '$author_id', '$author_login', '$author_avatar','$date', :comment)");
+			$sth = $this->prepare("INSERT INTO comments(post, owner, author_id, author_login, author_avatar, add_date, comment)
+                 VALUES ('$post', '$owner','$author_id', '$author_login', '$author_avatar','$date', :comment)");
 			$sth->execute([':comment' => $comment]);
 
 			//iterate comments counter and get value after
@@ -102,5 +107,25 @@
 
 			$result[0]['counter'] = $counter;
 			return $result;
+		}
+
+		public function prepareNotification($post) {
+    		//if comments author is posts owner do not send letter
+			$author = $author_id = $_SESSION['user_logged'];
+			$sth = $this->query("SELECT owner, author_login FROM comments WHERE post = '$post' AND author_login = '$author' 
+												ORDER BY add_date DESC LIMIT 1");
+			$data = $sth->fetchAll(self::FETCH_ASSOC);
+			if ($data[0]['owner'] === $data[0]['author_login'])
+				return;
+
+			$user = $data[0]['owner'];
+			$sth = $this->query("SELECT email, notification FROM users WHERE login = '$user'");
+			$data = $sth->fetchAll(self::FETCH_ASSOC);
+			$email = $data[0]['email'];
+			$status = $data[0]['notification'];
+			if ($status === '0')
+				return;
+			$mail = new componentMail();
+			$mail::sendNotification($user, $email, 'comment');
 		}
     }

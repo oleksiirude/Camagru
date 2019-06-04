@@ -43,8 +43,8 @@
 			$data = (array)json_decode($_POST['data']);
 			$post = $data['post'];
 			$comment = htmlentities($data['comment']);
-
 			$result = $this->model->addComment($post, $comment);
+			$this->model->prepareNotification($post);
 			echo json_encode($result);
 			return true;
 		}

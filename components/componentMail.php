@@ -51,4 +51,18 @@
 						<p>See ya!</p>";
 			mail($to, $subject, $message, $headers);
 		}
+
+		public static function sendNotification($user, $email, $case) {
+			$headers =	"From: camagrubot@gmail.com\r\n".
+				"Reply-To: no-reply\r\n".
+				"MIME=Version: 1.0\r\n".
+				"Content-Type: text/html; charset=utf-8\r\n";
+			$subject = 'Activity in your post';
+			$message = "
+						<p>Hi, dear $user!</p>
+						<p>Someone has left $case in one of your posts!</p>
+						<p>Check it out!</p>";
+			$res = mail($email, $subject, $message, $headers);
+			var_dump($res);
+		}
 	}

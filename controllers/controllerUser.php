@@ -215,9 +215,29 @@
 		}
 
 		public function actionChangeAvatarDelete() {
-
 			$this->onlyForLogged();
 			$this->model->setAvatarDelete();
 			componentView::redirect('user/settings');
+		}
+
+		public function actionChangeNotifications() {
+			$this->onlyForLogged();
+			$this->view->render('Camagru: set up notification');
+			return true;
+		}
+
+		public function actionGetNotificationsMode() {
+			$this->onlyForLogged();
+			$result = $this->model->getNotificationsMode();
+			echo json_encode($result);
+			return true;
+		}
+
+		public function actionSetNotificationsMode() {
+			$this->onlyForLogged();
+			$boolean = (array)json_decode($_POST['boolean']);
+			$boolean = $boolean[0];
+			$this->model->setNotificationsMode($boolean);
+			return true;
 		}
 	}
