@@ -215,4 +215,30 @@
 			'action' => 'getFivePostsMain'
 		],
 
+		//ADMIN
+		'admin' => [
+			'controller' => 'admin',
+			'action' => 'admin'
+		],
+
+		'admin/login' => [
+			'controller' => 'admin',
+			'action' => 'login'
+		],
+
+		'admin/checkiflogged' => [
+			'controller' => 'admin',
+			'action' => 'checkIfLogged'
+		],
+
+		'admin/recreatedb' => [
+			'controller' => 'admin',
+			'action' => 'reCreateDb'
+		],
+
+
+		'admin/logout' => [
+			'controller' => 'admin',
+			'action' => 'logout'
+		],
 	];

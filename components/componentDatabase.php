@@ -31,10 +31,15 @@
 			$this->query("CREATE DATABASE ".DBNAME);
 			$this->useDatabase();
 
-			foreach (TABLES as $title => $table) {
+			foreach (TABLES as $title => $table)
 				$this->query($table);
-			}
 			foreach (USERS as $table => $query)
+				$this->query($query);
+			foreach (POSTS as $table => $query)
+				$this->query($query);
+			foreach (COMMENTS as $table => $query)
+				$this->query($query);
+			foreach (LIKES as $table => $query)
 				$this->query($query);
 		}
 	}

@@ -26,5 +26,6 @@
 	<script src="views/js/likes.js"></script>
 	<script src="views/js/main.js"></script>
 	<script src="views/js/notifications.js"></script>
+	<script src="views/js/admin.js"></script>
 </body>
 </html>

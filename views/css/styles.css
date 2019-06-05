@@ -103,7 +103,7 @@ header {
     width: 280px;
     background: goldenrod;
     border-radius: 5px;
-    margin: 10% auto;
+    margin: 20% auto;
     text-align: center;
     font-weight: bold;
     box-shadow: 0 0 2px 1px gray;
@@ -239,7 +239,7 @@ header {
     width: 280px;
     background: goldenrod;
     border-radius: 5px;
-    margin: 10% auto;
+    margin: 20% auto;
     padding: 6px;
     text-align: center;
     box-shadow: 0 0 2px 1px gray;

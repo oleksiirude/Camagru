@@ -278,6 +278,7 @@
 			$id = $_SESSION['user_id'];
 			$login = $_SESSION['user_logged'];
 			//delete all photos related to this user
+
 			$sth = $this->query("SELECT path FROM posts WHERE user = '$login'");
 			$paths = $sth->fetchAll(self::FETCH_ASSOC);
 

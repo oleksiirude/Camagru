@@ -106,18 +106,6 @@ function addComment(e) {
 	json['comment'] = comment;
 	ajax.send('data='+JSON.stringify(json));
 
-
-	// ajax.onreadystatechange = () => {
-	// 	if (ajax.status !== 200) {
-	// 		location.href = 'error';
-	// 	}
-	// 	if (ajax.readyState === 4) {
-	// 		let result = ajax.responseText;
-	// 		console.log(result);
-	// 	}
-	// };
-
-
 	//post new comment
 	let counter = e.target.parentNode.parentNode;
 	counter = counter.getElementsByClassName('activity_box')[1].getElementsByTagName('p')[0];

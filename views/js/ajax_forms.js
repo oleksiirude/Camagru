@@ -26,8 +26,7 @@ function ajax(object, action) {
 		values[object.elements[i].name] = object.elements[i].value;
 	let json = JSON.stringify(values);
 
-	ajax.setRequestHeader('Content-Type',
-		'application/x-www-form-urlencoded');
+	ajax.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 	ajax.send(json);
 
 	ajax.onreadystatechange = function () {

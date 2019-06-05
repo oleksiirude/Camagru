@@ -85,8 +85,11 @@
 		public static function resizePic($filePath, $name, $type, $width, $height)
 		{
 
-			if (preg_match('~png~i', $type))
-				$image = imagecreatefrompng($filePath);
+			if (preg_match('~png~i', $type)) {
+				@$image = imagecreatefrompng($filePath);
+				if (!$image)
+					return false;
+			}
 			else if (preg_match('~jpe?g~i', $type)) {
 				@$image = imagecreatefromjpeg($filePath);
 				if (!$image)
@@ -106,15 +109,15 @@
 				0, 0, $width, $height, imagesx($image), imagesy($image));
 
 			if ($type === 'png' || $type === 'PNG')
-				imagepng($new, ROOT . 'views/pictures/avatars/' . $name);
+				imagepng($new, ROOT.'tmp/'.$name);
 			else
-				imagejpeg($new, ROOT . 'views/pictures/avatars/' . $name);
+				imagejpeg($new, ROOT.'tmp/'.$name);
 			imagedestroy($image);
 			imagedestroy($new);
 
-			$img = file_get_contents(ROOT . 'views/pictures/avatars/' . $name);
-			unlink(ROOT . 'views/pictures/avatars/' . $name);
-			$base64 = "data:image/$type;base64," . base64_encode($img);
+			$img = file_get_contents(ROOT.'tmp/'.$name);
+			unlink(ROOT.'tmp/'.$name);
+			$base64 = "data:image/$type;base64,".base64_encode($img);
 			$result = ['result' => true, 'base64' => $base64];
 			return $result;
 		}
