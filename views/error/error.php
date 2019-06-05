@@ -12,8 +12,10 @@
 </head>
 <body>
 	<div class="wrapper" style="background-color: grey">
-		<h1 style="font-size: 100px; text-align: center">ERROR <?= $code; ?></h1>
-		<a style="font-size: 40px; margin-left: 10%" href="/">to main page</a>
+		<div class="error_block">
+			<h1 style="font-size: 100px; text-align: center">ERROR <?= $code; ?></h1>
+			<a style="font-size: 20px; margin-left: 10%" href="/">to main page</a>
+		</div>
 	</div>
 </body>
 </html>

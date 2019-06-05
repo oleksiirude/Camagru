@@ -784,6 +784,16 @@ footer {
 }
 
 /*ERROR, WARN MASSAGES*/
+.error_block {
+    width: 600px;
+    background-color: goldenrod;
+    margin: 20% auto;
+    padding: 10px;
+    border-radius: 5px;
+    color: #5a5a5a;
+    box-shadow: 0 0 1px 1px black;
+}
+
 .error {
     color: darkred;
     font-family: Candara, sans-serif;

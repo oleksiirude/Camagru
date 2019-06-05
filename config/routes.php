@@ -236,7 +236,6 @@
 			'action' => 'reCreateDb'
 		],
 
-
 		'admin/logout' => [
 			'controller' => 'admin',
 			'action' => 'logout'
