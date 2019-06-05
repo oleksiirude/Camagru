@@ -91,8 +91,10 @@ function addComment(e) {
 	let post_id = e.target.parentElement.id;
 	let last = e.target.parentNode.childNodes;
 	let length = last.length - 2;
-	if (validateInputComment(last[length], e.target.parentNode))
+	if (validateInputComment(last[length], e.target.parentNode)) {
+		button.disabled = false;
 		return;
+	}
 
 	let comment = last[length].value.replace(/&/g, 'amp');
 	comment = comment.trim().replace(/\s\s+/g, ' ');
@@ -112,7 +114,8 @@ function addComment(e) {
 			let result = JSON.parse(ajax.responseText);
 			//let result = ajax.responseText;
 			//console.log(result);
-			let counter = e.target.parentElement.parentElement.childNodes[3].childNodes[1];
+			let counter = e.target.parentNode.parentNode;
+			counter = counter.getElementsByClassName('activity_box')[1].getElementsByTagName('p')[0];
 			counter.innerHTML = result[0]['counter'];
 
 			let box, avatar, date, text;

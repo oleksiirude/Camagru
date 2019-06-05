@@ -36,8 +36,8 @@
       <change beforePath="$PROJECT_DIR$/views/js/users_pic.js" beforeDir="false" afterPath="$PROJECT_DIR$/views/js/users_pic.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/pictures/avatars/1.jpeg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/views/pictures/avatars/111.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/pictures/avatars/2.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/pictures/avatars/3.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/pictures/avatars/2.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/views/pictures/avatars/2.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/pictures/avatars/3.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/views/pictures/avatars/3.jpeg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/pictures/avatars/40.jpeg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/views/pictures/avatars/41.jpeg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/views/pictures/avatars/5.jpeg" beforeDir="false" />
@@ -90,14 +90,14 @@
     <select />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.49401197">
+    <splitter split-orientation="horizontal" split-proportion="0.56354916">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/views/user/content.php">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="153">
-                  <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
+                  <caret line="9" selection-start-line="9" selection-end-line="9" />
                 </state>
               </provider>
             </entry>
@@ -106,7 +106,7 @@
             <entry file="file://$PROJECT_DIR$/views/user/settings.php">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="170">
-                  <caret line="10" column="6" lean-forward="true" selection-start-line="10" selection-start-column="6" selection-end-line="10" selection-end-column="6" />
+                  <caret line="10" column="6" selection-start-line="10" selection-start-column="6" selection-end-line="10" selection-end-column="6" />
                 </state>
               </provider>
             </entry>
@@ -114,7 +114,7 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/views/js/profile.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-2221">
+                <state relative-caret-position="918">
                   <caret line="54" column="14" selection-start-line="54" selection-start-column="14" selection-end-line="54" selection-end-column="14" />
                 </state>
               </provider>
@@ -123,26 +123,26 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/views/js/main.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="400">
+                <state relative-caret-position="595">
                   <caret line="35" column="14" selection-start-line="35" selection-start-column="14" selection-end-line="35" selection-end-column="14" />
                 </state>
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="false">
+          <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/views/js/comments.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="357">
-                  <caret line="113" column="14" selection-start-line="113" selection-start-column="14" selection-end-line="113" selection-end-column="14" />
+                <state relative-caret-position="247">
+                  <caret line="86" column="57" lean-forward="true" selection-start-line="86" selection-start-column="57" selection-end-line="86" selection-end-column="57" />
                 </state>
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="true">
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/views/js/likes.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="323">
-                  <caret line="19" column="1" lean-forward="true" selection-start-line="19" selection-start-column="1" selection-end-line="19" selection-end-column="1" />
+                <state relative-caret-position="493">
+                  <caret line="29" column="1" lean-forward="true" selection-start-line="29" selection-start-column="1" selection-end-line="29" selection-end-column="1" />
                 </state>
               </provider>
             </entry>
@@ -154,7 +154,7 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/models/modelUser.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1012">
+                <state relative-caret-position="1190">
                   <caret line="351" column="56" selection-start-line="351" selection-start-column="56" selection-end-line="351" selection-end-column="56" />
                   <folding>
                     <element signature="n#validateIsFullFields#0;n#modelUser#0;n#!!top" />
@@ -195,10 +195,10 @@
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="true">
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/models/modelMain.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="400">
+                <state relative-caret-position="612">
                   <caret line="36" column="36" lean-forward="true" selection-start-line="36" selection-start-column="36" selection-end-line="36" selection-end-column="36" />
                 </state>
               </provider>
@@ -207,8 +207,8 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/controllers/controllerProfile.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="255">
-                  <caret line="41" column="44" lean-forward="true" selection-start-line="41" selection-start-column="44" selection-end-line="41" selection-end-column="44" />
+                <state relative-caret-position="527">
+                  <caret line="57" column="9" lean-forward="true" selection-start-line="57" selection-start-column="9" selection-end-line="57" selection-end-column="9" />
                   <folding>
                     <element signature="n#__construct#0;n#controllerProfile#0;n#!!top" />
                     <element signature="n#actionGetFivePostsProfile#0;n#controllerProfile#0;n#!!top" />
@@ -220,17 +220,16 @@
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="false">
+          <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/models/modelProfile.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="672">
-                  <caret line="168" lean-forward="true" selection-start-line="168" selection-end-line="168" />
+                <state relative-caret-position="315">
+                  <caret line="144" column="52" lean-forward="true" selection-start-line="144" selection-start-column="52" selection-end-line="144" selection-end-column="52" />
                   <folding>
                     <element signature="n#getFormattedDate#0;n#modelProfile#0;n#!!top" />
                     <element signature="n#getNextPostProfile#0;n#modelProfile#0;n#!!top" />
                     <element signature="n#deletePost#0;n#modelProfile#0;n#!!top" />
                     <element signature="n#getComments#0;n#modelProfile#0;n#!!top" />
-                    <element signature="n#prepareNotification#0;n#modelProfile#0;n#!!top" />
                   </folding>
                 </state>
               </provider>
@@ -239,7 +238,7 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/config/routes.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="587">
+                <state relative-caret-position="3519">
                   <caret line="207" column="33" selection-start-line="207" selection-start-column="33" selection-end-line="207" selection-end-column="33" />
                 </state>
               </provider>
@@ -248,8 +247,8 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/views/css/styles.css">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="536">
-                  <caret line="290" lean-forward="true" selection-start-line="290" selection-end-line="290" />
+                <state relative-caret-position="4930">
+                  <caret line="290" selection-start-line="290" selection-end-line="290" />
                 </state>
               </provider>
             </entry>
@@ -351,13 +350,13 @@
         <option value="$PROJECT_DIR$/controllers/controllerProfile.php" />
         <option value="$PROJECT_DIR$/models/modelWorkshop.php" />
         <option value="$PROJECT_DIR$/config/data.php" />
-        <option value="$PROJECT_DIR$/components/componentMail.php" />
-        <option value="$PROJECT_DIR$/views/js/comments.js" />
         <option value="$PROJECT_DIR$/views/js/main.js" />
         <option value="$PROJECT_DIR$/views/js/profile.js" />
-        <option value="$PROJECT_DIR$/models/modelProfile.php" />
         <option value="$PROJECT_DIR$/views/user/changeNotifications.php" />
+        <option value="$PROJECT_DIR$/components/componentMail.php" />
         <option value="$PROJECT_DIR$/views/js/likes.js" />
+        <option value="$PROJECT_DIR$/models/modelProfile.php" />
+        <option value="$PROJECT_DIR$/views/js/comments.js" />
       </list>
     </option>
   </component>
@@ -514,18 +513,19 @@
       <workItem from="1559465515273" duration="237000" />
       <workItem from="1559465803126" duration="21333000" />
       <workItem from="1559543618804" duration="40330000" />
-      <workItem from="1559632908893" duration="34821000" />
+      <workItem from="1559632908893" duration="35151000" />
+      <workItem from="1559715085445" duration="2402000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="490472000" />
+    <option name="totallyTimeSpent" value="493204000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1098081" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1108742" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -538,7 +538,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="8" />
       <window_info anchor="bottom" id="Version Control" order="9" />
-      <window_info anchor="bottom" id="Terminal" order="10" visible="true" weight="0.10942578" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="10" visible="true" weight="0.10942578" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -770,13 +770,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/user/content.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/components/componentView.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
@@ -805,13 +798,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
           <caret line="19" column="30" selection-start-line="19" selection-start-column="30" selection-end-line="19" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/user/settings.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="6" lean-forward="true" selection-start-line="10" selection-start-column="6" selection-end-line="10" selection-end-column="6" />
         </state>
       </provider>
     </entry>
@@ -855,20 +841,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/css/styles.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="536">
-          <caret line="290" lean-forward="true" selection-start-line="290" selection-end-line="290" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/routes.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="587">
-          <caret line="207" column="33" selection-start-line="207" selection-start-column="33" selection-end-line="207" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/config/data.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="264">
@@ -886,37 +858,44 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/js/comments.js">
+    <entry file="file://$PROJECT_DIR$/views/user/changeNotifications.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="113" column="14" selection-start-line="113" selection-start-column="14" selection-end-line="113" selection-end-column="14" />
+        <state relative-caret-position="51">
+          <caret line="3" column="31" selection-start-line="3" selection-start-column="31" selection-end-line="3" selection-end-column="31" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/js/main.js">
+    <entry file="file://$PROJECT_DIR$/views/user/content.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="400">
-          <caret line="35" column="14" selection-start-line="35" selection-start-column="14" selection-end-line="35" selection-end-column="14" />
+        <state relative-caret-position="153">
+          <caret line="9" selection-start-line="9" selection-end-line="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/user/settings.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="6" selection-start-line="10" selection-start-column="6" selection-end-line="10" selection-end-column="6" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/views/js/profile.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2221">
+        <state relative-caret-position="918">
           <caret line="54" column="14" selection-start-line="54" selection-start-column="14" selection-end-line="54" selection-end-column="14" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/controllers/controllerMain.php">
+    <entry file="file://$PROJECT_DIR$/views/js/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="10" selection-start-line="1" selection-start-column="10" selection-end-line="1" selection-end-column="10" />
+        <state relative-caret-position="595">
+          <caret line="35" column="14" selection-start-line="35" selection-start-column="14" selection-end-line="35" selection-end-column="14" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/models/modelUser.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1012">
+        <state relative-caret-position="1190">
           <caret line="351" column="56" selection-start-line="351" selection-start-column="56" selection-end-line="351" selection-end-column="56" />
           <folding>
             <element signature="n#validateIsFullFields#0;n#modelUser#0;n#!!top" />
@@ -947,10 +926,52 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/controllers/controllerMain.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="10" selection-start-line="1" selection-start-column="10" selection-end-line="1" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/modelMain.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="612">
+          <caret line="36" column="36" lean-forward="true" selection-start-line="36" selection-start-column="36" selection-end-line="36" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/routes.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3519">
+          <caret line="207" column="33" selection-start-line="207" selection-start-column="33" selection-end-line="207" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/css/styles.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4930">
+          <caret line="290" selection-start-line="290" selection-end-line="290" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/componentMail.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="519">
+          <caret line="45" column="30" lean-forward="true" selection-start-line="45" selection-start-column="30" selection-end-line="45" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/js/likes.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="29" column="1" lean-forward="true" selection-start-line="29" selection-start-column="1" selection-end-line="29" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/controllers/controllerProfile.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="41" column="44" lean-forward="true" selection-start-line="41" selection-start-column="44" selection-end-line="41" selection-end-column="44" />
+        <state relative-caret-position="527">
+          <caret line="57" column="9" lean-forward="true" selection-start-line="57" selection-start-column="9" selection-end-line="57" selection-end-column="9" />
           <folding>
             <element signature="n#__construct#0;n#controllerProfile#0;n#!!top" />
             <element signature="n#actionGetFivePostsProfile#0;n#controllerProfile#0;n#!!top" />
@@ -961,45 +982,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/components/componentMail.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-416">
-          <caret line="2" column="10" selection-start-line="2" selection-start-column="10" selection-end-line="2" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/models/modelProfile.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="672">
-          <caret line="168" lean-forward="true" selection-start-line="168" selection-end-line="168" />
+        <state relative-caret-position="315">
+          <caret line="144" column="52" lean-forward="true" selection-start-line="144" selection-start-column="52" selection-end-line="144" selection-end-column="52" />
           <folding>
             <element signature="n#getFormattedDate#0;n#modelProfile#0;n#!!top" />
             <element signature="n#getNextPostProfile#0;n#modelProfile#0;n#!!top" />
             <element signature="n#deletePost#0;n#modelProfile#0;n#!!top" />
             <element signature="n#getComments#0;n#modelProfile#0;n#!!top" />
-            <element signature="n#prepareNotification#0;n#modelProfile#0;n#!!top" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/user/changeNotifications.php">
+    <entry file="file://$PROJECT_DIR$/views/js/comments.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="31" selection-start-line="3" selection-start-column="31" selection-end-line="3" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/js/likes.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" column="1" lean-forward="true" selection-start-line="19" selection-start-column="1" selection-end-line="19" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models/modelMain.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="400">
-          <caret line="36" column="36" lean-forward="true" selection-start-line="36" selection-start-column="36" selection-end-line="36" selection-end-column="36" />
+        <state relative-caret-position="247">
+          <caret line="86" column="57" lean-forward="true" selection-start-line="86" selection-start-column="57" selection-end-line="86" selection-end-column="57" />
         </state>
       </provider>
     </entry>

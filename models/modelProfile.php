@@ -137,12 +137,8 @@
 			$sth = $this->query("SELECT * FROM likes WHERE post = '$post'");
 			$list = $sth->fetchAll(self::FETCH_ASSOC);
 			$user = $user.',';
-			if (empty($list))
-				$this->query("UPDATE likes SET list = '$user' WHERE post = '$post'");
-			else {
-				$list = $list[0]['list'].$user;
-				$this->query("UPDATE likes SET list = '$list' WHERE post = '$post'");
-			}
+			$list = $list[0]['list'].$user;
+			$this->query("UPDATE likes SET list = '$list' WHERE post = '$post'");
 			$this->query("UPDATE posts SET likes = likes+1 WHERE id = '$post'");
 		}
 
@@ -160,6 +156,8 @@
 			$data = $sth->fetchAll(self::FETCH_ASSOC);
 			$email = $data[0]['email'];
 			$status = $data[0]['notification'];
+
+			//if user turned off notifications do not send letter
 			if ($status === '0')
 				return;
 			$mail = new componentMail();
