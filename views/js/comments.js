@@ -106,44 +106,55 @@ function addComment(e) {
 	json['comment'] = comment;
 	ajax.send('data='+JSON.stringify(json));
 
-	ajax.onreadystatechange = () => {
-		if (ajax.status !== 200) {
-			location.href = 'error';
-		}
-		if (ajax.readyState === 4) {
-			let result = JSON.parse(ajax.responseText);
-			//let result = ajax.responseText;
-			//console.log(result);
-			let counter = e.target.parentNode.parentNode;
-			counter = counter.getElementsByClassName('activity_box')[1].getElementsByTagName('p')[0];
-			counter.innerHTML = result[0]['counter'];
 
-			let box, avatar, date, text;
-			let last = e.target.parentNode;
-			let length = last.childNodes.length - 2;
-			box = document.createElement('div');
-			box.className = 'comment_container';
+	// ajax.onreadystatechange = () => {
+	// 	if (ajax.status !== 200) {
+	// 		location.href = 'error';
+	// 	}
+	// 	if (ajax.readyState === 4) {
+	// 		let result = ajax.responseText;
+	// 		console.log(result);
+	// 	}
+	// };
 
-			avatar = document.createElement('img');
-			avatar.src = result[0]['author_avatar'];
-			avatar.className = 'avatar_comment';
-			avatar.title = result[0]['author_login'];
 
-			date = document.createElement('span');
-			date.className = 'date_comment';
-			date.innerHTML = result[0]['add_date'];
+	//post new comment
+	let counter = e.target.parentNode.parentNode;
+	counter = counter.getElementsByClassName('activity_box')[1].getElementsByTagName('p')[0];
+	let value = parseInt(counter.innerHTML);
+	value++;
+	counter.innerHTML = value;
 
-			text = document.createElement('span');
-			text.className = 'text_comment';
-			text.innerHTML = result[0]['comment'];
+	let box, avatar, date, text;
+	let last1 = e.target.parentNode;
+	let length1 = last1.childNodes.length - 2;
+	box = document.createElement('div');
+	box.className = 'comment_container';
 
-			box.appendChild(avatar);
-			box.appendChild(date);
-			box.appendChild(text);
+	let src = document.getElementsByTagName('header')[0];
+	src = src.getElementsByClassName('avatar')[0];
+	avatar = document.createElement('img');
+	avatar.src = src.src;
 
-			last.insertBefore(box, last.childNodes[length]);
-		}
-	};
+	let login = document.getElementsByTagName('header')[0];
+	login = login.getElementsByClassName('avatar')[0];
+	avatar.className = 'avatar_comment';
+	avatar.title = login.title;
+
+	date = document.createElement('span');
+	date.className = 'date_comment';
+	date.innerHTML = 'posted just now';
+
+	text = document.createElement('span');
+	text.className = 'text_comment';
+	text.innerHTML = comment;
+
+	box.appendChild(avatar);
+	box.appendChild(date);
+	box.appendChild(text);
+
+	last1.insertBefore(box, last1.childNodes[length1]);
+
 	setTimeout( () => {
 		button.disabled = false;
 	}, 3000);

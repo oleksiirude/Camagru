@@ -69,16 +69,15 @@
 		}
 
         public function deletePost($id) {
-        	//delete photo on server
+        	//delete photo from server
 			$sth = $this->query("SELECT path FROM posts WHERE id = '$id'");
 			$result = $sth->fetchAll(self::FETCH_ASSOC);
 			unlink($result[0]['path']);
 
 			//delete all data connected to this post
 			$this->query("DELETE FROM posts WHERE id = '$id'");
-			//______________________________________
-			//add deleting comments and likes soon!
-			//______________________________________
+			$this->query("DELETE FROM comments WHERE post = '$id'");
+			$this->query("DELETE FROM likes WHERE post = '$id'");
 		}
 
 		public function getComments($id) {
@@ -93,7 +92,6 @@
 		}
 
 		public function addComment($post, $comment) {
-			$author_id = $_SESSION['user_id'];
 			$author_login = $_SESSION['user_logged'];
 			if ($_SESSION['avatar'] === false)
 				$author_avatar = 'views/pictures/avatars/default.png';
@@ -108,8 +106,8 @@
 			$owner = $owner[0]['user'];
 
 			//add comment
-			$sth = $this->prepare("INSERT INTO comments(post, owner, author_id, author_login, author_avatar, add_date, comment)
-                 VALUES ('$post', '$owner','$author_id', '$author_login', '$author_avatar','$date', :comment)");
+			$sth = $this->prepare("INSERT INTO comments(post, owner, author_login, author_avatar, add_date, comment)
+                 VALUES ('$post', '$owner', '$author_login', '$author_avatar','$date', :comment)");
 			$sth->execute([':comment' => $comment]);
 
 			//iterate comments counter and get value after
@@ -161,6 +159,6 @@
 			if ($status === '0')
 				return;
 			$mail = new componentMail();
-			$mail::sendNotification($user, $email);
+			$mail->sendNotification($user, $email);
 		}
     }

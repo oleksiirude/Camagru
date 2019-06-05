@@ -11,7 +11,6 @@ function set_new_avatar(e) {
 	ajax.open('POST', 'user/change/avatar/set', true);
 	data['avatar'] = avatar;
 	avatar = JSON.stringify(data);
-	//console.log(avatar);
 	ajax.send(avatar);
 
 	ajax.onreadystatechange = () => {
@@ -20,6 +19,7 @@ function set_new_avatar(e) {
 		}
 		if (ajax.readyState === 4) {
 			let result = JSON.parse(ajax.responseText);
+			//let result = ajax.responseText;
 			//console.log(result);
 			if (result === true)
 				messageDone("your avatar has been changed<br>",

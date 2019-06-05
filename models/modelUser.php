@@ -276,7 +276,22 @@
 		public function deleteAccount() {
 
 			$id = $_SESSION['user_id'];
+			$login = $_SESSION['user_logged'];
+			//delete all photos related to this user
+			$sth = $this->query("SELECT path FROM posts WHERE user = '$login'");
+			$paths = $sth->fetchAll(self::FETCH_ASSOC);
+
+			foreach ($paths as $path) {
+				unlink($path['path']);
+			}
+
+			//delete all data connected to user (except comments to other posts and likes)
 			$this->query("DELETE FROM users WHERE id = '$id'");
+			$this->query("DELETE FROM posts WHERE user = '$login'");
+			$this->query("DELETE FROM comments WHERE owner = '$login'");
+			$this->query("DELETE FROM likes WHERE owner = '$id'");
+			//rename this user to 'deleted' and set up default avatar to its comments
+			$this->query("UPDATE comments SET author_login = 'deleted', author_avatar = 'views/pictures/avatars/default.png' WHERE author_login = '$login'");
 		}
 
 		//CHANGE AVATAR
@@ -316,7 +331,7 @@
 		$destination = 'views/pictures/avatars/'.$id.'.'.$type;
 		file_put_contents($destination, $photo);
 		$this->query("UPDATE users SET avatar = '$destination' WHERE users.id = '$id'");
-		$this->query("UPDATE comments SET author_avatar = '$destination' WHERE author_id = '$id'");
+		$this->query("UPDATE comments SET author_avatar = '$destination' WHERE author_login = '$user'");
 		$this->query("UPDATE posts SET user_avatar = '$destination' WHERE user = '$user'");
 		$_SESSION['avatar'] = $destination;
 		return true;

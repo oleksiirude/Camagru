@@ -8,5 +8,6 @@
 					<div id="circle-content"></div>
 				</div>
 			</div>
+		<a style="font-size: 16px" href="user/settings">back</a>
 	</div>
 </div>

@@ -175,7 +175,7 @@
 			return true;
 		}
 
-		//DELETE ACCOUNT -> DO MORE COMPLEX DELETE!
+		//DELETE ACCOUNT
 		public function actionDeleteAccount() {
 			$this->onlyForLogged();
 			$this->view->render('Camagru: delete account');

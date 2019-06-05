@@ -34,7 +34,6 @@
 		'comments' => 'CREATE TABLE comments (
 						post INT NOT NULL,
 						owner VARCHAR(10) NOT NULL,
-						author_id INT NOT NULL,
 						author_login VARCHAR(10) NOT NULL,
 						author_avatar VARCHAR(255) NOT NULL,
 						add_date DATETIME NOT NULL,
