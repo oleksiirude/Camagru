@@ -1,5 +1,5 @@
-if (document.documentURI === 'http://localhost/admin') {//for home
-// if (document.documentURI === 'http://localhost:8080/admin') { //for unit
+// if (document.documentURI === 'http://localhost/admin') {//for home
+if (document.documentURI === 'http://localhost:8080/admin') { //for unit
 	let not_logged_user = document.getElementsByClassName('enter_choice')[0];
 	if (not_logged_user)
 		not_logged_user.remove();
@@ -35,7 +35,8 @@ if (document.documentURI === 'http://localhost/admin') {//for home
 	if (form)
 		form.addEventListener('submit', checkAdmin);
 }
-	function checkAdmin(e) {
+
+function checkAdmin(e) {
 		e.preventDefault();
 		let action = e.target.getAttribute('action');
 		let warning = document.getElementById('warning');
@@ -47,7 +48,7 @@ if (document.documentURI === 'http://localhost/admin') {//for home
 		ajaxAdmin(e.target, action);
 	}
 
-	function ajaxAdmin(object, action) {
+function ajaxAdmin(object, action) {
 		let ajax = new XMLHttpRequest();
 		ajax.open('POST', action, true);
 
@@ -79,7 +80,7 @@ if (document.documentURI === 'http://localhost/admin') {//for home
 		};
 	}
 
-	function reCreateDb() {
+function reCreateDb() {
 		let ajax = new XMLHttpRequest();
 		ajax.open('POST', 'admin/recreatedb', true);
 		ajax.send();
@@ -87,7 +88,7 @@ if (document.documentURI === 'http://localhost/admin') {//for home
 		document.getElementById('create').style.backgroundColor = 'green';
 	}
 
-	function logout() {
+function logout() {
 		let ajax = new XMLHttpRequest();
 		ajax.open('POST', 'admin/logout', true);
 		ajax.send();

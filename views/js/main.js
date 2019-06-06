@@ -1,5 +1,5 @@
-if (document.documentURI === 'http://localhost/') { //for home
-//if (document.documentURI === 'http://localhost:8080/') { //for unit
+// if (document.documentURI === 'http://localhost/') { //for home
+if (document.documentURI === 'http://localhost:8080/') { //for unit
 	window.scrollTo(0, 0);
 	let parent = document.getElementsByClassName('posts_main')[0];
 	ajaxMainFeed(parent,0);

@@ -91,6 +91,6 @@
 			$id = $sth->fetchAll(self::FETCH_ASSOC);;
 			$id = $id[0]['id'];
 			$user = $_SESSION['user_id'];
-			$this->query("INSERT INTO likes(post, owner) VALUES ('$id', '$user')");
+			$this->query("INSERT INTO likes(post, owner, list) VALUES ('$id', '$user','')");
         }
 	}

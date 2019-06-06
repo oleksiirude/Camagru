@@ -135,7 +135,7 @@ function addComment(e) {
 
 	text = document.createElement('span');
 	text.className = 'text_comment';
-	text.innerHTML = comment;
+	text.innerHTML = htmlEntities(comment);
 
 	box.appendChild(avatar);
 	box.appendChild(date);
@@ -164,4 +164,8 @@ function validateInputComment(input, parent) {
 		return true;
 	}
 	return false;
+}
+
+function htmlEntities(str) {
+	return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 }

@@ -22,8 +22,7 @@ a:hover { transition: 220ms; color: lightgray }
 header {
     position: fixed;
     width: 100%;
-    min-width: 740px;
-    height: 80px;
+    /*min-width: 740px;*/
     background: goldenrod;
     box-shadow: 1px 0 1px 1px grey;
     text-align: center;
@@ -39,7 +38,6 @@ header {
 
 .camagru {
     display: inline-block;
-    float: right;
     margin-top: 5px;
     margin-left: 10px;
     width: 75px;
@@ -73,7 +71,6 @@ header {
 .wrapper {
     flex: 1 0 auto;
     width: 70%;
-    min-width: 730px;
     margin: auto;
     padding-left: 10px;
     padding-right: 10px;
@@ -631,7 +628,7 @@ ul li  {
 
 .post_container {
     text-align: center;
-    width: 560px;
+    width: 87%;
     margin: 10px auto;
     padding: 6px 6px 10px 6px;
     border-radius: 5px;
@@ -641,7 +638,7 @@ ul li  {
 
 .post_photo {
     border-radius: 3px;
-    width: 540px;
+    width: calc(100% - 15px);
     margin: 2px auto auto;
     border: goldenrod solid 3px;
     box-shadow: 0 2px 14px 4px lightgray;
@@ -653,7 +650,7 @@ ul li  {
     margin-left: auto;
     margin-right: auto;
     padding: 6px;
-    width: 400px;
+    width: 70%;
     border-radius: 0 0 5px 4px;
     background-color: lightgray;
 }
@@ -663,22 +660,28 @@ ul li  {
     font-family: AppleGothic, sans-serif;
     background-color: goldenrod;
     display: inline-block;
-    min-width: 80px;
+    min-width: 16%;
     border-radius: 3px;
     margin-left: 4px;
     border: black solid 1px;
 }
 
 .activity_likes {
+    width: 30px;
     cursor: pointer;
     padding: 2px 0 2px 2px;
     float: left;
 }
 
 .activity_comments {
+    width: 30px;
     cursor: pointer;
     padding: 2px 0 2px 2px;
     float: left;
+}
+
+.counter {
+    padding-top: 6px;
 }
 
 /*COMMENT BOX*/
@@ -734,7 +737,8 @@ ul li  {
     margin: 0 auto 10px auto;
     padding-bottom: 10px;
     background-color: darkgrey;
-    width: 700px;
+    width: 80%;
+    max-width: 640px;
     padding-top: 10px;
     box-shadow: 1px 1px 1px 1px grey;
 }
@@ -827,6 +831,35 @@ footer {
     font-size: 20px;
     z-index: 1001;
 }
+
+/*MEDIA QUERIES*/
+@media screen and (max-width: 600px) {
+    .counter {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .wrapper{
+        width: 100%;
+    }
+    .navbar {
+        font-size: 20px;
+    }
+}
+
+@media screen and (max-width: 380px) {
+    .navbar {
+        margin-top: 62px;
+    }
+}
+
+@media screen and (max-width: 460px) {
+    .avatar {
+        display: none;
+    }
+}
+
 
 /*EXTRA*/
 /*smooth start effect*/

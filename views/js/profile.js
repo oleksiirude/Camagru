@@ -4,7 +4,7 @@ if (main && window.outerWidth < 1640)
 
 let avatar_profile = document.getElementsByClassName('avatar_profile')[0];
 if (avatar_profile)
-    avatar_profile.addEventListener('click', function () {
+    avatar_profile.addEventListener('click', () => {
         window.scrollTo(0, 0);
     });
 window.onresize = () => {
@@ -17,8 +17,8 @@ window.onresize = () => {
     }
 };
 
-if (document.documentURI === 'http://localhost/user/profile') { //for home
-//if (document.documentURI === 'http://localhost:8080/user/profile') { //for unit
+// if (document.documentURI === 'http://localhost/user/profile') { //for home
+if (document.documentURI === 'http://localhost:8080/user/profile') { //for unit
     window.scrollTo(0, 0);
     let parent = document.getElementsByClassName('posts_profile')[0];
     ajaxProfileFeed(parent,0);
@@ -83,13 +83,13 @@ function addContent(parent, result) {
         photo.id = 'img'+result[i]['id'];
         photo.className = 'post_photo';
         photo.src = result[i]['path'];
-        if (document.documentURI === 'http://localhost/user/profile') {//for home
-        // if (document.documentURI === 'http://localhost:8080/user/profile') { //for unit
+        // if (document.documentURI === 'http://localhost/user/profile') {//for home
+        if (document.documentURI === 'http://localhost:8080/user/profile') { //for unit
             photo.addEventListener('click', removePostIntention);
             photo.style.cursor = 'pointer';
         }
-        if (document.documentURI === 'http://localhost/') {//for home
-        // if (document.documentURI === 'http://localhost:8080/') { //for unit
+        // if (document.documentURI === 'http://localhost/') {//for home
+        if (document.documentURI === 'http://localhost:8080/') { //for unit
             let avatar, login;
             avatar = document.createElement('img');
             avatar.className = 'avatar_comment';
@@ -123,13 +123,12 @@ function addContent(parent, result) {
                 likes.id = 'like';
                 likes.src = 'views/pictures/service/like.png';
             }
-        likes.style.width = '30px';
         likes.setAttribute('alt', 'likes');
         likes.setAttribute('title', 'likes');
         likes.className = 'activity_likes';
         counter = document.createElement('p');
         counter.innerHTML = result[i]['likes'];
-        counter.style.paddingTop = '6px';
+        counter.className = 'counter';
         activity.append(likes);
         activity.append(counter);
         container.append(activity);
@@ -139,14 +138,13 @@ function addContent(parent, result) {
         activity.className = 'activity_box';
         comments = document.createElement('img');
         comments.src = 'views/pictures/service/comment.png';
-        comments.style.width = '30px';
         comments.id = 'comments'+result[i]['id'];
         comments.setAttribute('alt', 'comments');
         comments.setAttribute('title', 'comments');
         comments.className = 'activity_comments';
         counter = document.createElement('p');
         counter.innerHTML = result[i]['comments'];
-        counter.style.paddingTop = '6px';
+        counter.className = 'counter';
         activity.append(comments);
         activity.append(counter);
         container.append(activity);

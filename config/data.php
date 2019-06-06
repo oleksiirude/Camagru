@@ -28,7 +28,7 @@
 		'likes' => "CREATE TABLE likes (
 						post INT NOT NULL,
 						owner INT NOT NULL,
-						list TEXT NOT NULL DEFAULT '') ENGINE=InnoDB
+						list TEXT NOT NULL) ENGINE=InnoDB
 						CHARACTER SET utf8mb4",
 
 		'comments' => 'CREATE TABLE comments (
