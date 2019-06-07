@@ -9,10 +9,10 @@
     <h1 class="title">WORKSHOP</h1>
     <div class="snapContainer">
         <div class="webcam">
-            <video id="video" width="620" height="480" autoplay></video>
+            <video id="video" width="640" height="480" autoplay></video>
             <img class="camera" src="views/pictures/service/camera.png" alt="camera">
 			<button id="backFromCam" class="back_button">BACK</button>
-			<canvas id="canvas" style="visibility: hidden" width="620" height="480"></canvas>
+			<canvas id="canvas" style="display: none" width="620" height="480"></canvas>
         </div>
 		<div class="noWebcam">
 			<form id="uploadPic" class="uploadPic" enctype="multipart/form-data">

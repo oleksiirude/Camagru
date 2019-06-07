@@ -1,3 +1,11 @@
+window.onresize = () => {
+    let images = document.getElementsByClassName('webcam')[0].getElementsByClassName('mask');
+    if (images.length > 0)
+        while (images.length--)
+            images[0].remove();
+    snap.disabled = true;
+};
+
 function dragndrop(e) {
 
     let parent = document.getElementsByClassName('webcam')[0];
@@ -66,6 +74,8 @@ function dragndrop(e) {
             size = elem.offsetWidth - 10;
             style = elem.style;
             style.width = size + 'px';
+            if (size < 25)
+                style.width = 25 + 'px';
         }
         e.preventDefault();
     };

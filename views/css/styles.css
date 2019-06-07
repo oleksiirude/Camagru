@@ -384,21 +384,22 @@ header {
 }
 
 .snapContainer {
+    width: 680px;
     border-radius: 5px;
     align-content: center;
     margin: 0 auto 10px auto;
     background-color: darkgrey;
-    width: 700px;
-    height: 530px;
     padding-top: 10px;
+    padding-bottom: 6px;
     box-shadow: 1px 1px 1px 1px grey;
 }
 
 .camera {
     margin-top: 100px;
     width: 310px;
-    height: 280px;
+    /*height: 280px;*/
     cursor: pointer;
+    padding-bottom: 100px;
 }
 
 .noWebcam {
@@ -431,27 +432,27 @@ header {
 }
 
 .valid_pic {
-    margin-top: 5px;
-    margin-left: 5px;
-    width: 630px;
-    height: 470px;
+    width: 640px;
+    height: 480px;
+    border-radius: 5px;
 }
 
 .webcam {
+    margin: auto;
     border-radius: 5px;
     background-color: #333333;
     width: 640px;
-    height: 490px;
-    margin-left: auto;
-    margin-right: auto;
-    box-shadow: 1px 1px 1px 1px grey;
+    height: 480px;
+    box-shadow: 2px 2px 2px 1px gray;
 }
 
-#video, #canvas { margin-left: 10px; display: none }
+#video, #canvas {
+    display: none;
+    border-radius: 5px;
+}
 #canvas { margin-top: 4px; display: none }
 #snap {
-    margin-top: 6px;
-    margin-left: 300px;
+    margin-top: 10px;
     display: none;
 }
 
@@ -473,17 +474,15 @@ header {
     border-radius: 5px;
     margin: 8px auto 10px auto;
     background-color: darkgrey;
-    max-width: 820px;
-    min-width: 680px;
+    max-width: 822px;
     min-height: 210px;
-    padding-top: 10px;
+    padding: 6px 12px 6px 6px;
     box-shadow: 1px 1px 1px 1px grey;
 }
 
 .pic {
     cursor: pointer;
-    width: 260px;
-    height: 200px;
+    width: 262px;
     border-radius: 5px;
     margin-left: 7px;
     border: grey solid 2px;
@@ -495,8 +494,7 @@ header {
     border-radius: 5px;
     margin: 8px auto 10px auto;
     background-color: darkgrey;
-    max-width: 820px;
-    min-width: 680px;
+    width: 70%;
     height: 200px;
     padding-top: 10px;
     padding-left: 20px;
@@ -534,7 +532,6 @@ ul li  {
 .make_post {
     display: none;
     position: absolute;
-    margin-top: 100px;
     margin-left: auto;
     margin-right: auto;
     left: 0;
@@ -548,7 +545,7 @@ ul li  {
 }
 
 .pic_preview {
-    width: 440px;
+    width: 88%;
     margin-left: 28px;
     border-radius: 5px;
     border: grey solid 2px;
@@ -886,6 +883,44 @@ footer {
 
 @media screen and (max-width: 1640px) {
     .main_info { display: none; }
+}
+
+@media screen and (max-width: 710px) {
+    .mask { width: 50px; }
+    .webcam { width: 400px; height: 300px; }
+    #video, .valid_pic { width: 400px; height: 300px; }
+    .snapContainer { width: 430px; }
+    .camera { margin-top: 50px; width: 210px; }
+}
+
+@media screen and (max-width: 420px) {
+    .mask { width: 50px; }
+    .webcam { width: 320px; height: 240px;}
+    #video, .valid_pic { width: 320px; height: 240px; }
+    .snapContainer { width: 340px; }
+    .camera { margin-top: 30px; width: 190px; }
+}
+
+@media screen and (max-width: 1200px) {
+    .pics { width: 720px; }
+    .pic { width: 348px; }
+}
+
+@media screen and (max-width: 750px) {
+    .pics { width: 360px; }
+
+}
+@media screen and (max-width: 420px) {
+    .pic { width: 300px; }
+    .pics { width: 310px }
+
+}
+
+@media screen and (max-width: 550px) {
+    .make_post { width: 310px; height: 390px;}
+    .pic_preview { margin-left: 18px; }
+    .description_zone { margin-left: 34px; width: 240px; font-size: 14px; }
+    .add_post_button { margin-left: 120px; }
 }
 
 /*EXTRA*/

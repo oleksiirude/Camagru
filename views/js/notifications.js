@@ -1,5 +1,5 @@
-if (document.documentURI === 'http://localhost/user/change/notifications') {//for home
-// if (document.documentURI === 'http://localhost:8080/user/change/notifications') { //for unit
+// if (document.documentURI === 'http://localhost/user/change/notifications') {//for home
+if (document.documentURI === 'http://localhost:8080/user/change/notifications') { //for unit
 	let ajax = new XMLHttpRequest();
 	ajax.open('POST', 'user/getnotificationsmode', true);
 	ajax.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');

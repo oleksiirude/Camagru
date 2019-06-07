@@ -46,7 +46,7 @@ function getUsersPicInWorkplace() {
 					workplace.appendChild(valid_pic);
 
 					snap = document.getElementById('snap');
-					snap.style.display = 'block';
+					snap.style.display = 'inline-block';
 					snap.addEventListener('click', getUsersPicPreview);
 					snap.removeEventListener('click', makeSnap);
 					let images = document.getElementsByClassName('webcam')[0].getElementsByClassName('mask');

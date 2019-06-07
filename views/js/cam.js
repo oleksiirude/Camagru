@@ -52,7 +52,22 @@ function backFromCam() {
 
 function getData(images) {
     let data = {};
+    let correction = document.getElementById('video').clientWidth;
+    if (correction === 0)
+        correction = document.getElementById('valid_pic').clientWidth;
     let parentPos = document.getElementsByClassName('webcam')[0].getBoundingClientRect();
+
+    switch (correction) {
+        case 640:
+            correction = 1;
+            break;
+        case 400:
+            correction = 1.6;
+            break;
+        case 320:
+            correction = 2;
+            break;
+    }
 
     for (let i = 0; i < images.length; i++) {
         let childPos = images[i].getBoundingClientRect();
@@ -61,16 +76,16 @@ function getData(images) {
         relativePos.top = childPos.top - parentPos.top;
         relativePos.left = childPos.left - parentPos.left;
 
-        //let remove = /http:\/\/localhost:8080\//; //for unit
-        let remove = /http:\/\/localhost\//; //for home
+        let remove = /http:\/\/localhost:8080\//; //for unit
+        // let remove = /http:\/\/localhost\//; //for home
         let link = images[i].src;
         link = link.replace(remove, '');
         data[i] = {
             link: link,
-            sizeW: images[i].offsetWidth,
-            sizeH: images[i].offsetHeight,
-            posTop: parseInt(relativePos.top),
-            posLeft: parseInt(relativePos.left)
+            sizeW: images[i].offsetWidth*correction,
+            sizeH: images[i].offsetHeight*correction,
+            posTop: parseInt(relativePos.top)*correction,
+            posLeft: parseInt(relativePos.left)*correction
         }
     }
     return data;

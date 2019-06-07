@@ -11,6 +11,7 @@ function doPostIntention(img) {
 	let pic = document.createElement('img');
 	pic.src = img.target.src;
 	pic.className = 'pic_preview';
+	post.style.marginTop =  window.pageYOffset+100+'px';
 	post.insertBefore(pic, post.childNodes[2]);
 	window.onclick = (e) => {
 		if (e.target === substrate) {
