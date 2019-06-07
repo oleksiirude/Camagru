@@ -1,27 +1,26 @@
-let main = document.getElementsByClassName('main_info')[0];
-if (main && window.outerWidth < 1640)
-    main.style.display = 'none';
+let profile_uri = document.documentURI.substring(0, 16); // for home
+let tail_profile_uri = document.documentURI.substr(16) + '/';
+profile_uri += tail_profile_uri.replace(/\/{2,}/, '/');
 
-let avatar_profile = document.getElementsByClassName('avatar_profile')[0];
-if (avatar_profile)
-    avatar_profile.addEventListener('click', function () {
-        window.scrollTo(0, 0);
-    });
-window.onresize = () => {
-    if (main) {
-        if (window.outerWidth < 1640)
-            main.style.display = 'none';
-        else
-            if (main.style.display === 'none')
-                main.style.display = 'block';
-    }
-};
+// let profile_uri = document.documentURI.substring(0, 21); // for unit
+// let tail_profile_uri = document.documentURI.substr(21) + '/';
+// profile_uri += tail_profile_uri.replace(/\/{2,}/, '/');
 
-if (document.documentURI === 'http://localhost/user/profile') { //for home
-//if (document.documentURI === 'http://localhost:8080/user/profile') { //for unit
+if (profile_uri === 'http://localhost/user/profile/') { //for home
+//if (document.documentURI === 'http://localhost:8080/user/profile/') { //for unit
+    let avatar_profile = document.getElementsByClassName('avatar_profile')[0];
+    if (avatar_profile)
+        avatar_profile.addEventListener('click', () => {
+            window.scrollTo(0, 0);
+        });
     window.scrollTo(0, 0);
     let parent = document.getElementsByClassName('posts_profile')[0];
     ajaxProfileFeed(parent,0);
+    let manual_pagination = document.getElementById('manual_pagination');
+    manual_pagination.onclick = () => {
+        let elements = parent.getElementsByClassName('post_container').length;
+        ajaxProfileFeed(parent,elements);
+    };
     window.onscroll = () => {
         let scrollHeight, clientHeight, position, elements;
         scrollHeight = Math.max(
@@ -66,6 +65,8 @@ function ajaxProfileFeed(parent, elements) {
                 empty.innerHTML = "You don't have any posts yet!";
                 parent.append(empty);
             }
+            else if (result.length === 0)
+                document.getElementById('manual_pagination').style.display = 'none';
         }
     };
 }

@@ -1,8 +1,21 @@
-if (document.documentURI === 'http://localhost/') { //for home
+let main_uri = document.documentURI.substring(0, 16); // for home
+let tail_main_uri = document.documentURI.substr(16);
+main_uri += tail_main_uri.replace(/\/{2,}/, '/');
+
+// let main_uri = document.documentURI.substring(0, 21); // for unit
+// let tail_main_uri = document.documentURI.substr(21);
+// main_uri += tail_main_uri.replace(/\/{2,}/, '/');
+
+if (main_uri === 'http://localhost/') { //for home
 //if (document.documentURI === 'http://localhost:8080/') { //for unit
 	window.scrollTo(0, 0);
 	let parent = document.getElementsByClassName('posts_main')[0];
 	ajaxMainFeed(parent,0);
+	let manual_pagination = document.getElementById('manual_pagination');
+	manual_pagination.onclick = () => {
+		let elements = parent.getElementsByClassName('post_container').length;
+		ajaxMainFeed(parent, elements);
+	};
 	window.onscroll = () => {
 		let scrollHeight, clientHeight, position, elements;
 		scrollHeight = Math.max(
@@ -47,6 +60,8 @@ function ajaxMainFeed(parent, elements) {
 				empty.innerHTML = "It seems that there is totally empty here";
 				parent.append(empty);
 			}
+			else if (result.length === 0)
+				document.getElementById('manual_pagination').style.display = 'none';
 		}
 	};
 }

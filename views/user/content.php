@@ -6,4 +6,5 @@
 	<h1 class="title">MAIN FEED</h1>
 	<div class="posts_main">
 	</div>
+	<button id="manual_pagination" >next posts</button>
 </div>

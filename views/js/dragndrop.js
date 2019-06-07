@@ -52,23 +52,22 @@ function dragndrop(e) {
 
     elem.ondragstart = () => { return false; };
 
-    elem.ondblclick = () => {
+    elem.onwheel = (e) => {
+        let delta = e.deltaY || e.detail;
+        let elem = e.target;
+
         let size, style;
-
-        size = elem.offsetWidth + 10;
-        style = elem.style;
-        style.width = size + 'px';
-    };
-
-    elem.oncontextmenu = () => {
-        let size, style;
-
-        if (elem.offsetWidth > 40) {
+        if (delta > 0) {
+            size = elem.offsetWidth + 10;
+            style = elem.style;
+            style.width = size + 'px';
+        }
+        else {
             size = elem.offsetWidth - 10;
             style = elem.style;
             style.width = size + 'px';
         }
-        return false;
+        e.preventDefault();
     };
 }
 

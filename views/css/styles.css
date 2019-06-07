@@ -71,6 +71,7 @@ header {
 .wrapper {
     flex: 1 0 auto;
     width: 70%;
+    text-align: center;
     margin: auto;
     padding-left: 10px;
     padding-right: 10px;
@@ -395,7 +396,6 @@ header {
 
 .camera {
     margin-top: 100px;
-    margin-left: 160px;
     width: 310px;
     height: 280px;
     cursor: pointer;
@@ -597,7 +597,6 @@ ul li  {
     position: fixed;
     text-align: center;
     width: 200px;
-    /*height: 220px;*/
     background-color: goldenrod;
     border-radius: 5px;
     box-shadow: 1px 1px 1px 1px grey;
@@ -638,6 +637,7 @@ ul li  {
 .post_container {
     text-align: center;
     width: 90%;
+    max-width: 600px;
     margin: 10px auto;
     padding: 6px 6px 10px 6px;
     border-radius: 5px;
@@ -754,6 +754,29 @@ ul li  {
     font-weight: bold;
 }
 
+/*MANUAL PAGINATION FOR MOBILE DEVICES*/
+#manual_pagination {
+    margin-bottom: 8px;
+    box-shadow: 0 0 2px 1px gray;
+    background-color: #d0451b;
+    border-radius: 3px;
+    border: 1px solid #942911;
+    cursor: pointer;
+    color: #ffffff;
+    width: 100px;
+    height: 26px;
+    font-size: 16px;
+    text-shadow: 0 1px 0 #854629;
+}
+
+#manual_pagination:hover {
+    background-color: #bc3315;
+}
+
+#manual_pagination:active {
+    position: relative;
+    top: 1px;
+}
 /*FOOTER STUFF*/
 footer {
     width: 68%;
@@ -836,12 +859,16 @@ footer {
 }
 
 /*MEDIA QUERIES*/
+@media screen and (min-width: 1600px) {
+    #manual_pagination { display: none; }
+}
+
 @media screen and (max-width: 1200px) {
     .wrapper { width: 100%; padding-left: 0; }
 }
 
 @media screen and (max-width: 600px){
-    .wrapper { padding-left: 0; }
+    .wrapper { padding-left: 0;  border-radius: 0; }
     .posts_main { width: 100%; border-radius: 0; }
     .posts_profile { width: 100%; border-radius: 0; }
     .avatar { display: none; }
@@ -855,6 +882,10 @@ footer {
 @media screen and (max-width: 410px) {
     .navbar { margin-left: 40px; font-weight: bold; margin-top: 30px; font-size: 18px; }
     .socials { display: none; }
+}
+
+@media screen and (max-width: 1640px) {
+    .main_info { display: none; }
 }
 
 /*EXTRA*/
