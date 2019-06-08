@@ -1,14 +1,14 @@
-// let profile_uri = document.documentURI.substring(0, 16); // for home
-// let tail_profile_uri = document.documentURI.substr(16) + '/';
-// profile_uri += tail_profile_uri.replace(/\/{2,}/, '/');
-
-let profile_uri = document.documentURI.substring(0, 21); // for unit
-let tail_profile_uri = document.documentURI.substr(21) + '/';
+let profile_uri = document.documentURI.substring(0, 16); // for home
+let tail_profile_uri = document.documentURI.substr(16) + '/';
 profile_uri += tail_profile_uri.replace(/\/{2,}/, '/');
 
+// let profile_uri = document.documentURI.substring(0, 21); // for unit
+// let tail_profile_uri = document.documentURI.substr(21) + '/';
+// profile_uri += tail_profile_uri.replace(/\/{2,}/, '/');
 
-// if (profile_uri === 'http://localhost/user/profile/') { // for home
-if (profile_uri === 'http://localhost:8080/user/profile/') { // for unit
+
+if (profile_uri === 'http://localhost/user/profile/') { // for home
+// if (profile_uri === 'http://localhost:8080/user/profile/') { // for unit
     let avatar_profile = document.getElementsByClassName('avatar_profile')[0];
     if (avatar_profile)
         avatar_profile.addEventListener('click', () => {
@@ -63,8 +63,10 @@ function ajaxProfileFeed(parent, elements) {
                 empty.id = 'empty';
                 empty.style.fontWeight = 'bold';
                 empty.style.color = 'darkred';
+                empty.style.marginTop = '10px';
                 empty.innerHTML = "You don't have any posts yet!";
                 parent.append(empty);
+                document.getElementById('manual_pagination').style.display = 'none';
             }
             else if (result.length === 0)
                 document.getElementById('manual_pagination').style.display = 'none';
@@ -85,13 +87,13 @@ function addContent(parent, result) {
         photo.id = 'img'+result[i]['id'];
         photo.className = 'post_photo';
         photo.src = result[i]['path'];
-        // if (document.documentURI === 'http://localhost/user/profile') {// for home
-        if (document.documentURI === 'http://localhost:8080/user/profile') { // for unit
+        if (document.documentURI === 'http://localhost/user/profile') {// for home
+        // if (document.documentURI === 'http://localhost:8080/user/profile') { // for unit
             photo.addEventListener('click', removePostIntention);
             photo.style.cursor = 'pointer';
         }
-        // if (document.documentURI === 'http://localhost/') {// for home
-        if (document.documentURI === 'http://localhost:8080/') { // for unit
+        if (document.documentURI === 'http://localhost/') {// for home
+        // if (document.documentURI === 'http://localhost:8080/') { // for unit
             let avatar, login;
             avatar = document.createElement('img');
             avatar.className = 'avatar_comment';

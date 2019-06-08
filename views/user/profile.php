@@ -20,5 +20,5 @@ if (isset($_SESSION['avatar']))
 			<a href="user/settings">profile settings</a>
 		</div>
     </div>
-	<button id="manual_pagination" >next posts</button>
+	<button id="manual_pagination">next posts</button>
 </div>

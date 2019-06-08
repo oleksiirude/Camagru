@@ -1,9 +1,25 @@
-window.onresize = () => {
-    let images = document.getElementsByClassName('webcam')[0].getElementsByClassName('mask');
-    if (images.length > 0)
-        while (images.length--)
-            images[0].remove();
+let snap = document.getElementById('snap');
+if (snap) {
     snap.disabled = true;
+    snap.style.backgroundColor = 'grey';
+    snap.style.borderColor = '#757575';
+}
+let masks = document.getElementsByClassName('mask');
+if (masks)
+    for (let i = 0; i < masks.length; i++)
+        masks[i].addEventListener('click', createClone);
+
+window.onresize = () => {
+    let images = document.getElementsByClassName('webcam')[0];
+    if (images) {
+        images = images.getElementsByClassName('mask');
+        if (images.length > 0)
+            while (images.length--)
+                images[0].remove();
+        snap.disabled = true;
+        snap.style.backgroundColor = 'grey';
+        snap.style.borderColor = '#757575';
+    }
 };
 
 function dragndrop(e) {
@@ -39,6 +55,8 @@ function dragndrop(e) {
                 .getElementsByClassName('mask');
             if (!images.length) {
                 snap.disabled = true;
+                snap.style.backgroundColor = 'grey';
+                snap.style.borderColor = '#757575';
             }
         } else if (e.pageY > limits.top) {
             newLocation.y = e.pageY - 10;
@@ -86,6 +104,7 @@ function createClone(e) {
     if (mask_existence < 2) {
         let snap = document.getElementById('snap');
         snap.disabled = false;
+        snap.style.backgroundColor = '#d0451b';
     }
     let new_mask = document.createElement('img');
     let parent = document.getElementsByClassName('webcam')[0];
@@ -103,11 +122,3 @@ function createClone(e) {
     new_mask.addEventListener('mousedown', dragndrop);
     parent.insertBefore(new_mask, parent.firstChild);
 }
-
-let snap = document.getElementById('snap');
-if (snap)
-    snap.disabled = true;
-let masks = document.getElementsByClassName('mask');
-if (masks)
-    for (let i = 0; i < masks.length; i++)
-        masks[i].addEventListener('click', createClone);

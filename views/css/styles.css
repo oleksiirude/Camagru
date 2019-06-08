@@ -71,7 +71,6 @@ header {
 .wrapper {
     flex: 1 0 auto;
     width: 70%;
-    text-align: center;
     margin: auto;
     padding-left: 10px;
     padding-right: 10px;
@@ -109,6 +108,7 @@ header {
 
 /*BUTTON STYLES*/
 .snap_button {
+    margin-left: 300px;
     box-shadow: 0 0 2px 1px gray;
     background-color: #d0451b;
     border-radius: 3px;
@@ -119,10 +119,6 @@ header {
     height: 30px;
     font-size: 16px;
     text-shadow: 0 1px 0 #854629;
-}
-
-.snap_button:hover {
-    background-color: #bc3315;
 }
 
 .snap_button:active {
@@ -386,7 +382,6 @@ header {
 .snapContainer {
     width: 680px;
     border-radius: 5px;
-    align-content: center;
     margin: 0 auto 10px auto;
     background-color: darkgrey;
     padding-top: 10px;
@@ -396,15 +391,15 @@ header {
 
 .camera {
     margin-top: 100px;
+    margin-left: 170px;
     width: 310px;
-    /*height: 280px;*/
     cursor: pointer;
     padding-bottom: 100px;
 }
 
 .noWebcam {
-    font-weight: bold;
     text-align: center;
+    font-weight: bold;
     margin-right: 10px;
 }
 
@@ -439,6 +434,7 @@ header {
 
 .webcam {
     margin: auto;
+    /*text-align: center;*/
     border-radius: 5px;
     background-color: #333333;
     width: 640px;
@@ -463,8 +459,8 @@ header {
 }
 
 #backFromPic {
-    margin-top: 4px;
-    margin-right: 20px;
+    margin-top: 14px;
+    margin-right: 10px;
     display: none;
     float: right;
 }
@@ -753,7 +749,8 @@ ul li  {
 
 /*MANUAL PAGINATION FOR MOBILE DEVICES*/
 #manual_pagination {
-    margin-bottom: 8px;
+    display: block;
+    margin: auto auto 8px auto;
     box-shadow: 0 0 2px 1px gray;
     background-color: #d0451b;
     border-radius: 3px;
@@ -812,7 +809,8 @@ footer {
 
 /*ERROR, WARN MASSAGES*/
 .error_block {
-    width: 600px;
+    font-size: 60px;
+    width: 400px;
     background-color: goldenrod;
     margin: 20% auto;
     padding: 10px;
@@ -865,6 +863,7 @@ footer {
 }
 
 @media screen and (max-width: 600px){
+    .error_block { font-size: 40px; width: 200px;}
     .wrapper { padding-left: 0;  border-radius: 0; }
     .posts_main { width: 100%; border-radius: 0; }
     .posts_profile { width: 100%; border-radius: 0; }
@@ -873,7 +872,7 @@ footer {
     .settings_menu { font-size: 20px; margin: 35% auto; width: 210px; }
     .menu { font-size: 16px; margin: 35% auto; width: 240px; }
     .navbar { margin-top: 18px; font-size: 30px; }
-    .enter_choice { float: right; margin-right: 10px; }
+    .enter_choice { float: right; margin-right: 20px; }
 }
 
 @media screen and (max-width: 410px) {
@@ -890,7 +889,8 @@ footer {
     .webcam { width: 400px; height: 300px; }
     #video, .valid_pic { width: 400px; height: 300px; }
     .snapContainer { width: 430px; }
-    .camera { margin-top: 50px; width: 210px; }
+    .camera { margin-top: 50px; width: 210px; margin-left: 100px; }
+    .snap_button { margin-left: 170px; }
 }
 
 @media screen and (max-width: 420px) {
@@ -898,7 +898,8 @@ footer {
     .webcam { width: 320px; height: 240px;}
     #video, .valid_pic { width: 320px; height: 240px; }
     .snapContainer { width: 340px; }
-    .camera { margin-top: 30px; width: 190px; }
+    .camera { margin-top: 30px; width: 190px; margin-left: 70px; }
+    .snap_button { margin-left: 120px; }
 }
 
 @media screen and (max-width: 1200px) {
@@ -912,7 +913,7 @@ footer {
 }
 @media screen and (max-width: 420px) {
     .pic { width: 300px; }
-    .pics { width: 310px }
+    .pics { width: 310px; }
 
 }
 

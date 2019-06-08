@@ -50,8 +50,11 @@ function getUsersPicInWorkplace() {
 					snap.addEventListener('click', getUsersPicPreview);
 					snap.removeEventListener('click', makeSnap);
 					let images = document.getElementsByClassName('webcam')[0].getElementsByClassName('mask');
-					if (!images.length)
+					if (!images.length) {
 						snap.disabled = true;
+						snap.style.backgroundColor = 'grey';
+						snap.style.borderColor = '#757575';
+					}
 					document.getElementsByClassName('masks')[0].style.display = 'block';
 				}
 				else {
@@ -101,6 +104,9 @@ function backFromPic() {
 function getUsersPicPreview() {
 	let snap = document.getElementById('snap');
 	snap.disabled = true;
+	snap.style.backgroundColor = 'grey';
+	snap.style.borderColor = '#757575';
+
 	let canvas = document.getElementById('canvas');
 	let context = canvas.getContext('2d');
 	let pic = document.getElementById('valid_pic');

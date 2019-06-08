@@ -9,8 +9,10 @@ function check(e) {
 	if (warning)
 		warning.remove();
 	let submit_button = document.getElementsByClassName('submit_button')[0];
-	if (submit_button)
+	if (submit_button) {
 		submit_button.disabled = true;
+		submit_button.style.backgroundColor = '#959595';
+	}
 	let link_back = document.getElementById('link_back');
 	if (link_back)
 		link_back.setAttribute('style', 'display: none');
@@ -29,7 +31,7 @@ function ajax(object, action) {
 	ajax.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 	ajax.send(json);
 
-	ajax.onreadystatechange = function () {
+	ajax.onreadystatechange = () => {
 		if (ajax.status !== 200) {
 			location.href = 'error';
 		}
@@ -68,8 +70,10 @@ function addWarning(result) {
 	if (link_back)
 		link_back.setAttribute('style', 'display: block');
 	let submit_button = document.getElementsByClassName('submit_button')[0];
-	if (submit_button)
+	if (submit_button) {
 		submit_button.disabled = false;
+		submit_button.style.backgroundColor = '#5a5a5a';
+	}
 
 	let form = document.getElementById(result['id']);
 	let warning = document.createElement('div');

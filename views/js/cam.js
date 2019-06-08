@@ -10,14 +10,16 @@ function getWebcam() {
 
     if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
 
-        navigator.mediaDevices.getUserMedia({video: true}).then(function (stream) {
+        navigator.mediaDevices.getUserMedia({video: true}).then((stream) => {
             video.srcObject = stream;
             document.getElementsByClassName('noWebcam')[0].style.display = 'none';
             document.getElementsByClassName('camera')[0].style.display = 'none';
             document.getElementById('video').style.display = 'block';
             document.getElementsByClassName('masks')[0].style.display = 'block';
 
-
+            let users_pic = document.getElementById('valid_pic');
+            if (users_pic)
+                users_pic.remove();
             let snap = document.getElementById('snap');
             snap.addEventListener('click', makeSnap);
             snap.removeEventListener('click', getUsersPicPreview);
@@ -27,8 +29,11 @@ function getWebcam() {
             setTimeout(() =>
                 document.getElementById('backFromCam').style.display = 'inline-block',1200);
             let images = document.getElementsByClassName('webcam')[0].getElementsByClassName('mask');
-            if (!images.length)
+            if (!images.length) {
                 snap.disabled = true;
+                snap.style.backgroundColor = 'grey';
+                snap.style.borderColor = '#757575';
+            }
             video.play();
         });
     }
@@ -76,8 +81,8 @@ function getData(images) {
         relativePos.top = childPos.top - parentPos.top;
         relativePos.left = childPos.left - parentPos.left;
 
-        let remove = /http:\/\/localhost:8080\//; //for unit
-        // let remove = /http:\/\/localhost\//; //for home
+        //let remove = /http:\/\/localhost:8080\//; //for unit
+        let remove = /http:\/\/localhost\//; //for home
         let link = images[i].src;
         link = link.replace(remove, '');
         data[i] = {
@@ -94,6 +99,9 @@ function getData(images) {
 function makeSnap() {
     let snap = document.getElementById('snap');
     snap.disabled = true;
+    snap.style.backgroundColor = 'grey';
+    snap.style.borderColor = '#757575';
+
     let canvas = document.getElementById('canvas');
     let context = canvas.getContext('2d');
     let video = document.getElementById('video');
@@ -137,6 +145,7 @@ function ajaxMontage(photo, data) {
             }
             let snap = document.getElementById('snap');
                 snap.disabled = false;
+                snap.style.backgroundColor = '#d0451b';
         }
     }
 }

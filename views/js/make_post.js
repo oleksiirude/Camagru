@@ -1,5 +1,4 @@
 function doPostIntention(img) {
-
 	let substrate = document.getElementsByClassName('substrate')[0];
 	let post = document.getElementsByClassName('make_post')[0];
 	let pic_preview = document.getElementsByClassName('pic_preview')[0];
