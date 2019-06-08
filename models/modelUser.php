@@ -266,8 +266,10 @@
 				return $result;
 			$old_login = $_SESSION['user_logged'];
 			$new_login = $post['login'];
-			$this->query("UPDATE users SET login = '$new_login' 
-										WHERE users.login = '$old_login'");
+			$this->query("UPDATE users SET login = '$new_login' WHERE users.login = '$old_login'");
+            $this->query("UPDATE posts SET `user` = '$new_login' WHERE posts.user = '$old_login'");
+            $this->query("UPDATE comments SET owner = '$new_login' WHERE comments.owner = '$old_login'");
+            $this->query("UPDATE comments SET author_login = '$new_login' WHERE comments.author_login = '$old_login'");
 			$_SESSION['user_logged'] = $new_login;
 			return true;
 		}
@@ -296,7 +298,6 @@
 		}
 
 		//CHANGE AVATAR
-
 		private function deleteOldAvatar($avatar) {
 			$file = ROOT.'views/pictures/avatars/'.$avatar;
 			chmod($file, 0755);
@@ -309,11 +310,9 @@
 
 			if (($result = componentView::basicPictureChecks($filePath, $errorCode)) !== true)
 				return $result;
-			$id = $_SESSION['user_id'];
 			preg_match("/.*(jpeg|jpg|png)$/i", $_FILES['avatar']['type'], $matches);
 			$type = $matches[1];
-			$name = $id.'tmp'.'.'.$matches[1];
-			$base64 = componentView::resizePic($filePath, $name, $type, 240, 240);
+			$base64 = componentView::resizePic($filePath, $type, 240, 240);
 			if (!$base64)
 				return ['result' => 'false', 'warning' => 'invalid file!'];
 			return $base64;
@@ -348,14 +347,13 @@
 				if (preg_match("/^$id/", $avatar))
 						self::deleteOldAvatar($avatar);
 			$this->query("UPDATE users SET avatar = null WHERE users.id = '$id'");
-			$this->query("UPDATE comments SET author_avatar = 'views/pictures/avatars/default.png' WHERE author_id = '$id'");
+			$this->query("UPDATE comments SET author_avatar = 'views/pictures/avatars/default.png' WHERE author_login = '$user'");
 			$this->query("UPDATE posts SET user_avatar = 'views/pictures/avatars/default.png' WHERE user = '$user'");
 		}
 
 		//NOTIFICATION
 		public function getNotificationsMode() {
 			$user = $_SESSION['user_id'];
-
 			$sth = $this->query("SELECT notification FROM users WHERE id = '$user'");
 			$result = $sth->fetchAll(self::FETCH_ASSOC);
 			if ($result[0]['notification'] === '1')

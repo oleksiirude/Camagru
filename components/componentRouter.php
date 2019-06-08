@@ -18,7 +18,6 @@
 
 		//find needed controller, create an object and launch method
 		public function run() {
-
 			if (!$uri = $this->getURI()) {
 				componentView::toMainPage('Camagru: main');
 			}

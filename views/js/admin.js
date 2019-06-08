@@ -1,5 +1,5 @@
-if (document.documentURI === 'http://localhost/admin') {//for home
-// if (document.documentURI === 'http://localhost:8080/admin') { //for unit
+// if (document.documentURI === 'http://localhost/admin') {//for home
+if (document.documentURI === 'http://localhost:8080/admin') { //for unit
 	let not_logged_user = document.getElementsByClassName('enter_choice')[0];
 	if (not_logged_user)
 		not_logged_user.remove();

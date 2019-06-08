@@ -29,5 +29,7 @@ class modelAdmin extends componentModel {
 				}
 			}
 		}
+		session_destroy();
+        $_SESSION['admin_logged'] = true;
 	}
 }

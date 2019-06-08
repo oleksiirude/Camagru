@@ -4,7 +4,7 @@
     	private function getFormattedDate($result) {
 			$i = 0;
 			foreach ($result as $item) {
-				$date = date("m-d-y g:i A", strtotime($item['add_date']));
+				$date = date("d-m-y g:i A", strtotime($item['add_date']));
 				$result[$i]['add_date'] = $date;
 				$i++;
 			}

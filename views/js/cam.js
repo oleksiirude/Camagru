@@ -81,8 +81,8 @@ function getData(images) {
         relativePos.top = childPos.top - parentPos.top;
         relativePos.left = childPos.left - parentPos.left;
 
-        //let remove = /http:\/\/localhost:8080\//; //for unit
-        let remove = /http:\/\/localhost\//; //for home
+        let remove = /http:\/\/localhost:8080\//; // for unit
+        // let remove = /http:\/\/localhost\//; // for home
         let link = images[i].src;
         link = link.replace(remove, '');
         data[i] = {
@@ -132,6 +132,7 @@ function ajaxMontage(photo, data) {
         }
         if (ajax.readyState === 4) {
             let result = ajax.responseText;
+            //console.log(result);
             if (result && result.search(/Fatal error/) < 0) {
                 let pics = document.getElementsByClassName('pics')[0];
                 if (pics.childElementCount >= 2)

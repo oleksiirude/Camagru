@@ -82,7 +82,7 @@
 			return $image;
 		}
 
-		public static function resizePic($filePath, $name, $type, $width, $height)
+		public static function resizePic($filePath, $type, $width, $height)
 		{
 
 			if (preg_match('~png~i', $type)) {
@@ -108,16 +108,17 @@
 			imagecopyresampled($new, $image, 0, 0,
 				0, 0, $width, $height, imagesx($image), imagesy($image));
 
+            ob_start();
 			if ($type === 'png' || $type === 'PNG')
-				imagepng($new, ROOT.'tmp/'.$name);
+				imagepng($new);
 			else
-				imagejpeg($new, ROOT.'tmp/'.$name);
+				imagejpeg($new);
+            $pic = ob_get_contents();
+            ob_end_clean();
 			imagedestroy($image);
 			imagedestroy($new);
 
-			$img = file_get_contents(ROOT.'tmp/'.$name);
-			unlink(ROOT.'tmp/'.$name);
-			$base64 = "data:image/$type;base64,".base64_encode($img);
+			$base64 = "data:image/$type;base64,".base64_encode($pic);
 			$result = ['result' => true, 'base64' => $base64];
 			return $result;
 		}

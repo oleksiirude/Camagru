@@ -107,6 +107,19 @@ header {
 }
 
 /*BUTTON STYLES*/
+#delete_post {
+    margin-top: 10px;
+    box-shadow: 0 0 2px 1px gray;
+    background-color: #d0451b;
+    border-radius: 3px;
+    border: 1px solid #942911;
+    cursor: pointer;
+    color: #ffffff;
+    width: 70px;
+    height: 30px;
+    font-size: 16px;
+    text-shadow: 0 1px 0 #854629;
+}
 .snap_button {
     margin-left: 300px;
     box-shadow: 0 0 2px 1px gray;
@@ -251,7 +264,7 @@ header {
 
 .message {
     width: 260px;
-    margin: 15% auto;
+    margin: 30% auto;
     background: goldenrod;
     border-radius: 10px;
     font-size: 20px;
@@ -918,6 +931,7 @@ footer {
 }
 
 @media screen and (max-width: 550px) {
+    .description_value_error { margin-left: 94px; }
     .make_post { width: 310px; height: 390px;}
     .pic_preview { margin-left: 18px; }
     .description_zone { margin-left: 34px; width: 240px; font-size: 14px; }

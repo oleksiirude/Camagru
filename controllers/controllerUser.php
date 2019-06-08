@@ -36,7 +36,7 @@
 				componentView::redirect('user/login');
 			else
 				componentView::errorHandle(404);
-			exit;
+			return true;
 		}
 
 		//LOGIN

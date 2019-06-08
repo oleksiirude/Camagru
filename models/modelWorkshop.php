@@ -26,25 +26,26 @@
 				imagedestroy($mask);
 			}
 
-			$name = md5(time().$_SESSION['user_logged']);
-			imagepng($webshoot, ROOT."tmp/$name".'.png');
-			imagedestroy($webshoot);
+            ob_start();
+            imagepng($webshoot);
+            $png = ob_get_contents();
+            ob_end_clean();
+            imagedestroy($webshoot);
+            $image = imagecreatefromstring($png);
 
-			$image = imagecreatefrompng(ROOT."tmp/$name".'.png');
-			unlink(ROOT."tmp/$name".'.png');
-
-			$bg = imagecreatetruecolor(imagesx($image), imagesy($image));
-			imagefill($bg, 0, 0, imagecolorallocate($bg, 255, 255, 255));
-			imagealphablending($bg, TRUE);
-			imagecopy($bg, $image, 0, 0, 0, 0, imagesx($image), imagesy($image));
+			$new = imagecreatetruecolor(imagesx($image), imagesy($image));
+			imagefill($new, 0, 0, imagecolorallocate($new, 255, 255, 255));
+			imagealphablending($new, TRUE);
+			imagecopy($new, $image, 0, 0, 0, 0, imagesx($image), imagesy($image));
 			imagedestroy($image);
-			imagejpeg($bg, ROOT."tmp/$name".'.jpeg', 100);
-			imagedestroy($bg);
 
-			$img = file_get_contents(ROOT."tmp/$name".'.jpeg');
-			unlink(ROOT."tmp/$name".'.jpeg');
+            ob_start();
+            imagejpeg($new);
+            $jpeg = ob_get_contents();
+            ob_end_clean();
+            imagedestroy($new);
 
-			$preview = 'data:image/jpeg;base64,'.base64_encode($img);
+			$preview = 'data:image/jpeg;base64,'.base64_encode($jpeg);
 			return $preview;
 		}
 
@@ -54,11 +55,9 @@
 
 			if (($result = componentView::basicPictureChecks($filePath, $errorCode)) !== true)
 				return $result;
-			$id = $_SESSION['user_id'];
 			preg_match("/.*(jpeg|jpg|png)$/i", $_FILES['pic']['type'], $matches);
 			$type = $matches[1];
-			$name = $id.'tmp'.'.'.$matches[1];
-			$base64 = componentView::resizePic($filePath, $name, $type, 640, 480);
+			$base64 = componentView::resizePic($filePath, $type, 640, 480);
 			if (!$base64)
 				return ['result' => false, 'warning' => 'invalid file!'];
 			return $base64;

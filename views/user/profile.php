@@ -6,7 +6,7 @@ if (isset($_SESSION['avatar']))
 <div class="substrate"></div>
 <div class="delete_post">
 	<p>Delete this post?<br>Are you sure?<br>This action is irreversible!<br></p>
-	<button id="delete_post" class="snap_button">DELETE</button>
+	<button id="delete_post">DELETE</button>
 </div>
 <div class="wrapper">
     <h1 class="title">MY PROFILE</h1>

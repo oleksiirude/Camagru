@@ -1,13 +1,13 @@
-let main_uri = document.documentURI.substring(0, 16); // for home
-let tail_main_uri = document.documentURI.substr(16);
-main_uri += tail_main_uri.replace(/\/{2,}/, '/');
-
-// let main_uri = document.documentURI.substring(0, 21); // for unit
-// let tail_main_uri = document.documentURI.substr(21);
+// let main_uri = document.documentURI.substring(0, 16); // for home
+// let tail_main_uri = document.documentURI.substr(16);
 // main_uri += tail_main_uri.replace(/\/{2,}/, '/');
 
-if (main_uri === 'http://localhost/') { //for home
-// if (main_uri === 'http://localhost:8080/') { //for unit
+let main_uri = document.documentURI.substring(0, 21); // for unit
+let tail_main_uri = document.documentURI.substr(21);
+main_uri += tail_main_uri.replace(/\/{2,}/, '/');
+
+// if (main_uri === 'http://localhost/') { //for home
+if (main_uri === 'http://localhost:8080/') { //for unit
 	window.scrollTo(0, 0);
 	let parent = document.getElementsByClassName('posts_main')[0];
 	ajaxMainFeed(parent,0);
