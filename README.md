@@ -45,7 +45,7 @@ Here you are some super collage pics:
 ![alt text](https://github.com/oleksiirude/Camagru_mvc/blob/master/img/settings.png)
 
 And now, how to run:
-- you should have something like XAMPP, MAMP, LAMP, etc
-- all config info about databse connection located in Camagru/config/config.php
+- you should have something like XAMPP, MAMP, LAMP, etc.
+- all config info about databse connection located in Camagru/config/config.php.
 - copy all stuff from Camagru directory to the root of your server (in MAMP for example it's: MAMP/apache2/htdocs)
 - open browser, type localhost[maybe some special port here?] or name of your domain and enjoy!
