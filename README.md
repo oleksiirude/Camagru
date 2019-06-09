@@ -32,12 +32,20 @@ Functionality of my app is:
 - list of all posts from all users
 - ability to like and comment their posts
 - infinitive pagination
+6. Logout
+- yes, user can logout! impressive, doesn't it? :D
 
 Site/app has responsive design and you can view it's content with comfort in small resolution/devices.
 
-Few words about security: you can't enter the main part of site while you don't login, unlogged users can only see all posts but can't like or comment them. All password are well encrypted by password_hash PHP function, app is safe of SQL-injections, pieces of HTML/JS code. Also app has ability to validate uploaded files, and if you want to upload some unwanted stuff - you receive an error-message.
+Few words about security: you can't enter the main part of site while you don't login, unlogged users can only see all posts but can't like or comment them. All password are well encrypted by password_hash PHP function, app is safe of SQL-injections, pieces of HTML/JS code. All php-files are secured from straight opening from browser url. Also app has ability to validate uploaded files, and if you want to upload some unwanted stuff - you receive an error-message.
 
 Here you are some super collage pics:
 ![alt text](https://github.com/oleksiirude/Camagru_mvc/blob/master/img/responsive.png)
 ![alt text](https://github.com/oleksiirude/Camagru_mvc/blob/master/img/main.png)
 ![alt text](https://github.com/oleksiirude/Camagru_mvc/blob/master/img/settings.png)
+
+And now, how to run:
+- you should have something like XAMPP, MAMP, LAMP, etc
+- all config info about databse connection located in Camagru/config/config.php
+- copy all stuff from Camagru directory to the root of your server (in MAMP for example it's: MAMP/apache2/htdocs)
+- open browser, type localhost[maybe some special port here?] or name of your domain and enjoy!
