@@ -49,3 +49,5 @@ And now, how to run:
 - all config info about databse connection located in Camagru/config/config.php.
 - copy all stuff from Camagru directory to the root of your server (in MAMP for example it's: MAMP/apache2/htdocs)
 - open browser, type localhost[maybe some special port here?] or name of your domain and enjoy!
+
+You can read project requirement in Subject pdf.
