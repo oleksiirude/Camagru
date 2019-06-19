@@ -22,7 +22,7 @@ Functionality of my app is:
 3. Studio/workshop
 - live masks imposition on webcam
 - edtiting of your own image (jpeg/png)
-- list of previosly taken snapshots
+- list of previously taken snapshots
 - make post with one of them
 4. Profile
 - list of all your posts with comments and likes
