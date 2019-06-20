@@ -19,11 +19,6 @@
 				componentView::redirect('');
 		}
 
-		public function onlyForAdmin() {
-			if(!isset($_SESSION['admin_logged']))
-				componentView::redirect('');
-		}
-
 		public static function processAjaxRequest() {
 			$post = json_decode(file_get_contents('php://input'));
 			$post = (array)$post;
