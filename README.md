@@ -37,7 +37,7 @@ Functionality of my app is:
 
 Site/app has responsive design and you can view its content with comfort on small resolution/devices.
 
-Few words about security: you can't enter the main part of site while you don't login, unlogged users can only see all posts, but can't like or comment them. All password are well encrypted by password_hash PHP function, app is safe of SQL-injections, pieces of HTML/JS code. All php-files are secured from straight opening from browser url. Also app has ability to validate uploaded files, and if you want to upload some unwanted stuff - you receive an error-message.
+Few words about security: you can't enter the main part of site while you don't login, unlogged users can only see all posts, but can't like or comment them. All password are well encrypted by password_hash PHP function, app is safe of SQL-injections, pieces of HTML/JS code. All php-files are secured from straight opening from browser url. Also app has ability to validate uploaded files, and if you want to upload some unwanted stuff - you will receive an error-message.
 
 Here are some super collage pics:
 ![alt text](https://github.com/oleksiirude/Camagru_mvc/blob/master/img/responsive.png)
