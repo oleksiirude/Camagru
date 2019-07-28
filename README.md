@@ -44,6 +44,6 @@ Here are some super collage pics:
 ![alt text](https://github.com/oleksiirude/Camagru_mvc/blob/master/img/main.png)
 ![alt text](https://github.com/oleksiirude/Camagru_mvc/blob/master/img/settings.png)
 
-You can see my app in work via this link: http://camagru.us-east-2.elasticbeanstalk.com
+You can see my app in work via this link: http://camagru.us-east-2.elasticbeanstalk.com (temporarily unavailable)
 
 Project requirements are located in Subject pdf.
