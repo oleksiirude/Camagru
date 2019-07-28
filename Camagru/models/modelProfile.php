@@ -141,7 +141,7 @@
 		}
 
 		public function prepareNotification($post) {
-    		//if comments author is posts owner do not send letter
+    		//if comment author is posts owner do not send letter
 			$author = $author_id = $_SESSION['user_logged'];
 			$sth = $this->query("SELECT owner, author_login FROM comments WHERE post = '$post' AND author_login = '$author' 
 												ORDER BY add_date DESC LIMIT 1");

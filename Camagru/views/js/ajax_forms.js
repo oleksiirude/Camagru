@@ -37,8 +37,7 @@ function ajax(object, action) {
 		}
 		if (ajax.readyState === 4) {
 			let result = JSON.parse(ajax.responseText);
-			//let result = ajax.responseText;
-			//console.log(result);
+			//console.log(ajax.responseText);
 			if (result === true)
 				location.href = '';
 			else if (result === 'link')

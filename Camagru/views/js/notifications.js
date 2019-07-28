@@ -10,8 +10,7 @@ if (document.documentURI === 'http://camagru.us-east-2.elasticbeanstalk.com/user
 		}
 		if (ajax.readyState === 4) {
 			let result = JSON.parse(ajax.responseText);
-			//let result = ajax.responseText;
-			//console.log(result);
+			//console.log(ajax.responseText);
 			let slider = document.getElementById("slider");
 			let circle = document.getElementById("circle");
 			let circle_content = document.getElementById("circle-content");

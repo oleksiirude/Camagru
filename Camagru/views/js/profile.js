@@ -45,8 +45,7 @@ function ajaxProfileFeed(parent, elements) {
         }
         if (ajax.readyState === 4) {
             let result = JSON.parse(ajax.responseText);
-            //let result = ajax.responseText;
-            //console.log(result);
+            //console.log(ajax.responseText);
             if (result.length > 0)
                 addContent(parent, result);
             else if (result['empty'] === true) {

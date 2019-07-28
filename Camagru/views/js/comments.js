@@ -33,8 +33,7 @@ function getComments(id, comment_box, container) {
 		}
 		if (ajax.readyState === 4) {
 			let result = JSON.parse(ajax.responseText);
-			//let result = ajax.responseText;
-			// console.log(result);
+			// console.log(ajax.responseText);
 			let textarea, button_add, box, avatar, date, text;
 			if (result.length > 0) {
 				for (let i = 0; i < result.length; i++) {
