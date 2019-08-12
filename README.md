@@ -4,13 +4,16 @@ This project at UNIT Factory (School 42) is about creating a web-application on 
 Main aim of this project is to build a complex web-app without any external framework. Only pure PHP and JS.
 This app it's something like insta-snapchat. You can add photos or take snaps from webcam, edit them with masks, post this stuff, comment and like posts of others, etc.
 
-Technologies used in project developing:
+### Technologies used in project developing:
+<pre>
 - Back-end: pure PHP with handmaded MVC framework, GD lib (work with images)
 - Front-end: pure HTML, CSS and JS
 - data exchange - AJAX
 - responsive design by css media queries
+</pre>
 
-Functionality of my app is:
+### Functionality of my app is:
+<pre>
 1. Entering the site:
 - complex registration with confirm link
 - login with ability to recover password if forgot
@@ -34,6 +37,7 @@ Functionality of my app is:
 - infinitive pagination
 6. Logout
 - yes, user can logout! impressive, doesn't it? :D
+</pre>
 
 Site/app has responsive design and you can view its content with comfort on small resolution/devices.
 
